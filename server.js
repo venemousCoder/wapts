@@ -10,6 +10,10 @@ const startServer = async () => {
   const PORT = env.PORT;
   app.listen(PORT, () => {
     console.log(`Server running in ${env.NODE_ENV} mode on port ${PORT}`);
+    
+    // Start the keep-alive cron job
+    const startKeepAlive = require('./utils/keepAlive');
+    startKeepAlive();
   });
 };
 
