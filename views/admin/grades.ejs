@@ -1,0 +1,170 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+      <div>
+        <h2 class="fw-bold mb-1">Grading System</h2>
+        <p class="text-muted">Manage grading scales and degree classification schemes.</p>
+      </div>
+    </div>
+  </div>
+
+  <% if (typeof success !== 'undefined' && success) { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <i class="fas fa-check-circle me-2"></i> Action completed successfully.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <i class="fas fa-exclamation-circle me-2"></i> <%= error %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+
+  <div class="row g-4">
+    <!-- Grade Scales -->
+    <div class="col-md-6">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-white border-0 pt-4 pb-2 d-flex justify-content-between align-items-center">
+          <h5 class="fw-bold text-primary mb-0"><i class="fas fa-sort-numeric-down me-2"></i> Grade Scales</h5>
+          <button class="btn btn-sm btn-outline-primary rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#createGradeScaleModal">
+            <i class="fas fa-plus me-1"></i> Add
+          </button>
+        </div>
+        <div class="card-body">
+          <% if (gradeScales && gradeScales.length > 0) { %>
+            <div class="accordion" id="gradeScalesAccordion">
+              <% gradeScales.forEach((scale, index) => { %>
+                <div class="accordion-item border-0 mb-2 shadow-sm rounded">
+                  <h2 class="accordion-header" id="heading<%= index %>">
+                    <button class="accordion-button <%= index === 0 ? '' : 'collapsed' %> rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="<%= index === 0 ? 'true' : 'false' %>" aria-controls="collapse<%= index %>">
+                      <strong><%= scale.name %></strong>
+                    </button>
+                  </h2>
+                  <div id="collapse<%= index %>" class="accordion-collapse collapse <%= index === 0 ? 'show' : '' %>" aria-labelledby="heading<%= index %>" data-bs-parent="#gradeScalesAccordion">
+                    <div class="accordion-body">
+                      <div class="table-responsive">
+                        <table class="table table-sm align-middle mb-0">
+                          <thead>
+                            <tr>
+                              <th>Grade</th>
+                              <th>Min Score</th>
+                              <th>Max Score</th>
+                              <th>Points</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <% scale.grades.forEach(grade => { %>
+                              <tr>
+                                <td class="fw-bold text-<%= grade.letterGrade === 'F' ? 'danger' : 'success' %>"><%= grade.letterGrade %></td>
+                                <td><%= grade.minScore %></td>
+                                <td><%= grade.maxScore %></td>
+                                <td><%= grade.gradePoint %></td>
+                              </tr>
+                            <% }) %>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+          <% } else { %>
+            <div class="text-center py-4 text-muted">No grade scales defined.</div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Classifications -->
+    <div class="col-md-6">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-white border-0 pt-4 pb-2 d-flex justify-content-between align-items-center">
+          <h5 class="fw-bold text-primary mb-0"><i class="fas fa-medal me-2"></i> Degree Classifications</h5>
+          <button class="btn btn-sm btn-outline-primary rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#createClassificationModal">
+            <i class="fas fa-plus me-1"></i> Add
+          </button>
+        </div>
+        <div class="card-body">
+          <% if (classifications && classifications.length > 0) { %>
+            <div class="accordion" id="classificationsAccordion">
+              <% classifications.forEach((scheme, index) => { %>
+                <div class="accordion-item border-0 mb-2 shadow-sm rounded">
+                  <h2 class="accordion-header" id="cHeading<%= index %>">
+                    <button class="accordion-button <%= index === 0 ? '' : 'collapsed' %> rounded" type="button" data-bs-toggle="collapse" data-bs-target="#cCollapse<%= index %>" aria-expanded="<%= index === 0 ? 'true' : 'false' %>" aria-controls="cCollapse<%= index %>">
+                      <strong><%= scheme.name %></strong>
+                    </button>
+                  </h2>
+                  <div id="cCollapse<%= index %>" class="accordion-collapse collapse <%= index === 0 ? 'show' : '' %>" aria-labelledby="cHeading<%= index %>" data-bs-parent="#classificationsAccordion">
+                    <div class="accordion-body">
+                      <div class="table-responsive">
+                        <table class="table table-sm align-middle mb-0">
+                          <thead>
+                            <tr>
+                              <th>Class</th>
+                              <th>Min CGPA</th>
+                              <th>Max CGPA</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <% scheme.classes.forEach(cls => { %>
+                              <tr>
+                                <td class="fw-bold text-primary"><%= cls.className %></td>
+                                <td><%= cls.minCGPA %></td>
+                                <td><%= cls.maxCGPA %></td>
+                              </tr>
+                            <% }) %>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+          <% } else { %>
+            <div class="text-center py-4 text-muted">No classification schemes defined.</div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Placeholder modales -->
+<div class="modal fade" id="createGradeScaleModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title fw-bold">New Grade Scale</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center py-4">
+        <i class="fas fa-tools fa-3x text-muted mb-3"></i>
+        <p class="text-muted">Grade scale creation is currently handled via API only.</p>
+      </div>
+      <div class="modal-footer border-0 pt-0">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="createClassificationModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title fw-bold">New Classification Scheme</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center py-4">
+        <i class="fas fa-tools fa-3x text-muted mb-3"></i>
+        <p class="text-muted">Classification creation is currently handled via API only.</p>
+      </div>
+      <div class="modal-footer border-0 pt-0">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

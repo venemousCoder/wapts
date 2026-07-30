@@ -1,0 +1,154 @@
+  console.log
+    ◇ injected env (1) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+
+      at _log (node_modules/dotenv/lib/main.js:131:11)
+
+[0mPOST /auth/login [36m302[0m 230.934 ms - 41[0m
+[0mPOST /auth/login [36m302[0m 198.804 ms - 36[0m
+[0mPOST /auth/login [36m302[0m 179.845 ms - 41[0m
+[0mPOST /auth/login [36m302[0m 174.088 ms - 36[0m
+[0mPOST /lecturer/results/submit [32m200[0m 77.294 ms - 312[0m
+[0mPOST /auth/login [36m302[0m 176.392 ms - 41[0m
+[0mPOST /auth/login [33m429[0m 6.156 ms - 71[0m
+[0mPOST /hod/results/approve [33m401[0m 8.917 ms - 56[0m
+FAIL tests/integration/result.integration.test.js (18.351 s)
+  Result Integration
+    ✓ TC-INT-RESULT-001: Full result lifecycle via services (8394 ms)
+    ✓ TC-INT-RESULT-002: POST /lecturer/results/submit → submits result (1764 ms)
+    ✕ TC-INT-RESULT-003: POST /hod/results/approve → approves result (1897 ms)
+
+  ● Result Integration › TC-INT-RESULT-003: POST /hod/results/approve → approves result
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 401
+
+      62 |       .set('Accept', 'application/json')
+      63 |       .send({ resultId: draft._id.toString() });
+    > 64 |     expect(res.status).toBe(200);
+         |                        ^
+      65 |     expect(res.body.data.status).toBe('Approved');
+      66 |   });
+      67 | });
+
+      at Object.toBe (tests/integration/result.integration.test.js:64:24)
+
+  console.log
+    ◇ injected env (1) from .env // tip: ⌘ suppress logs { quiet: true }
+
+      at _log (node_modules/dotenv/lib/main.js:131:11)
+
+[0mPOST /auth/login [36m302[0m 185.169 ms - 41[0m
+(node:15405) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[0mPOST /import/csv/scores [32m200[0m 137.123 ms - 91[0m
+[0mPOST /auth/login [36m302[0m 178.776 ms - 41[0m
+[0mPOST /import/csv/scores [33m400[0m 17.892 ms - 64[0m
+PASS tests/integration/import.integration.test.js
+  Import Integration
+    ✓ TC-INT-IMPORT-001: POST /import/csv/scores with valid CSV → imports (1428 ms)
+    ✓ TC-INT-IMPORT-002: POST /import/csv/scores without file → 400 (512 ms)
+
+  console.log
+    ◇ injected env (1) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+
+      at _log (node_modules/dotenv/lib/main.js:131:11)
+
+[0mPOST /auth/login [32m200[0m 195.820 ms - 112[0m
+[0mPOST /auth/login [33m401[0m 121.999 ms - 84[0m
+  console.error
+    Error: Account is suspended
+        at AuthService.authenticate (/home/venemouscoder/Desktop/PROJECTS/WAPTS/services/AuthService.js:12:13)
+        at processTicksAndRejections (node:internal/process/task_queues:103:5)
+        at Strategy._verify (/home/venemouscoder/Desktop/PROJECTS/WAPTS/config/passport.js:10:22)
+
+      70 | // Global Error Handler
+      71 | app.use((err, req, res, next) => {
+    > 72 |   console.error(err.stack);
+         |           ^
+      73 |   res.status(err.status || 500).json({
+      74 |     success: false,
+      75 |     message: err.message || 'Internal Server Error'
+
+      at error (app.js:72:11)
+      at Layer.handleError (node_modules/router/lib/layer.js:116:17)
+      at trimPrefix (node_modules/router/index.js:340:13)
+      at node_modules/router/index.js:297:9
+      at processParams (node_modules/router/index.js:582:12)
+      at next (node_modules/router/index.js:291:5)
+      at node_modules/router/index.js:688:15
+      at next (node_modules/router/index.js:276:14)
+      at node_modules/router/index.js:688:15
+      at next (node_modules/router/index.js:276:14)
+      at next (node_modules/router/lib/route.js:132:14)
+      at next (controllers/authController.js:15:14)
+      at Strategy.strategy.error (node_modules/passport/lib/middleware/authenticate.js:370:18)
+      at verified (node_modules/passport-local/lib/strategy.js:81:28)
+      at Strategy.done [as _verify] (config/passport.js:18:16)
+
+[0mPOST /auth/login [31m500[0m 24.100 ms - 50[0m
+[0mPOST /auth/login [33m422[0m 8.831 ms - 175[0m
+[0mPOST /auth/login [36m302[0m 148.628 ms - 40[0m
+[0mGET /auth/logout [36m302[0m 91.102 ms - 33[0m
+PASS tests/integration/auth.integration.test.js
+  Auth Integration
+    ✓ TC-INT-AUTH-001: POST /auth/login with valid credentials → 200 (753 ms)
+    ✓ TC-INT-AUTH-002: POST /auth/login with invalid credentials → 401 (412 ms)
+    ✓ TC-INT-AUTH-003: POST /auth/login with suspended account → 401 (388 ms)
+    ✓ TC-INT-AUTH-004: POST /auth/login validation → rejects missing fields (282 ms)
+    ✓ TC-INT-AUTH-005: GET /auth/logout → redirects (617 ms)
+
+  console.log
+    ◇ injected env (1) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+
+      at _log (node_modules/dotenv/lib/main.js:131:11)
+
+[0mPOST /auth/login [36m302[0m 166.202 ms - 40[0m
+[0mPOST /student/courses/enroll [32m200[0m 87.495 ms - 327[0m
+[0mPOST /auth/login [36m302[0m 202.047 ms - 40[0m
+[0mPOST /student/courses/enroll [32m200[0m 66.529 ms - 327[0m
+PASS tests/integration/enrollment.integration.test.js
+  Enrollment Integration
+    ✓ TC-INT-ENROLL-001: POST /student/courses/enroll with valid offering → 200 (1175 ms)
+    ✓ TC-INT-ENROLL-002: Enrollment persists in database (933 ms)
+
+  console.log
+    ◇ injected env (1) from .env // tip: ⌘ override existing { override: true }
+
+      at _log (node_modules/dotenv/lib/main.js:131:11)
+
+[0mPOST /auth/login [36m302[0m 167.106 ms - 41[0m
+[0mPOST /lecturer/attendance [32m200[0m 70.959 ms - 558[0m
+[0mPOST /auth/login [36m302[0m 185.344 ms - 41[0m
+[0mPOST /lecturer/attendance [32m200[0m 55.191 ms - 556[0m
+PASS tests/integration/attendance.integration.test.js
+  Attendance Integration
+    ✓ TC-INT-ATTEND-001: POST /lecturer/attendance → records attendance (1286 ms)
+    ✓ TC-INT-ATTEND-002: Attendance records persist (1005 ms)
+
+  console.log
+    ◇ injected env (1) from .env // tip: ⌘ override existing { override: true }
+
+      at _log (node_modules/dotenv/lib/main.js:131:11)
+
+[0mPOST /auth/login [36m302[0m 233.512 ms - 38[0m
+[0mGET /admin/departments [32m200[0m 25.958 ms - 46[0m
+[0mPOST /auth/login [36m302[0m 203.952 ms - 38[0m
+[0mPOST /admin/departments [32m200[0m 40.279 ms - 245[0m
+[0mPOST /auth/login [36m302[0m 170.034 ms - 38[0m
+[0mGET /admin/users [32m200[0m 29.815 ms - 442[0m
+[0mPOST /auth/login [36m302[0m 179.240 ms - 38[0m
+[0mGET /admin/dashboard [36m302[0m 3.599 ms - 33[0m
+PASS tests/integration/admin.integration.test.js
+  Admin Integration
+    ✓ TC-INT-ADMIN-001: GET /admin/departments → returns departments (757 ms)
+    ✓ TC-INT-ADMIN-002: POST /admin/departments → creates department (573 ms)
+    ✓ TC-INT-ADMIN-003: GET /admin/users → returns users (552 ms)
+    ✓ TC-INT-ADMIN-004: Unauthenticated access → redirect (496 ms)
+
+Test Suites: 1 failed, 5 passed, 6 total
+Tests:       1 failed, 17 passed, 18 total
+Snapshots:   0 total
+Time:        33.371 s
+Ran all test suites matching tests/integration.

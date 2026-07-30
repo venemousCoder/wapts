@@ -1,0 +1,52 @@
+{
+  "name": "wapts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node scripts/seed.js",
+    "test": "jest --forceExit --detectOpenHandles",
+    "test:unit": "jest --testPathPatterns=tests/unit --forceExit",
+    "test:integration": "jest --testPathPatterns=tests/integration --forceExit --detectOpenHandles",
+    "test:security": "jest --testPathPatterns=tests/security --forceExit --detectOpenHandles",
+    "test:performance": "jest --testPathPatterns=tests/performance --forceExit --detectOpenHandles",
+    "test:coverage": "jest --coverage --forceExit --detectOpenHandles",
+    "start:e2e": "node tests/e2e/setup-and-start.js",
+    "test:e2e": "playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "compression": "^1.8.1",
+    "connect-mongodb-session": "^5.0.0",
+    "cors": "^2.8.6",
+    "csv-parser": "^3.2.1",
+    "dotenv": "^17.4.2",
+    "ejs": "^6.0.1",
+    "eventemitter2": "^6.4.9",
+    "express": "^5.2.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-rate-limit": "^8.5.2",
+    "express-session": "^1.19.0",
+    "express-validator": "^7.3.2",
+    "helmet": "^8.3.0",
+    "mongoose": "^9.7.4",
+    "morgan": "^1.11.0",
+    "multer": "^2.2.0",
+    "node-cron": "^4.6.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "jest": "^30.4.2",
+    "mongodb-memory-server": "^11.2.0",
+    "nodemon": "^3.1.14",
+    "supertest": "^7.2.2"
+  }
+}

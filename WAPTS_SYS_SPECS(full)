@@ -1,0 +1,618 @@
+Below is a consolidated **system specification** written for an AI coding agent. It avoids implementation details where unnecessary, but is explicit about entities, permissions, workflows, and business rules so an agent can derive the architecture, database schema, APIs, and UI from it.
+
+---
+
+# Web-Based Academic Progress Tracking System (WAPTS)
+
+## Project Goal
+
+Build a web-based academic progress tracking system that enables higher institutions to manage academic records while providing students with intelligent tools to monitor and improve their academic performance.
+
+Unlike a traditional result management system, this application must actively analyze academic data to provide performance trends, risk detection, progress tracking, and personalized insights.
+
+---
+
+# Core Objectives
+
+The system shall:
+
+* Manage departments, academic sessions, semesters, courses, and users.
+* Record attendance, continuous assessment (CA), and examination scores.
+* Automatically compute final course scores.
+* Automatically compute GPA and CGPA.
+* Track academic progress across semesters.
+* Detect declining academic performance.
+* Notify students of important academic events.
+* Provide dashboards and analytics for students, lecturers, HODs, and administrators.
+* Generate transcripts.
+
+---
+
+# User Roles
+
+## 1. Admin
+
+### Authentication
+
+* Username
+* Password
+
+Admin accounts are created manually by the developer.
+
+### Permissions
+
+* Create departments
+* Create academic sessions
+* Create semesters
+* Create HOD accounts
+* Manage system configuration
+* Monitor system usage
+* View audit logs (optional)
+
+Admin cannot upload academic records.
+
+---
+
+## 2. Head of Department (HOD)
+
+### Authentication
+
+* Institutional email
+* Password
+
+### Permissions
+
+* Approve lecturer registration requests
+* Create department courses
+* Manage curriculum
+* Assign lecturers to courses
+* Manage course offerings per semester
+* View departmental analytics
+* Monitor student performance
+* Monitor lecturer performance
+
+Cannot modify student grades.
+
+---
+
+## 3. Lecturer
+
+### Authentication
+
+* Institutional email
+* Password (generated during onboarding, change required on first login)
+
+### Permissions
+
+View assigned courses only.
+
+For each assigned course:
+
+* Record attendance
+* Upload Continuous Assessment scores
+* Upload Examination scores
+* Submit final grades
+* Edit grades before final submission
+* View course statistics
+* View pass/fail distribution
+
+Cannot access courses not assigned.
+
+---
+
+## 4. Student
+
+### Authentication
+
+* Registration Number
+* Password
+
+### Permissions
+
+View only personal academic information.
+
+Features:
+
+* Dashboard
+* Semester GPA
+* Overall CGPA
+* Attendance
+* Academic progress
+* Performance analytics
+* Credit summary
+* Goal tracking
+* Transcript
+* Notifications
+
+Cannot edit academic records.
+
+---
+
+# Academic Structure
+
+```text
+Institution
+
+└── Department
+
+      └── Courses
+
+             └── Course Offering
+
+                    ├── Lecturer
+
+                    └── Students
+```
+
+Courses belong to departments.
+
+Course offerings belong to:
+
+* Academic session
+* Semester
+* Lecturer
+
+---
+
+# Core Modules
+
+## 1. User Management
+
+Manage:
+
+* Admin
+* HOD
+* Lecturer
+* Student
+
+Role-based authorization is mandatory.
+
+---
+
+## 2. Department Management
+
+Functions
+
+* Create department
+* Update department
+* Assign HOD
+
+---
+
+## 3. Academic Session Management
+
+Manage:
+
+Example
+
+```text
+2026/2027
+2027/2028
+```
+
+---
+
+## 4. Semester Management
+
+Examples
+
+* First Semester
+* Second Semester
+
+---
+
+## 5. Course Management
+
+Each course contains
+
+* Course Code
+* Course Title
+* Credit Units
+* Department
+* Level
+* Semester
+
+Example
+
+```text
+CSC301
+
+Introduction to AI
+
+3 Credit Units
+```
+
+---
+
+## 6. Lecturer Assignment
+
+HOD assigns lecturers to course offerings.
+
+Example
+
+```text
+CSC301
+
+↓
+
+Dr Ahmed
+
+↓
+
+First Semester
+
+↓
+
+2026/2027
+```
+
+---
+
+# Attendance Module
+
+Lecturer records attendance.
+
+Student can only view attendance.
+
+Attendance should display:
+
+* Total classes
+* Classes attended
+* Attendance percentage
+
+Example
+
+```text
+CSC301
+
+30 Classes
+
+26 Attended
+
+86.7%
+```
+
+Generate warning if attendance falls below the institution's threshold (configurable, e.g., 75%).
+
+---
+
+# Assessment Module
+
+Components
+
+* Continuous Assessment
+* Examination
+
+Business Rule
+
+```text
+Final Score = CA + Exam
+```
+
+Example
+
+```text
+CA
+
+28
+
+Exam
+
+60
+
+Final
+
+88
+```
+
+Institution-specific grading weights should be configurable.
+
+---
+
+# Result Module
+
+Stores:
+
+* Final score
+* Grade
+* Grade point
+* Pass/Fail
+
+Example
+
+```text
+Score
+
+74
+
+Grade
+
+A
+
+Grade Point
+
+5
+```
+
+---
+
+# GPA Engine
+
+Automatically calculate:
+
+Semester GPA
+
+Using:
+
+```text
+Σ (Grade Point × Credit Unit)
+
+/
+
+Σ Credit Units
+```
+
+No manual GPA calculation by students.
+
+---
+
+# CGPA Engine
+
+Automatically calculate:
+
+```text
+Σ All Grade Points Earned
+
+/
+
+Σ All Credit Units Attempted
+```
+
+Updates immediately after approved results are published.
+
+---
+
+# Academic Progress Engine
+
+This is the heart of the application.
+
+Responsible for analyzing academic records rather than simply storing them.
+
+Functions
+
+* GPA trend analysis
+* CGPA trend analysis
+* Semester comparison
+* Credit completion tracking
+* Performance improvement detection
+* Performance decline detection
+* Weak course identification
+* Attendance trend analysis
+* Graduation progress tracking
+
+---
+
+# Goal Tracking
+
+Students can define a target CGPA.
+
+Example
+
+```text
+Current CGPA
+
+3.24
+
+Target
+
+4.20
+```
+
+System estimates:
+
+* Remaining semesters
+* Average GPA required each semester
+
+---
+
+# Academic Risk Detection
+
+Automatically detect students who may require intervention.
+
+Possible rules
+
+Low GPA
+
+```text
+GPA < Configured Threshold
+```
+
+Low attendance
+
+```text
+Attendance < Configured Threshold
+```
+
+Multiple failed courses
+
+```text
+Failed Courses >= Configured Threshold
+```
+
+Generate academic warnings visible to:
+
+* Student
+* HOD (optional)
+* Academic Advisor (future)
+
+---
+
+# Analytics Module
+
+## Student Dashboard
+
+Display
+
+* Current GPA
+* Current CGPA
+* GPA trend chart
+* Attendance trend
+* Credits completed
+* Remaining credits
+* Strongest subjects
+* Weakest subjects
+* Academic warnings
+* Goal progress
+
+---
+
+## Lecturer Dashboard
+
+Display
+
+* Assigned courses
+* Pass rate
+* Fail rate
+* Average class score
+* Attendance statistics
+* Grade distribution
+
+---
+
+## HOD Dashboard
+
+Display
+
+* Department pass rate
+* Department failure rate
+* Course performance comparison
+* Students at risk
+* Lecturer workload
+* Enrollment statistics
+
+---
+
+## Admin Dashboard
+
+Display
+
+* Total departments
+* Total students
+* Total lecturers
+* Total HODs
+* Active academic session
+* Overall platform usage
+
+---
+
+# Notification Module
+
+Notify users when:
+
+Student
+
+* New result published
+* Attendance below threshold
+* CGPA updated
+* Academic warning generated
+
+Lecturer
+
+* Assigned new course
+* Submission deadline approaching
+
+HOD
+
+* Lecturer registration pending
+* Course assignment pending
+
+---
+
+# Transcript Module
+
+Student can generate/download transcript.
+
+Transcript includes
+
+* Student information
+* Semester-by-semester results
+* GPA
+* CGPA
+* Credits attempted
+* Credits earned
+* Graduation classification (if applicable)
+
+---
+
+# Search Module
+
+Support searching for:
+
+Students
+
+Courses
+
+Lecturers
+
+Departments
+
+Academic sessions
+
+---
+
+# Recommended Database Entities
+
+```text
+User
+Role
+Department
+Student
+Lecturer
+HOD
+AcademicSession
+Semester
+Course
+CourseOffering
+Enrollment
+Attendance
+Assessment
+Result
+Notification
+AcademicGoal
+Transcript
+AuditLog (optional)
+```
+
+---
+
+# Key Business Rules
+
+* Only Admin can create HOD accounts.
+* Only HOD can approve lecturer registrations.
+* Lecturers can only manage courses assigned to them.
+* Students can only access their own records.
+* GPA and CGPA are computed automatically.
+* Results become visible only after final submission/approval (if an approval workflow is implemented).
+* Attendance percentages update automatically whenever attendance records change.
+* All analytics update whenever academic records are modified.
+* Role-based authorization is enforced across the system.
+
+---
+
+# Suggested Technical Architecture
+
+```text
+Browser (EJS + HTML + CSS + JavaScript)
+                │
+                ▼
+          Express.js Server
+                │
+    ┌───────────┼───────────┐
+    │           │           │
+Authentication  Business    Analytics
+ (Passport)      Logic       Engine
+    │           │           │
+    └───────────┼───────────┘
+                ▼
+             MongoDB
+```

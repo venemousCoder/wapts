@@ -1,0 +1,218 @@
+<div class="mb-4">
+  <a href="/lecturer/students" class="text-decoration-none text-muted mb-3 d-inline-block">
+    <i class="fas fa-arrow-left me-1"></i> Back to Students
+  </a>
+  <div class="d-flex justify-content-between align-items-center">
+    <div>
+      <h2 class="fw-bold mb-1">Course Registration</h2>
+      <p class="text-muted mb-0">Managing registration for <%= studentUser.firstName %> <%= studentUser.lastName %> (<%= studentUser.loginIdentifier %>)</p>
+    </div>
+    <div class="text-end">
+      <div class="bg-white px-4 py-2 rounded-pill border shadow-sm d-inline-block">
+        <span class="text-muted small fw-bold text-uppercase me-2">Current Credits:</span>
+        <span class="fs-5 fw-bold text-<%= currentCredits > maxCreditLoad ? 'danger' : 'primary' %>"><%= currentCredits %></span>
+        <span class="text-muted">/ <%= maxCreditLoad %></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if (typeof success !== 'undefined' && success) { %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="fas fa-check-circle me-2"></i> <%= success %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } %>
+
+<% if (typeof error !== 'undefined' && error) { %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <i class="fas fa-exclamation-circle me-2"></i> <%= error %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } %>
+
+<div class="row g-4">
+  <!-- Left Column: Current Registration -->
+  <div class="col-lg-7">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-header bg-white border-bottom py-3 d-flex justify-content-between align-items-center">
+        <h5 class="mb-0 fw-bold"><i class="fas fa-clipboard-check text-success me-2"></i> Current Registration</h5>
+      </div>
+      <div class="card-body p-0">
+        <% if (enrollments && enrollments.length > 0) { %>
+          <form action="/lecturer/students/<%= studentUser._id %>/registration/bulk-action" method="POST" id="bulkDropForm">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom px-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="selectAllRegistered">
+                <label class="form-check-label fw-bold" for="selectAllRegistered">Select All</label>
+              </div>
+              <button type="submit" name="action" value="drop" class="btn btn-sm btn-outline-danger px-3 rounded-pill" onclick="return confirm('Drop selected courses?');">
+                <i class="fas fa-times me-1"></i> Drop Selected
+              </button>
+            </div>
+            <div class="list-group list-group-flush">
+              <% enrollments.forEach(enrollment => { %>
+                <div class="list-group-item p-3 d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <div class="form-check me-3">
+                      <input class="form-check-input registered-checkbox" type="checkbox" name="courseOfferingIds[]" value="<%= enrollment.courseOfferingId._id %>">
+                    </div>
+                    <div>
+                      <h6 class="mb-1 fw-bold"><%= enrollment.courseOfferingId.courseId.code %></h6>
+                      <p class="mb-0 text-muted small"><%= enrollment.courseOfferingId.courseId.title %></p>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <span class="badge bg-light text-dark me-3"><%= enrollment.courseOfferingId.courseId.creditUnits %> Units</span>
+                    <button type="button" class="btn btn-sm btn-outline-danger" title="Remove Course" onclick="submitSingleRegAction('<%= enrollment.courseOfferingId._id %>', 'drop')">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+          </form>
+        <% } else { %>
+          <div class="p-5 text-center text-muted">
+            <i class="fas fa-clipboard-list fs-1 mb-3 text-light"></i>
+            <p>No courses registered for the current session.</p>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Column: Add Courses -->
+  <div class="col-lg-5">
+    
+    <!-- Recommended Courses -->
+    <div class="card border-0 shadow-sm mb-4 border-top border-primary border-4">
+      <div class="card-header bg-white border-bottom py-3 d-flex justify-content-between align-items-center">
+        <h5 class="mb-0 fw-bold text-primary"><i class="fas fa-star me-2"></i> Recommended Courses</h5>
+        <form action="/lecturer/students/<%= studentUser._id %>/registration/recommended" method="POST" class="m-0">
+          <button type="submit" class="btn btn-sm btn-primary" <%= recommendedOfferings.length === 0 ? 'disabled' : '' %>>
+            Apply All
+          </button>
+        </form>
+      </div>
+      <div class="card-body p-0">
+        <% if (recommendedOfferings && recommendedOfferings.length > 0) { %>
+          <form action="/lecturer/students/<%= studentUser._id %>/registration/bulk-action" method="POST" id="bulkEnrollForm">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom px-3 pt-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="selectAllRecommended">
+                <label class="form-check-label fw-bold" for="selectAllRecommended">Select All</label>
+              </div>
+              <button type="submit" name="action" value="register" class="btn btn-sm btn-outline-primary px-3 rounded-pill">
+                <i class="fas fa-plus me-1"></i> Register Selected
+              </button>
+            </div>
+            <div class="list-group list-group-flush">
+              <% recommendedOfferings.forEach(offering => { %>
+                <div class="list-group-item p-3 d-flex justify-content-between align-items-center bg-light bg-opacity-50">
+                  <div class="d-flex align-items-center">
+                    <div class="form-check me-3">
+                      <input class="form-check-input recommended-checkbox" type="checkbox" name="courseOfferingIds[]" value="<%= offering._id %>">
+                    </div>
+                    <div>
+                      <h6 class="mb-1 fw-bold"><%= offering.courseId.code %></h6>
+                      <p class="mb-0 text-muted small"><%= offering.courseId.title %> (<%= offering.courseId.creditUnits %> Units)</p>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-sm btn-outline-primary" onclick="submitSingleRegAction('<%= offering._id %>', 'register')"><i class="fas fa-plus"></i></button>
+                </div>
+              <% }) %>
+            </div>
+          </form>
+        <% } else { %>
+          <div class="p-4 text-center text-muted small">
+            All recommended courses are already registered.
+          </div>
+        <% } %>
+      </div>
+    </div>
+
+    <!-- Other Offerings -->
+    <div class="card border-0 shadow-sm">
+      <div class="card-header bg-white border-bottom py-3">
+        <h5 class="mb-0 fw-bold text-secondary"><i class="fas fa-list me-2"></i> Other Departmental Offerings</h5>
+        <p class="small text-muted mb-0 mt-1">For carry-overs, spill-overs, or approved exceptions.</p>
+      </div>
+      <div class="card-body p-0" style="max-height: 350px; overflow-y: auto;">
+        <% if (otherOfferings && otherOfferings.length > 0) { %>
+          <form action="/lecturer/students/<%= studentUser._id %>/registration/bulk-action" method="POST" id="bulkOtherForm">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom px-3 pt-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="selectAllOther">
+                <label class="form-check-label fw-bold" for="selectAllOther">Select All</label>
+              </div>
+              <button type="submit" name="action" value="register" class="btn btn-sm btn-outline-secondary px-3 rounded-pill">
+                <i class="fas fa-plus me-1"></i> Register Selected
+              </button>
+            </div>
+            <div class="list-group list-group-flush">
+              <% otherOfferings.forEach(offering => { %>
+                <div class="list-group-item p-3 d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <div class="form-check me-3">
+                      <input class="form-check-input other-checkbox" type="checkbox" name="courseOfferingIds[]" value="<%= offering._id %>">
+                    </div>
+                    <div>
+                      <h6 class="mb-1 fw-bold"><%= offering.courseId.code %> <span class="badge bg-secondary ms-1"><%= offering.courseId.level %>L</span></h6>
+                      <p class="mb-0 text-muted small"><%= offering.courseId.title %> (<%= offering.courseId.creditUnits %> Units)</p>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="submitSingleRegAction('<%= offering._id %>', 'register')"><i class="fas fa-plus"></i></button>
+                </div>
+              <% }) %>
+            </div>
+          </form>
+        <% } else { %>
+          <div class="p-4 text-center text-muted small">
+            No other published offerings available in your department.
+          </div>
+        <% } %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<form id="singleActionForm" action="/lecturer/students/<%= studentUser._id %>/registration/bulk-action" method="POST" class="d-none">
+  <input type="hidden" name="action" id="singleActionType">
+  <input type="hidden" name="courseOfferingIds[]" id="singleActionCourseOfferingId">
+</form>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function setupSelectAll(selectAllId, checkboxClass) {
+      const selectAll = document.getElementById(selectAllId);
+      const checkboxes = document.querySelectorAll(checkboxClass);
+      
+      if (selectAll) {
+        selectAll.addEventListener('change', function() {
+          checkboxes.forEach(cb => cb.checked = selectAll.checked);
+        });
+      }
+      
+      checkboxes.forEach(cb => {
+        cb.addEventListener('change', function() {
+          if (!this.checked) selectAll.checked = false;
+          else if (document.querySelectorAll(checkboxClass + ':checked').length === checkboxes.length) {
+            selectAll.checked = true;
+          }
+        });
+      });
+    }
+
+    setupSelectAll('selectAllRegistered', '.registered-checkbox');
+    setupSelectAll('selectAllRecommended', '.recommended-checkbox');
+    setupSelectAll('selectAllOther', '.other-checkbox');
+  });
+
+  function submitSingleRegAction(offeringId, action) {
+    document.getElementById('singleActionType').value = action;
+    document.getElementById('singleActionCourseOfferingId').value = offeringId;
+    document.getElementById('singleActionForm').submit();
+  }
+</script>

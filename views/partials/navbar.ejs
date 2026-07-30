@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg top-navbar px-4 py-3 bg-white w-100 sticky-top shadow-sm" style="z-index: 1020;">
+  <div class="container-fluid p-0">
+    <!-- Breadcrumb or Title placeholder -->
+    <div class="navbar-brand me-auto d-none d-md-block fw-bold text-dark">
+      <%= typeof title !== 'undefined' ? title : 'Dashboard' %>
+    </div>
+    
+    <!-- Mobile toggle for sidebar if needed in future -->
+    <button class="navbar-toggler d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="d-flex align-items-center ms-auto gap-4">
+      <!-- Search Input -->
+      <div class="d-none d-lg-flex align-items-center position-relative">
+        <i class="fas fa-search position-absolute text-muted" style="left: 1rem;"></i>
+        <input type="text" class="form-control rounded-pill bg-light border-0 ps-5 pe-4" placeholder="Search...">
+      </div>
+
+      <!-- Notifications -->
+      <a href="#" class="text-secondary position-relative fs-5 text-decoration-none">
+        <i class="fas fa-bell"></i>
+        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+          <span class="visually-hidden">New alerts</span>
+        </span>
+      </a>
+
+      <!-- User Profile Dropdown -->
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle text-dark" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://ui-avatars.com/api/?name=<%= user.firstName %>+<%= user.lastName %>&background=e0e7ff&color=2563eb" alt="User Avatar" class="rounded-circle me-2" width="36" height="36">
+          <div class="d-none d-md-block text-end me-1">
+            <div class="fw-bold small lh-1"><%= user.firstName %> <%= user.lastName %></div>
+            <div class="text-muted" style="font-size: 0.75rem;"><%= user.role %></div>
+          </div>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2" aria-labelledby="userDropdown">
+          <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle me-2 text-muted"></i> Profile</a></li>
+          <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2 text-muted"></i> Settings</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" href="/auth/logout"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

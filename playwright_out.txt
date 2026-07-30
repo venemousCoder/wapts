@@ -1,0 +1,2528 @@
+
+> wapts@1.0.0 test:e2e
+> playwright test
+
+
+Running 120 tests using 2 workers
+
+[1/120] [chromium] › tests/e2e/admin.spec.js:27:3 › Admin Journey › TC-E2E-ADMIN-002: Should manage departments
+[2/120] [chromium] › tests/e2e/admin.spec.js:16:3 › Admin Journey › TC-E2E-ADMIN-001: Should manage users
+  1) [chromium] › tests/e2e/admin.spec.js:16:3 › Admin Journey › TC-E2E-ADMIN-001: Should manage users 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Admin Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as Admin
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/admin.spec.js:4:8
+
+    Error Context: test-results/admin-Admin-Journey-TC-E2E-ADMIN-001-Should-manage-users-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-ADMIN-001-Should-manage-users-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-Admin-Journey-TC-E2E-ADMIN-001-Should-manage-users-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  2) [chromium] › tests/e2e/admin.spec.js:27:3 › Admin Journey › TC-E2E-ADMIN-002: Should manage departments 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Admin Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as Admin
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/admin.spec.js:4:8
+
+    Error Context: test-results/admin-Admin-Journey-TC-E2E-f6879-2-Should-manage-departments-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-f6879-2-Should-manage-departments-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-Admin-Journey-TC-E2E-f6879-2-Should-manage-departments-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[3/120] [chromium] › tests/e2e/admin.spec.js:37:3 › Admin Journey › TC-E2E-ADMIN-004: Should manage grade scales
+[4/120] [chromium] › tests/e2e/admin.spec.js:32:3 › Admin Journey › TC-E2E-ADMIN-003: Should manage academic calendar
+  3) [chromium] › tests/e2e/admin.spec.js:32:3 › Admin Journey › TC-E2E-ADMIN-003: Should manage academic calendar 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Admin Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as Admin
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/admin.spec.js:4:8
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-e509c-ld-manage-academic-calendar-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-e509c-ld-manage-academic-calendar-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/admin-Admin-Journey-TC-E2E-e509c-ld-manage-academic-calendar-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-e509c-ld-manage-academic-calendar-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-Admin-Journey-TC-E2E-e509c-ld-manage-academic-calendar-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  4) [chromium] › tests/e2e/admin.spec.js:37:3 › Admin Journey › TC-E2E-ADMIN-004: Should manage grade scales 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Admin Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as Admin
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/admin.spec.js:4:8
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-6877e--Should-manage-grade-scales-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-6877e--Should-manage-grade-scales-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/admin-Admin-Journey-TC-E2E-6877e--Should-manage-grade-scales-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-6877e--Should-manage-grade-scales-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-Admin-Journey-TC-E2E-6877e--Should-manage-grade-scales-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[5/120] [chromium] › tests/e2e/admin.spec.js:42:3 › Admin Journey › TC-E2E-ADMIN-005: Should manage system configuration
+[6/120] [chromium] › tests/e2e/cross-role.spec.js:6:3 › Cross-Role Workflow › TC-E2E-CROSS-001: Complete Academic Lifecycle
+[7/120] [chromium] › tests/e2e/hod.spec.js:16:3 › HOD Journey › TC-E2E-HOD-001: Should view dashboard
+  5) [chromium] › tests/e2e/cross-role.spec.js:6:3 › Cross-Role Workflow › TC-E2E-CROSS-001: Complete Academic Lifecycle 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: /Calendar/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('heading', { name: /Calendar/i })
+
+
+      15 |     // Verify admin can access calendar
+      16 |     await page.goto('/admin/calendar');
+    > 17 |     await expect(page.getByRole('heading', { name: /Calendar/i })).toBeVisible();
+         |                                                                    ^
+      18 |
+      19 |     await page.goto('/auth/logout');
+      20 |     await expect(page).toHaveURL(/\/auth\/login/);
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/cross-role.spec.js:17:68
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/cross-role-Cross-Role-Work-41028-Complete-Academic-Lifecycle-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/cross-role-Cross-Role-Work-41028-Complete-Academic-Lifecycle-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/cross-role-Cross-Role-Work-41028-Complete-Academic-Lifecycle-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/cross-role-Cross-Role-Work-41028-Complete-Academic-Lifecycle-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/cross-role-Cross-Role-Work-41028-Complete-Academic-Lifecycle-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[8/120] [chromium] › tests/e2e/hod.spec.js:21:3 › HOD Journey › TC-E2E-HOD-002: Should review submitted results
+  6) [chromium] › tests/e2e/hod.spec.js:16:3 › HOD Journey › TC-E2E-HOD-001: Should view dashboard ─
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Pending Results')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByText('Pending Results')
+
+
+      15 |
+      16 |   test('TC-E2E-HOD-001: Should view dashboard', async ({ page }) => {
+    > 17 |     await expect(page.getByText('Pending Results')).toBeVisible();
+         |                                                     ^
+      18 |     await expect(page.getByText('Department Analytics')).toBeVisible();
+      19 |   });
+      20 |
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/hod.spec.js:17:53
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/hod-HOD-Journey-TC-E2E-HOD-001-Should-view-dashboard-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/hod-HOD-Journey-TC-E2E-HOD-001-Should-view-dashboard-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/hod-HOD-Journey-TC-E2E-HOD-001-Should-view-dashboard-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/hod-HOD-Journey-TC-E2E-HOD-001-Should-view-dashboard-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/hod-HOD-Journey-TC-E2E-HOD-001-Should-view-dashboard-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[9/120] [chromium] › tests/e2e/hod.spec.js:26:3 › HOD Journey › TC-E2E-HOD-003: Should view department analytics
+  7) [chromium] › tests/e2e/hod.spec.js:21:3 › HOD Journey › TC-E2E-HOD-002: Should review submitted results 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: /Review Results/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('heading', { name: /Review Results/i })
+
+
+      21 |   test('TC-E2E-HOD-002: Should review submitted results', async ({ page }) => {
+      22 |     await page.goto('/hod/results/review');
+    > 23 |     await expect(page.getByRole('heading', { name: /Review Results/i })).toBeVisible();
+         |                                                                          ^
+      24 |   });
+      25 |
+      26 |   test('TC-E2E-HOD-003: Should view department analytics', async ({ page }) => {
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/hod.spec.js:23:74
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/hod-HOD-Journey-TC-E2E-HOD-16c41-ld-review-submitted-results-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/hod-HOD-Journey-TC-E2E-HOD-16c41-ld-review-submitted-results-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/hod-HOD-Journey-TC-E2E-HOD-16c41-ld-review-submitted-results-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/hod-HOD-Journey-TC-E2E-HOD-16c41-ld-review-submitted-results-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/hod-HOD-Journey-TC-E2E-HOD-16c41-ld-review-submitted-results-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[10/120] [chromium] › tests/e2e/lecturer.spec.js:16:3 › Lecturer Journey › TC-E2E-LECTURER-001: Should view assigned courses
+  8) [chromium] › tests/e2e/hod.spec.js:26:3 › HOD Journey › TC-E2E-HOD-003: Should view department analytics 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: /Analytics/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('heading', { name: /Analytics/i })
+
+
+      26 |   test('TC-E2E-HOD-003: Should view department analytics', async ({ page }) => {
+      27 |     await page.goto('/hod/analytics');
+    > 28 |     await expect(page.getByRole('heading', { name: /Analytics/i })).toBeVisible();
+         |                                                                     ^
+      29 |   });
+      30 | });
+      31 |
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/hod.spec.js:28:69
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/hod-HOD-Journey-TC-E2E-HOD-971a9-d-view-department-analytics-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/hod-HOD-Journey-TC-E2E-HOD-971a9-d-view-department-analytics-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/hod-HOD-Journey-TC-E2E-HOD-971a9-d-view-department-analytics-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/hod-HOD-Journey-TC-E2E-HOD-971a9-d-view-department-analytics-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/hod-HOD-Journey-TC-E2E-HOD-971a9-d-view-department-analytics-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  9) [chromium] › tests/e2e/lecturer.spec.js:16:3 › Lecturer Journey › TC-E2E-LECTURER-001: Should view assigned courses 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: /Assigned Courses/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('heading', { name: /Assigned Courses/i })
+
+
+      16 |   test('TC-E2E-LECTURER-001: Should view assigned courses', async ({ page }) => {
+      17 |     await page.goto('/lecturer/courses');
+    > 18 |     await expect(page.getByRole('heading', { name: /Assigned Courses/i })).toBeVisible();
+         |                                                                            ^
+      19 |   });
+      20 |
+      21 |   test('TC-E2E-LECTURER-002: Should navigate to attendance recording', async ({ page }) => {
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/lecturer.spec.js:18:76
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--114ce-hould-view-assigned-courses-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--114ce-hould-view-assigned-courses-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/lecturer-Lecturer-Journey--114ce-hould-view-assigned-courses-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--114ce-hould-view-assigned-courses-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/lecturer-Lecturer-Journey--114ce-hould-view-assigned-courses-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[11/120] [chromium] › tests/e2e/lecturer.spec.js:26:3 › Lecturer Journey › TC-E2E-LECTURER-003: Should navigate to assessment creation
+[12/120] [chromium] › tests/e2e/lecturer.spec.js:21:3 › Lecturer Journey › TC-E2E-LECTURER-002: Should navigate to attendance recording
+  10) [chromium] › tests/e2e/lecturer.spec.js:26:3 › Lecturer Journey › TC-E2E-LECTURER-003: Should navigate to assessment creation 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: /Assessments/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('heading', { name: /Assessments/i })
+
+
+      26 |   test('TC-E2E-LECTURER-003: Should navigate to assessment creation', async ({ page }) => {
+      27 |     await page.goto('/lecturer/assessments');
+    > 28 |     await expect(page.getByRole('heading', { name: /Assessments/i })).toBeVisible();
+         |                                                                       ^
+      29 |   });
+      30 |
+      31 |   test('TC-E2E-LECTURER-004: Should navigate to results submission', async ({ page }) => {
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/lecturer.spec.js:28:71
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--17bf9-gate-to-assessment-creation-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--17bf9-gate-to-assessment-creation-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/lecturer-Lecturer-Journey--17bf9-gate-to-assessment-creation-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--17bf9-gate-to-assessment-creation-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/lecturer-Lecturer-Journey--17bf9-gate-to-assessment-creation-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  11) [chromium] › tests/e2e/lecturer.spec.js:21:3 › Lecturer Journey › TC-E2E-LECTURER-002: Should navigate to attendance recording 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: /Record Attendance/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('heading', { name: /Record Attendance/i })
+
+
+      21 |   test('TC-E2E-LECTURER-002: Should navigate to attendance recording', async ({ page }) => {
+      22 |     await page.goto('/lecturer/attendance');
+    > 23 |     await expect(page.getByRole('heading', { name: /Record Attendance/i })).toBeVisible();
+         |                                                                             ^
+      24 |   });
+      25 |
+      26 |   test('TC-E2E-LECTURER-003: Should navigate to assessment creation', async ({ page }) => {
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/lecturer.spec.js:23:77
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--877eb-ate-to-attendance-recording-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--877eb-ate-to-attendance-recording-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/lecturer-Lecturer-Journey--877eb-ate-to-attendance-recording-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--877eb-ate-to-attendance-recording-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/lecturer-Lecturer-Journey--877eb-ate-to-attendance-recording-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[13/120] [chromium] › tests/e2e/lecturer.spec.js:31:3 › Lecturer Journey › TC-E2E-LECTURER-004: Should navigate to results submission
+[14/120] [chromium] › tests/e2e/negative.spec.js:5:3 › Negative Scenarios › TC-E2E-NEG-001: Anonymous user cannot access protected pages
+[15/120] [chromium] › tests/e2e/negative.spec.js:11:3 › Negative Scenarios › TC-E2E-NEG-002: Invalid login credentials
+[16/120] [chromium] › tests/e2e/negative.spec.js:23:3 › Negative Scenarios › TC-E2E-NEG-003: Student cannot access admin routes
+  12) [chromium] › tests/e2e/lecturer.spec.js:31:3 › Lecturer Journey › TC-E2E-LECTURER-004: Should navigate to results submission 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: /Results/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('heading', { name: /Results/i })
+
+
+      31 |   test('TC-E2E-LECTURER-004: Should navigate to results submission', async ({ page }) => {
+      32 |     await page.goto('/lecturer/results');
+    > 33 |     await expect(page.getByRole('heading', { name: /Results/i })).toBeVisible();
+         |                                                                   ^
+      34 |   });
+      35 | });
+      36 |
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/lecturer.spec.js:33:67
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--be2fb-igate-to-results-submission-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--be2fb-igate-to-results-submission-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/lecturer-Lecturer-Journey--be2fb-igate-to-results-submission-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--be2fb-igate-to-results-submission-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/lecturer-Lecturer-Journey--be2fb-igate-to-results-submission-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[17/120] [chromium] › tests/e2e/responsive.spec.js:7:3 › Responsive Design › TC-E2E-RESP-001: Mobile Login Page is responsive
+[18/120] [chromium] › tests/e2e/responsive.spec.js:17:3 › Responsive Design › TC-E2E-RESP-002: Mobile Student Dashboard navigation
+  13) [chromium] › tests/e2e/negative.spec.js:23:3 › Negative Scenarios › TC-E2E-NEG-003: Student cannot access admin routes 
+
+    Error: expect(page).not.toHaveURL(expected) failed
+
+    Expected pattern: not /\/admin\/dashboard/
+    Received string: "http://127.0.0.1:3000/admin/dashboard"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "not toHaveURL" with timeout 5000ms
+        14 × unexpected value "http://127.0.0.1:3000/admin/dashboard"
+
+
+      34 |     
+      35 |     // Should get a 403 Forbidden or redirect
+    > 36 |     await expect(page).not.toHaveURL(/\/admin\/dashboard/);
+         |                            ^
+      37 |   });
+      38 | });
+      39 |
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/negative.spec.js:36:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/negative-Negative-Scenario-55489--cannot-access-admin-routes-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/negative-Negative-Scenario-55489--cannot-access-admin-routes-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/negative-Negative-Scenario-55489--cannot-access-admin-routes-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/negative-Negative-Scenario-55489--cannot-access-admin-routes-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/negative-Negative-Scenario-55489--cannot-access-admin-routes-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[19/120] [chromium] › tests/e2e/student.spec.js:18:3 › Student Journey › TC-E2E-STUDENT-001: Should view dashboard statistics
+[20/120] [chromium] › tests/e2e/student.spec.js:26:3 › Student Journey › TC-E2E-STUDENT-002: Should navigate to registered courses
+  14) [chromium] › tests/e2e/student.spec.js:18:3 › Student Journey › TC-E2E-STUDENT-001: Should view dashboard statistics 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('CGPA')
+    Expected: visible
+    Error: strict mode violation: getByText('CGPA') resolved to 2 elements:
+        1) <h6 class="text-muted text-uppercase fw-bold mb-3">Current CGPA</h6> aka getByRole('heading', { name: 'Current CGPA' })
+        2) <h5 class="fw-bold">CGPA Trend</h5> aka getByRole('heading', { name: 'CGPA Trend' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByText('CGPA')
+
+
+      18 |   test('TC-E2E-STUDENT-001: Should view dashboard statistics', async ({ page }) => {
+      19 |     // Verify dashboard statistics are visible
+    > 20 |     await expect(page.getByText('CGPA')).toBeVisible();
+         |                                          ^
+      21 |     await expect(page.getByText('Credits Earned')).toBeVisible();
+      22 |     await expect(page.getByText('Classification')).toBeVisible();
+      23 |     await expect(page.getByText('Academic Risk')).toBeVisible();
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/student.spec.js:20:42
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-a3211-d-view-dashboard-statistics-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-a3211-d-view-dashboard-statistics-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/student-Student-Journey-TC-a3211-d-view-dashboard-statistics-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-a3211-d-view-dashboard-statistics-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-Student-Journey-TC-a3211-d-view-dashboard-statistics-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[21/120] [chromium] › tests/e2e/student.spec.js:34:3 › Student Journey › TC-E2E-STUDENT-003: Should view attendance records
+  15) [chromium] › tests/e2e/student.spec.js:26:3 › Student Journey › TC-E2E-STUDENT-002: Should navigate to registered courses 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: /Registered Courses/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('heading', { name: /Registered Courses/i })
+
+
+      29 |     
+      30 |     // Verify courses page is displayed
+    > 31 |     await expect(page.getByRole('heading', { name: /Registered Courses/i })).toBeVisible();
+         |                                                                              ^
+      32 |   });
+      33 |
+      34 |   test('TC-E2E-STUDENT-003: Should view attendance records', async ({ page }) => {
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/student.spec.js:31:78
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-46768-igate-to-registered-courses-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-46768-igate-to-registered-courses-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/student-Student-Journey-TC-46768-igate-to-registered-courses-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-46768-igate-to-registered-courses-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-Student-Journey-TC-46768-igate-to-registered-courses-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[22/120] [chromium] › tests/e2e/student.spec.js:39:3 › Student Journey › TC-E2E-STUDENT-004: Should view results
+  16) [chromium] › tests/e2e/student.spec.js:34:3 › Student Journey › TC-E2E-STUDENT-003: Should view attendance records 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: /Attendance/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('heading', { name: /Attendance/i })
+
+
+      34 |   test('TC-E2E-STUDENT-003: Should view attendance records', async ({ page }) => {
+      35 |     await page.goto('/student/attendance');
+    > 36 |     await expect(page.getByRole('heading', { name: /Attendance/i })).toBeVisible();
+         |                                                                      ^
+      37 |   });
+      38 |
+      39 |   test('TC-E2E-STUDENT-004: Should view results', async ({ page }) => {
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/student.spec.js:36:70
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-c95b7-uld-view-attendance-records-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/student-Student-Journey-TC-c95b7-uld-view-attendance-records-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-c95b7-uld-view-attendance-records-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-Student-Journey-TC-c95b7-uld-view-attendance-records-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  17) [chromium] › tests/e2e/student.spec.js:39:3 › Student Journey › TC-E2E-STUDENT-004: Should view results 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: /Results/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('heading', { name: /Results/i })
+
+
+      39 |   test('TC-E2E-STUDENT-004: Should view results', async ({ page }) => {
+      40 |     await page.goto('/student/results');
+    > 41 |     await expect(page.getByRole('heading', { name: /Results/i })).toBeVisible();
+         |                                                                   ^
+      42 |   });
+      43 |
+      44 |   test('TC-E2E-STUDENT-005: Should view transcript', async ({ page }) => {
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/student.spec.js:41:67
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-ce553-ENT-004-Should-view-results-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/student-Student-Journey-TC-ce553-ENT-004-Should-view-results-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-ce553-ENT-004-Should-view-results-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-Student-Journey-TC-ce553-ENT-004-Should-view-results-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[23/120] [chromium] › tests/e2e/student.spec.js:44:3 › Student Journey › TC-E2E-STUDENT-005: Should view transcript
+[24/120] [chromium] › tests/e2e/student.spec.js:49:3 › Student Journey › TC-E2E-STUDENT-006: Should handle logout
+[25/120] [firefox] › tests/e2e/admin.spec.js:16:3 › Admin Journey › TC-E2E-ADMIN-001: Should manage users
+  18) [chromium] › tests/e2e/student.spec.js:44:3 › Student Journey › TC-E2E-STUDENT-005: Should view transcript 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: /Transcript/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('heading', { name: /Transcript/i })
+
+
+      44 |   test('TC-E2E-STUDENT-005: Should view transcript', async ({ page }) => {
+      45 |     await page.goto('/student/transcript');
+    > 46 |     await expect(page.getByRole('heading', { name: /Transcript/i })).toBeVisible();
+         |                                                                      ^
+      47 |   });
+      48 |
+      49 |   test('TC-E2E-STUDENT-006: Should handle logout', async ({ page }) => {
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/student.spec.js:46:70
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-820fa--005-Should-view-transcript-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-820fa--005-Should-view-transcript-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/student-Student-Journey-TC-820fa--005-Should-view-transcript-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-820fa--005-Should-view-transcript-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-Student-Journey-TC-820fa--005-Should-view-transcript-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[26/120] [firefox] › tests/e2e/admin.spec.js:27:3 › Admin Journey › TC-E2E-ADMIN-002: Should manage departments
+  19) [firefox] › tests/e2e/admin.spec.js:27:3 › Admin Journey › TC-E2E-ADMIN-002: Should manage departments 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Admin Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as Admin
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/admin.spec.js:4:8
+
+    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-f6879-2-Should-manage-departments-firefox/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/admin-Admin-Journey-TC-E2E-f6879-2-Should-manage-departments-firefox/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-f6879-2-Should-manage-departments-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-Admin-Journey-TC-E2E-f6879-2-Should-manage-departments-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  20) [firefox] › tests/e2e/admin.spec.js:16:3 › Admin Journey › TC-E2E-ADMIN-001: Should manage users 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Admin Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as Admin
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/admin.spec.js:4:8
+
+    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-ADMIN-001-Should-manage-users-firefox/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/admin-Admin-Journey-TC-E2E-ADMIN-001-Should-manage-users-firefox/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-ADMIN-001-Should-manage-users-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-Admin-Journey-TC-E2E-ADMIN-001-Should-manage-users-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[27/120] [firefox] › tests/e2e/admin.spec.js:32:3 › Admin Journey › TC-E2E-ADMIN-003: Should manage academic calendar
+[28/120] [firefox] › tests/e2e/admin.spec.js:37:3 › Admin Journey › TC-E2E-ADMIN-004: Should manage grade scales
+  21) [firefox] › tests/e2e/admin.spec.js:32:3 › Admin Journey › TC-E2E-ADMIN-003: Should manage academic calendar 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Admin Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as Admin
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/admin.spec.js:4:8
+
+    Tearing down "context" exceeded the test timeout of 30000ms.
+
+    Error: browserContext.close: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-JVnMu4 -juggler-pipe -silent
+    <launched> pid=31720
+    [pid=31720][err] *** You are running in headless mode.
+    [pid=31720][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=31720][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=31720][out]  (t=17.9311) [GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=31720][out] 
+    [pid=31720][out] 
+    [pid=31720][out] Juggler listening to the pipe
+    [pid=31720] <gracefully close start>
+    [pid=31720] <kill>
+    [pid=31720] <will force kill>
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-JVnMu4 -juggler-pipe -silent
+    <launched> pid=31720
+    [pid=31720][err] *** You are running in headless mode.
+    [pid=31720][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=31720][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=31720][out]  (t=17.9311) [GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=31720][out] 
+    [pid=31720][out] 
+    [pid=31720][out] Juggler listening to the pipe
+    [pid=31720] <gracefully close start>
+    [pid=31720] <kill>
+    [pid=31720] <will force kill>
+
+    Error Context: test-results/admin-Admin-Journey-TC-E2E-e509c-ld-manage-academic-calendar-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-e509c-ld-manage-academic-calendar-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-Admin-Journey-TC-E2E-e509c-ld-manage-academic-calendar-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  22) [firefox] › tests/e2e/admin.spec.js:37:3 › Admin Journey › TC-E2E-ADMIN-004: Should manage grade scales 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Admin Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as Admin
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/admin.spec.js:4:8
+
+    Tearing down "context" exceeded the test timeout of 30000ms.
+
+    Error: browserContext.close: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-IKIO95 -juggler-pipe -silent
+    <launched> pid=31722
+    [pid=31722][err] *** You are running in headless mode.
+    [pid=31722][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=31722][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=31722][out]  (t=17.9091) [GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=31722][out] 
+    [pid=31722][out] 
+    [pid=31722][out] Juggler listening to the pipe
+    [pid=31722] <gracefully close start>
+    [pid=31722] <kill>
+    [pid=31722] <will force kill>
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-IKIO95 -juggler-pipe -silent
+    <launched> pid=31722
+    [pid=31722][err] *** You are running in headless mode.
+    [pid=31722][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=31722][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=31722][out]  (t=17.9091) [GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=31722][out] 
+    [pid=31722][out] 
+    [pid=31722][out] Juggler listening to the pipe
+    [pid=31722] <gracefully close start>
+    [pid=31722] <kill>
+    [pid=31722] <will force kill>
+
+    Error Context: test-results/admin-Admin-Journey-TC-E2E-6877e--Should-manage-grade-scales-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-6877e--Should-manage-grade-scales-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-Admin-Journey-TC-E2E-6877e--Should-manage-grade-scales-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[29/120] [firefox] › tests/e2e/cross-role.spec.js:6:3 › Cross-Role Workflow › TC-E2E-CROSS-001: Complete Academic Lifecycle
+[30/120] [firefox] › tests/e2e/admin.spec.js:42:3 › Admin Journey › TC-E2E-ADMIN-005: Should manage system configuration
+  23) [firefox] › tests/e2e/admin.spec.js:42:3 › Admin Journey › TC-E2E-ADMIN-005: Should manage system configuration 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Admin Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     console.log('Navigating to /');
+      6 |     await page.goto('/');
+      7 |     
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/admin.spec.js:4:8
+
+    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-b45c5-manage-system-configuration-firefox/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-b45c5-manage-system-configuration-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/admin-Admin-Journey-TC-E2E-b45c5-manage-system-configuration-firefox/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-b45c5-manage-system-configuration-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-Admin-Journey-TC-E2E-b45c5-manage-system-configuration-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  24) [firefox] › tests/e2e/cross-role.spec.js:6:3 › Cross-Role Workflow › TC-E2E-CROSS-001: Complete Academic Lifecycle 
+
+    Test timeout of 30000ms exceeded while setting up "page".
+
+    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/cross-role-Cross-Role-Work-41028-Complete-Academic-Lifecycle-firefox/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/cross-role-Cross-Role-Work-41028-Complete-Academic-Lifecycle-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/cross-role-Cross-Role-Work-41028-Complete-Academic-Lifecycle-firefox/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/cross-role-Cross-Role-Work-41028-Complete-Academic-Lifecycle-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/cross-role-Cross-Role-Work-41028-Complete-Academic-Lifecycle-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[31/120] [firefox] › tests/e2e/hod.spec.js:16:3 › HOD Journey › TC-E2E-HOD-001: Should view dashboard
+[32/120] [firefox] › tests/e2e/hod.spec.js:21:3 › HOD Journey › TC-E2E-HOD-002: Should review submitted results
+  25) [firefox] › tests/e2e/hod.spec.js:21:3 › HOD Journey › TC-E2E-HOD-002: Should review submitted results 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('HOD Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as HOD
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/hod.spec.js:4:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:3000/", waiting until "load"
+
+
+      3 | test.describe('HOD Journey', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |     
+      7 |     // Login as HOD
+      8 |     await page.getByRole('tab', { name: 'Staff' }).click();
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/hod.spec.js:5:16
+
+    Error Context: test-results/hod-HOD-Journey-TC-E2E-HOD-16c41-ld-review-submitted-results-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/hod-HOD-Journey-TC-E2E-HOD-16c41-ld-review-submitted-results-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/hod-HOD-Journey-TC-E2E-HOD-16c41-ld-review-submitted-results-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  26) [firefox] › tests/e2e/hod.spec.js:16:3 › HOD Journey › TC-E2E-HOD-001: Should view dashboard ─
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('HOD Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as HOD
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/hod.spec.js:4:8
+
+    Tearing down "context" exceeded the test timeout of 30000ms.
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:3000/", waiting until "load"
+
+
+      3 | test.describe('HOD Journey', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |     
+      7 |     // Login as HOD
+      8 |     await page.getByRole('tab', { name: 'Staff' }).click();
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/hod.spec.js:5:16
+
+    Error Context: test-results/hod-HOD-Journey-TC-E2E-HOD-001-Should-view-dashboard-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/hod-HOD-Journey-TC-E2E-HOD-001-Should-view-dashboard-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/hod-HOD-Journey-TC-E2E-HOD-001-Should-view-dashboard-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[33/120] [firefox] › tests/e2e/lecturer.spec.js:16:3 › Lecturer Journey › TC-E2E-LECTURER-001: Should view assigned courses
+[34/120] [firefox] › tests/e2e/hod.spec.js:26:3 › HOD Journey › TC-E2E-HOD-003: Should view department analytics
+  27) [firefox] › tests/e2e/hod.spec.js:26:3 › HOD Journey › TC-E2E-HOD-003: Should view department analytics 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('HOD Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as HOD
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/hod.spec.js:4:8
+
+    Tearing down "context" exceeded the test timeout of 30000ms.
+
+    Error: browserContext.close: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-9KWRgJ -juggler-pipe -silent
+    <launched> pid=35287
+    [pid=35287][err] *** You are running in headless mode.
+    [pid=35287][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=35287][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=35287][out]  (t=30.1546) [GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=35287][out] 
+    [pid=35287][out] 
+    [pid=35287][out] Juggler listening to the pipe
+    [pid=35287] <gracefully close start>
+    [pid=35287] <kill>
+    [pid=35287] <will force kill>
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-9KWRgJ -juggler-pipe -silent
+    <launched> pid=35287
+    [pid=35287][err] *** You are running in headless mode.
+    [pid=35287][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=35287][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=35287][out]  (t=30.1546) [GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=35287][out] 
+    [pid=35287][out] 
+    [pid=35287][out] Juggler listening to the pipe
+    [pid=35287] <gracefully close start>
+    [pid=35287] <kill>
+    [pid=35287] <will force kill>
+
+    Error Context: test-results/hod-HOD-Journey-TC-E2E-HOD-971a9-d-view-department-analytics-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/hod-HOD-Journey-TC-E2E-HOD-971a9-d-view-department-analytics-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/hod-HOD-Journey-TC-E2E-HOD-971a9-d-view-department-analytics-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  28) [firefox] › tests/e2e/lecturer.spec.js:16:3 › Lecturer Journey › TC-E2E-LECTURER-001: Should view assigned courses 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Lecturer Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as Lecturer
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/lecturer.spec.js:4:8
+
+    Tearing down "context" exceeded the test timeout of 30000ms.
+
+    Error: browserContext.close: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-ELpxwb -juggler-pipe -silent
+    <launched> pid=35286
+    [pid=35286][err] *** You are running in headless mode.
+    [pid=35286][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=35286][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=35286][out]  (t=30.1545) [GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=35286][out] 
+    [pid=35286][out] 
+    [pid=35286][out] Juggler listening to the pipe
+    [pid=35286] <gracefully close start>
+    [pid=35286] <kill>
+    [pid=35286] <will force kill>
+    [pid=35286] <process did exit: exitCode=null, signal=SIGKILL>
+    [pid=35286] starting temporary directories cleanup
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-ELpxwb -juggler-pipe -silent
+    <launched> pid=35286
+    [pid=35286][err] *** You are running in headless mode.
+    [pid=35286][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=35286][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=35286][out]  (t=30.1545) [GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=35286][out] 
+    [pid=35286][out] 
+    [pid=35286][out] Juggler listening to the pipe
+    [pid=35286] <gracefully close start>
+    [pid=35286] <kill>
+    [pid=35286] <will force kill>
+    [pid=35286] <process did exit: exitCode=null, signal=SIGKILL>
+    [pid=35286] starting temporary directories cleanup
+
+    Error Context: test-results/lecturer-Lecturer-Journey--114ce-hould-view-assigned-courses-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--114ce-hould-view-assigned-courses-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/lecturer-Lecturer-Journey--114ce-hould-view-assigned-courses-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[35/120] [firefox] › tests/e2e/lecturer.spec.js:21:3 › Lecturer Journey › TC-E2E-LECTURER-002: Should navigate to attendance recording
+[36/120] [firefox] › tests/e2e/lecturer.spec.js:26:3 › Lecturer Journey › TC-E2E-LECTURER-003: Should navigate to assessment creation
+  29) [firefox] › tests/e2e/lecturer.spec.js:26:3 › Lecturer Journey › TC-E2E-LECTURER-003: Should navigate to assessment creation 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Lecturer Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as Lecturer
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/lecturer.spec.js:4:8
+
+    Error: browser.newContext: Test ended.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-jTNOvS -juggler-pipe -silent
+    <launched> pid=36348
+    [pid=36348][err] *** You are running in headless mode.
+    [pid=36348][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=36348][out] 
+    [pid=36348][out] Juggler listening to the pipe
+    [pid=36348] <gracefully close start>
+    [pid=36348] <kill>
+    [pid=36348] <will force kill>
+
+    Error: ENOENT: no such file or directory, open '/home/venemouscoder/Desktop/PROJECTS/WAPTS/test-results/.playwright-artifacts-30/51201f9a1ce75a96fa9b945e78ee46bf.zip'
+
+    Error Context: test-results/lecturer-Lecturer-Journey--17bf9-gate-to-assessment-creation-firefox/error-context.md
+
+
+  30) [firefox] › tests/e2e/lecturer.spec.js:21:3 › Lecturer Journey › TC-E2E-LECTURER-002: Should navigate to attendance recording 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Lecturer Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as Lecturer
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/lecturer.spec.js:4:8
+
+    Error: browser.newContext: Test ended.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-wwxLN3 -juggler-pipe -silent
+    <launched> pid=36350
+    [pid=36350][err] *** You are running in headless mode.
+    [pid=36350][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=36350][out] 
+    [pid=36350][out] Juggler listening to the pipe
+    [pid=36350] <gracefully close start>
+    [pid=36350] <kill>
+    [pid=36350] <will force kill>
+
+    Error: ENOENT: no such file or directory, open '/home/venemouscoder/Desktop/PROJECTS/WAPTS/test-results/.playwright-artifacts-29/374e7838e8f9ffa5559b9e03da6bce1c.zip'
+
+    Error Context: test-results/lecturer-Lecturer-Journey--877eb-ate-to-attendance-recording-firefox/error-context.md
+
+
+[37/120] [firefox] › tests/e2e/negative.spec.js:5:3 › Negative Scenarios › TC-E2E-NEG-001: Anonymous user cannot access protected pages
+[38/120] [firefox] › tests/e2e/lecturer.spec.js:31:3 › Lecturer Journey › TC-E2E-LECTURER-004: Should navigate to results submission
+  31) [firefox] › tests/e2e/negative.spec.js:5:3 › Negative Scenarios › TC-E2E-NEG-001: Anonymous user cannot access protected pages 
+
+    Test timeout of 30000ms exceeded while setting up "page".
+
+    Tearing down "context" exceeded the test timeout of 30000ms.
+
+    Error: browserContext.close: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-WQgP8m -juggler-pipe -silent
+    <launched> pid=37097
+    [pid=37097][err] *** You are running in headless mode.
+    [pid=37097][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=37097][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(vaapitest): poll failed: No such file or directory
+    [pid=37097][out]  (t=37.3046) [GFX1-]: ManageChildProcess(vaapitest): poll failed: No such file or directory
+    [pid=37097][out] 
+    [pid=37097][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(vaapitest): poll failed: No such file or directory
+    [pid=37097][out]  (t=37.3046) |[1][GFX1-]: vaapitest: ManageChildProcess failed
+    [pid=37097][out]  (t=37.3046) [GFX1-]: vaapitest: ManageChildProcess failed
+    [pid=37097][out] 
+    [pid=37097][out] 
+    [pid=37097][out] Juggler listening to the pipe
+    [pid=37097] <gracefully close start>
+    [pid=37097] <kill>
+    [pid=37097] <will force kill>
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-WQgP8m -juggler-pipe -silent
+    <launched> pid=37097
+    [pid=37097][err] *** You are running in headless mode.
+    [pid=37097][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=37097][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(vaapitest): poll failed: No such file or directory
+    [pid=37097][out]  (t=37.3046) [GFX1-]: ManageChildProcess(vaapitest): poll failed: No such file or directory
+    [pid=37097][out] 
+    [pid=37097][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(vaapitest): poll failed: No such file or directory
+    [pid=37097][out]  (t=37.3046) |[1][GFX1-]: vaapitest: ManageChildProcess failed
+    [pid=37097][out]  (t=37.3046) [GFX1-]: vaapitest: ManageChildProcess failed
+    [pid=37097][out] 
+    [pid=37097][out] 
+    [pid=37097][out] Juggler listening to the pipe
+    [pid=37097] <gracefully close start>
+    [pid=37097] <kill>
+    [pid=37097] <will force kill>
+
+    Error Context: test-results/negative-Negative-Scenario-5168c-nnot-access-protected-pages-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/negative-Negative-Scenario-5168c-nnot-access-protected-pages-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/negative-Negative-Scenario-5168c-nnot-access-protected-pages-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  32) [firefox] › tests/e2e/lecturer.spec.js:31:3 › Lecturer Journey › TC-E2E-LECTURER-004: Should navigate to results submission 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Lecturer Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as Lecturer
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/lecturer.spec.js:4:8
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-CNRr8G -juggler-pipe -silent
+    <launched> pid=37095
+    [pid=37095][err] *** You are running in headless mode.
+    [pid=37095][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=37095][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(vaapitest): poll failed: No such file or directory
+    [pid=37095][out]  (t=37.3036) [GFX1-]: ManageChildProcess(vaapitest): poll failed: No such file or directory
+    [pid=37095][out] 
+    [pid=37095][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(vaapitest): poll failed: No such file or directory
+    [pid=37095][out]  (t=37.3036) |[1][GFX1-]: vaapitest: ManageChildProcess failed
+    [pid=37095][out]  (t=37.3036) [GFX1-]: vaapitest: ManageChildProcess failed
+    [pid=37095][out] 
+    [pid=37095][out] 
+    [pid=37095][out] Juggler listening to the pipe
+    [pid=37095][err] JavaScript warning: resource://gre/modules/UpdateService.sys.mjs, line 4029: unreachable code after return statement
+    [pid=37095] <gracefully close start>
+    [pid=37095] <kill>
+    [pid=37095] <will force kill>
+    [pid=37095] <process did exit: exitCode=null, signal=SIGKILL>
+    [pid=37095] starting temporary directories cleanup
+
+    Error Context: test-results/lecturer-Lecturer-Journey--be2fb-igate-to-results-submission-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--be2fb-igate-to-results-submission-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/lecturer-Lecturer-Journey--be2fb-igate-to-results-submission-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[39/120] [firefox] › tests/e2e/negative.spec.js:23:3 › Negative Scenarios › TC-E2E-NEG-003: Student cannot access admin routes
+[40/120] [firefox] › tests/e2e/negative.spec.js:11:3 › Negative Scenarios › TC-E2E-NEG-002: Invalid login credentials
+ync exports.getTranscript (/home/venemouscoder/Desktop/PROJECTS/WAPTS/controllers/studentController.js:30:18)
+  30) [firefox] › tests/e2e/lecturer.spec.js:26:3 › Lecturer Journey › TC-E2E-LECTURER-003: Should navigate to assessment creation 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Lecturer Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as Lecturer
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/lecturer.spec.js:4:8
+
+    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--17bf9-gate-to-assessment-creation-firefox/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/lecturer-Lecturer-Journey--17bf9-gate-to-assessment-creation-firefox/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--17bf9-gate-to-assessment-creation-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/lecturer-Lecturer-Journey--17bf9-gate-to-assessment-creation-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  31) [firefox] › tests/e2e/lecturer.spec.js:21:3 › Lecturer Journey › TC-E2E-LECTURER-002: Should navigate to attendance recording 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Lecturer Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as Lecturer
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/lecturer.spec.js:4:8
+
+    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--877eb-ate-to-attendance-recording-firefox/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/lecturer-Lecturer-Journey--877eb-ate-to-attendance-recording-firefox/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--877eb-ate-to-attendance-recording-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/lecturer-Lecturer-Journey--877eb-ate-to-attendance-recording-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[37/120] [firefox] › tests/e2e/lecturer.spec.js:31:3 › Lecturer Journey › TC-E2E-LECTURER-004: Should navigate to results submission
+[38/120] [firefox] › tests/e2e/negative.spec.js:5:3 › Negative Scenarios › TC-E2E-NEG-001: Anonymous user cannot access protected pages
+  32) [firefox] › tests/e2e/lecturer.spec.js:31:3 › Lecturer Journey › TC-E2E-LECTURER-004: Should navigate to results submission 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Lecturer Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |     
+      7 |     // Login as Lecturer
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/lecturer.spec.js:4:8
+
+    Tearing down "context" exceeded the test timeout of 30000ms.
+
+    Error: browserContext.close: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-DUrgJy -juggler-pipe -silent
+    <launched> pid=31721
+    [pid=31721][err] *** You are running in headless mode.
+    [pid=31721][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=31721][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=31721][out]  (t=17.9154) [GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=31721][out] 
+    [pid=31721][out] 
+    [pid=31721][out] Juggler listening to the pipe
+    [pid=31721] <gracefully close start>
+    [pid=31721] <kill>
+    [pid=31721] <will force kill>
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-DUrgJy -juggler-pipe -silent
+    <launched> pid=31721
+    [pid=31721][err] *** You are running in headless mode.
+    [pid=31721][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=31721][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=31721][out]  (t=17.9154) [GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=31721][out] 
+    [pid=31721][out] 
+    [pid=31721][out] Juggler listening to the pipe
+    [pid=31721] <gracefully close start>
+    [pid=31721] <kill>
+    [pid=31721] <will force kill>
+
+    Error Context: test-results/lecturer-Lecturer-Journey--be2fb-igate-to-results-submission-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--be2fb-igate-to-results-submission-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/lecturer-Lecturer-Journey--be2fb-igate-to-results-submission-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  33) [firefox] › tests/e2e/negative.spec.js:5:3 › Negative Scenarios › TC-E2E-NEG-001: Anonymous user cannot access protected pages 
+
+    Test timeout of 30000ms exceeded while setting up "page".
+
+    Tearing down "context" exceeded the test timeout of 30000ms.
+
+    Error: browserContext.close: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-SBhyVM -juggler-pipe -silent
+    <launched> pid=31730
+    [pid=31730][err] *** You are running in headless mode.
+    [pid=31730][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=31730][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=31730][out]  (t=17.7986) [GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=31730][out] 
+    [pid=31730][out] 
+    [pid=31730][out] Juggler listening to the pipe
+    [pid=31730] <gracefully close start>
+    [pid=31730] <kill>
+    [pid=31730] <will force kill>
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-SBhyVM -juggler-pipe -silent
+    <launched> pid=31730
+    [pid=31730][err] *** You are running in headless mode.
+    [pid=31730][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=31730][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=31730][out]  (t=17.7986) [GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=31730][out] 
+    [pid=31730][out] 
+    [pid=31730][out] Juggler listening to the pipe
+    [pid=31730] <gracefully close start>
+    [pid=31730] <kill>
+    [pid=31730] <will force kill>
+
+    Error Context: test-results/negative-Negative-Scenario-5168c-nnot-access-protected-pages-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/negative-Negative-Scenario-5168c-nnot-access-protected-pages-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/negative-Negative-Scenario-5168c-nnot-access-protected-pages-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[39/120] [firefox] › tests/e2e/negative.spec.js:11:3 › Negative Scenarios › TC-E2E-NEG-002: Invalid login credentials
+[40/120] [firefox] › tests/e2e/negative.spec.js:23:3 › Negative Scenarios › TC-E2E-NEG-003: Student cannot access admin routes
+  34) [firefox] › tests/e2e/negative.spec.js:23:3 › Negative Scenarios › TC-E2E-NEG-003: Student cannot access admin routes 
+
+    Test timeout of 30000ms exceeded while setting up "page".
+
+    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/negative-Negative-Scenario-55489--cannot-access-admin-routes-firefox/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/negative-Negative-Scenario-55489--cannot-access-admin-routes-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/negative-Negative-Scenario-55489--cannot-access-admin-routes-firefox/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/negative-Negative-Scenario-55489--cannot-access-admin-routes-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/negative-Negative-Scenario-55489--cannot-access-admin-routes-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  35) [firefox] › tests/e2e/negative.spec.js:11:3 › Negative Scenarios › TC-E2E-NEG-002: Invalid login credentials 
+
+    Test timeout of 30000ms exceeded while setting up "page".
+
+    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/negative-Negative-Scenario-66293-2-Invalid-login-credentials-firefox/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/negative-Negative-Scenario-66293-2-Invalid-login-credentials-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/negative-Negative-Scenario-66293-2-Invalid-login-credentials-firefox/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/negative-Negative-Scenario-66293-2-Invalid-login-credentials-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/negative-Negative-Scenario-66293-2-Invalid-login-credentials-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[41/120] [firefox] › tests/e2e/responsive.spec.js:7:3 › Responsive Design › TC-E2E-RESP-001: Mobile Login Page is responsive
+[42/120] [firefox] › tests/e2e/responsive.spec.js:17:3 › Responsive Design › TC-E2E-RESP-002: Mobile Student Dashboard navigation
+  36) [firefox] › tests/e2e/responsive.spec.js:17:3 › Responsive Design › TC-E2E-RESP-002: Mobile Student Dashboard navigation 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:3000/", waiting until "load"
+
+
+      16 |
+      17 |   test('TC-E2E-RESP-002: Mobile Student Dashboard navigation', async ({ page }) => {
+    > 18 |     await page.goto('/');
+         |                ^
+      19 |     await page.getByRole('tab', { name: 'Student' }).click();
+      20 |     await page.getByPlaceholder('Enter identifier').fill('REG2026001');
+      21 |     await page.getByPlaceholder('Enter password').fill('password123');
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/responsive.spec.js:18:16
+
+    Error Context: test-results/responsive-Responsive-Desi-61545-tudent-Dashboard-navigation-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-Responsive-Desi-61545-tudent-Dashboard-navigation-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/responsive-Responsive-Desi-61545-tudent-Dashboard-navigation-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  37) [firefox] › tests/e2e/responsive.spec.js:7:3 › Responsive Design › TC-E2E-RESP-001: Mobile Login Page is responsive 
+
+    Test timeout of 30000ms exceeded.
+
+    Tearing down "context" exceeded the test timeout of 30000ms.
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+      - navigating to "http://127.0.0.1:3000/", waiting until "load"
+
+
+       6 |
+       7 |   test('TC-E2E-RESP-001: Mobile Login Page is responsive', async ({ page }) => {
+    >  8 |     await page.goto('/');
+         |                ^
+       9 |     
+      10 |     // Check that login form is visible
+      11 |     await expect(page.locator('form#loginForm')).toBeVisible();
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/responsive.spec.js:8:16
+
+    Error Context: test-results/responsive-Responsive-Desi-39cc7-le-Login-Page-is-responsive-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-Responsive-Desi-39cc7-le-Login-Page-is-responsive-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/responsive-Responsive-Desi-39cc7-le-Login-Page-is-responsive-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[43/120] [firefox] › tests/e2e/student.spec.js:26:3 › Student Journey › TC-E2E-STUDENT-002: Should navigate to registered courses
+[44/120] [firefox] › tests/e2e/student.spec.js:18:3 › Student Journey › TC-E2E-STUDENT-001: Should view dashboard statistics
+  38) [firefox] › tests/e2e/student.spec.js:26:3 › Student Journey › TC-E2E-STUDENT-002: Should navigate to registered courses 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Student Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     // Navigate to login
+      6 |     await page.goto('/');
+      7 |     
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/student.spec.js:4:8
+
+    Tearing down "context" exceeded the test timeout of 30000ms.
+
+    Error: browserContext.close: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-jPmS1j -juggler-pipe -silent
+    <launched> pid=35288
+    [pid=35288][err] *** You are running in headless mode.
+    [pid=35288][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=35288][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=35288][out]  (t=30.1546) [GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=35288][out] 
+    [pid=35288][out] 
+    [pid=35288][out] Juggler listening to the pipe
+    [pid=35288] <gracefully close start>
+    [pid=35288] <kill>
+    [pid=35288] <will force kill>
+    [pid=35288] <process did exit: exitCode=null, signal=SIGKILL>
+    [pid=35288] starting temporary directories cleanup
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-jPmS1j -juggler-pipe -silent
+    <launched> pid=35288
+    [pid=35288][err] *** You are running in headless mode.
+    [pid=35288][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=35288][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=35288][out]  (t=30.1546) [GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=35288][out] 
+    [pid=35288][out] 
+    [pid=35288][out] Juggler listening to the pipe
+    [pid=35288] <gracefully close start>
+    [pid=35288] <kill>
+    [pid=35288] <will force kill>
+    [pid=35288] <process did exit: exitCode=null, signal=SIGKILL>
+    [pid=35288] starting temporary directories cleanup
+
+    Error Context: test-results/student-Student-Journey-TC-46768-igate-to-registered-courses-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-46768-igate-to-registered-courses-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-Student-Journey-TC-46768-igate-to-registered-courses-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  39) [firefox] › tests/e2e/student.spec.js:18:3 › Student Journey › TC-E2E-STUDENT-001: Should view dashboard statistics 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Student Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     // Navigate to login
+      6 |     await page.goto('/');
+      7 |     
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/student.spec.js:4:8
+
+    Tearing down "context" exceeded the test timeout of 30000ms.
+
+    Error: browserContext.close: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-YJwXOQ -juggler-pipe -silent
+    <launched> pid=35289
+    [pid=35289][err] *** You are running in headless mode.
+    [pid=35289][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=35289][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=35289][out]  (t=30.1446) [GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=35289][out] 
+    [pid=35289][out] 
+    [pid=35289][out] Juggler listening to the pipe
+    [pid=35289] <gracefully close start>
+    [pid=35289] <kill>
+    [pid=35289] <will force kill>
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-YJwXOQ -juggler-pipe -silent
+    <launched> pid=35289
+    [pid=35289][err] *** You are running in headless mode.
+    [pid=35289][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=35289][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=35289][out]  (t=30.1446) [GFX1-]: ManageChildProcess(glxtest): poll failed: No such file or directory
+    [pid=35289][out] 
+    [pid=35289][out] 
+    [pid=35289][out] Juggler listening to the pipe
+    [pid=35289] <gracefully close start>
+    [pid=35289] <kill>
+    [pid=35289] <will force kill>
+
+    Error Context: test-results/student-Student-Journey-TC-a3211-d-view-dashboard-statistics-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-a3211-d-view-dashboard-statistics-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-Student-Journey-TC-a3211-d-view-dashboard-statistics-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[45/120] [firefox] › tests/e2e/student.spec.js:39:3 › Student Journey › TC-E2E-STUDENT-004: Should view results
+[46/120] [firefox] › tests/e2e/student.spec.js:34:3 › Student Journey › TC-E2E-STUDENT-003: Should view attendance records
+  40) [firefox] › tests/e2e/student.spec.js:39:3 › Student Journey › TC-E2E-STUDENT-004: Should view results 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Student Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     // Navigate to login
+      6 |     await page.goto('/');
+      7 |     
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/student.spec.js:4:8
+
+    Error: browser.newContext: Test ended.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-rg1fZV -juggler-pipe -silent
+    <launched> pid=36351
+    [pid=36351][err] *** You are running in headless mode.
+    [pid=36351][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=36351][out] 
+    [pid=36351][out] Juggler listening to the pipe
+    [pid=36351] <gracefully close start>
+    [pid=36351] <kill>
+    [pid=36351] <will force kill>
+
+    Error: ENOENT: no such file or directory, open '/home/venemouscoder/Desktop/PROJECTS/WAPTS/test-results/.playwright-artifacts-40/ecd9bb0e763d1a5ab50286fc8368706f.zip'
+
+    Error Context: test-results/student-Student-Journey-TC-ce553-ENT-004-Should-view-results-firefox/error-context.md
+
+
+  41) [firefox] › tests/e2e/student.spec.js:34:3 › Student Journey › TC-E2E-STUDENT-003: Should view attendance records 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Student Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     // Navigate to login
+      6 |     await page.goto('/');
+      7 |     
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/student.spec.js:4:8
+
+    Error: browser.newContext: Test ended.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-I9aAyH -juggler-pipe -silent
+    <launched> pid=36349
+    [pid=36349][err] *** You are running in headless mode.
+    [pid=36349][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=36349][out] 
+    [pid=36349][out] Juggler listening to the pipe
+    [pid=36349] <gracefully close start>
+    [pid=36349] <kill>
+    [pid=36349] <will force kill>
+
+    Error: ENOENT: no such file or directory, open '/home/venemouscoder/Desktop/PROJECTS/WAPTS/test-results/.playwright-artifacts-41/0d97a265dc92b154c347841041303aa1.zip'
+
+    Error Context: test-results/student-Student-Journey-TC-c95b7-uld-view-attendance-records-firefox/error-context.md
+
+
+[47/120] [firefox] › tests/e2e/student.spec.js:44:3 › Student Journey › TC-E2E-STUDENT-005: Should view transcript
+[48/120] [firefox] › tests/e2e/student.spec.js:49:3 › Student Journey › TC-E2E-STUDENT-006: Should handle logout
+
+[WebServer] Terminated
+  42) [firefox] › tests/e2e/student.spec.js:49:3 › Student Journey › TC-E2E-STUDENT-006: Should handle logout 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Student Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     // Navigate to login
+      6 |     await page.goto('/');
+      7 |     
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/student.spec.js:4:8
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-P7eYVg -juggler-pipe -silent
+    <launched> pid=37094
+    [pid=37094][err] *** You are running in headless mode.
+    [pid=37094][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=37094][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(vaapitest): poll failed: No such file or directory
+    [pid=37094][out]  (t=37.3044) [GFX1-]: ManageChildProcess(vaapitest): poll failed: No such file or directory
+    [pid=37094][out] 
+    [pid=37094][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(vaapitest): poll failed: No such file or directory
+    [pid=37094][out]  (t=37.3044) |[1][GFX1-]: vaapitest: ManageChildProcess failed
+    [pid=37094][out]  (t=37.3044) [GFX1-]: vaapitest: ManageChildProcess failed
+    [pid=37094][out] 
+    [pid=37094][out] 
+    [pid=37094][out] Juggler listening to the pipe
+    [pid=37094][err] JavaScript warning: resource://gre/modules/UpdateService.sys.mjs, line 4029: unreachable code after return statement
+    [pid=37094] <gracefully close start>
+    [pid=37094] <kill>
+    [pid=37094] <will force kill>
+    [pid=37094] <process did exit: exitCode=null, signal=SIGKILL>
+    [pid=37094] starting temporary directories cleanup
+
+    Error Context: test-results/student-Student-Journey-TC-2e4a7-NT-006-Should-handle-logout-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-2e4a7-NT-006-Should-handle-logout-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-Student-Journey-TC-2e4a7-NT-006-Should-handle-logout-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  43) [firefox] › tests/e2e/student.spec.js:44:3 › Student Journey › TC-E2E-STUDENT-005: Should view transcript 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      2 |
+      3 | test.describe('Student Journey', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     // Navigate to login
+      6 |     await page.goto('/');
+      7 |     
+        at /home/venemouscoder/Desktop/PROJECTS/WAPTS/tests/e2e/student.spec.js:4:8
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /home/venemouscoder/.cache/ms-playwright/firefox-1532/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-zua7Ci -juggler-pipe -silent
+    <launched> pid=37093
+    [pid=37093][err] *** You are running in headless mode.
+    [pid=37093][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 119: unreachable code after return statement
+    [pid=37093][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(vaapitest): poll failed: No such file or directory
+    [pid=37093][out]  (t=37.3143) [GFX1-]: ManageChildProcess(vaapitest): poll failed: No such file or directory
+    [pid=37093][out] 
+    [pid=37093][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: ManageChildProcess(vaapitest): poll failed: No such file or directory
+    [pid=37093][out]  (t=37.3143) |[1][GFX1-]: vaapitest: ManageChildProcess failed
+    [pid=37093][out]  (t=37.3143) [GFX1-]: vaapitest: ManageChildProcess failed
+    [pid=37093][out] 
+    [pid=37093][out] 
+    [pid=37093][out] Juggler listening to the pipe
+    [pid=37093][err] JavaScript warning: resource://gre/modules/UpdateService.sys.mjs, line 4029: unreachable code after return statement
+    [pid=37093] <gracefully close start>
+    [pid=37093] <kill>
+    [pid=37093] <will force kill>
+    [pid=37093] <process did exit: exitCode=null, signal=SIGKILL>
+    [pid=37093] starting temporary directories cleanup
+
+    Error Context: test-results/student-Student-Journey-TC-820fa--005-Should-view-transcript-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-820fa--005-Should-view-transcript-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-Student-Journey-TC-820fa--005-Should-view-transcript-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[49/120] [webkit] › tests/e2e/admin.spec.js:16:3 › Admin Journey › TC-E2E-ADMIN-001: Should manage users
+[50/120] [webkit] › tests/e2e/admin.spec.js:27:3 › Admin Journey › TC-E2E-ADMIN-002: Should manage departments
+  44) [webkit] › tests/e2e/admin.spec.js:27:3 › Admin Journey › TC-E2E-ADMIN-002: Should manage departments 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error: ENOENT: no such file or directory, open '/home/venemouscoder/Desktop/PROJECTS/WAPTS/test-results/.playwright-artifacts-44/7f76c9a6a1490a26aca53cf43e07e7c4.zip'
+
+    Error Context: test-results/admin-Admin-Journey-TC-E2E-f6879-2-Should-manage-departments-webkit/error-context.md
+
+
+  45) [webkit] › tests/e2e/admin.spec.js:16:3 › Admin Journey › TC-E2E-ADMIN-001: Should manage users 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error: ENOENT: no such file or directory, open '/home/venemouscoder/Desktop/PROJECTS/WAPTS/test-results/.playwright-artifacts-45/3e999403e72d58718aaa45acbae08d92.zip'
+
+    Error Context: test-results/admin-Admin-Journey-TC-E2E-ADMIN-001-Should-manage-users-webkit/error-context.md
+
+
+[51/120] [webkit] › tests/e2e/admin.spec.js:32:3 › Admin Journey › TC-E2E-ADMIN-003: Should manage academic calendar
+[52/120] [webkit] › tests/e2e/admin.spec.js:37:3 › Admin Journey › TC-E2E-ADMIN-004: Should manage grade scales
+  46) [webkit] › tests/e2e/admin.spec.js:32:3 › Admin Journey › TC-E2E-ADMIN-003: Should manage academic calendar 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/admin-Admin-Journey-TC-E2E-e509c-ld-manage-academic-calendar-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-e509c-ld-manage-academic-calendar-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-Admin-Journey-TC-E2E-e509c-ld-manage-academic-calendar-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  47) [webkit] › tests/e2e/admin.spec.js:37:3 › Admin Journey › TC-E2E-ADMIN-004: Should manage grade scales 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/admin-Admin-Journey-TC-E2E-6877e--Should-manage-grade-scales-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-6877e--Should-manage-grade-scales-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-Admin-Journey-TC-E2E-6877e--Should-manage-grade-scales-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[53/120] [webkit] › tests/e2e/admin.spec.js:42:3 › Admin Journey › TC-E2E-ADMIN-005: Should manage system configuration
+  48) [webkit] › tests/e2e/admin.spec.js:42:3 › Admin Journey › TC-E2E-ADMIN-005: Should manage system configuration 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/admin-Admin-Journey-TC-E2E-b45c5-manage-system-configuration-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-Admin-Journey-TC-E2E-b45c5-manage-system-configuration-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-Admin-Journey-TC-E2E-b45c5-manage-system-configuration-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[54/120] [webkit] › tests/e2e/cross-role.spec.js:6:3 › Cross-Role Workflow › TC-E2E-CROSS-001: Complete Academic Lifecycle
+  49) [webkit] › tests/e2e/cross-role.spec.js:6:3 › Cross-Role Workflow › TC-E2E-CROSS-001: Complete Academic Lifecycle 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/cross-role-Cross-Role-Work-41028-Complete-Academic-Lifecycle-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/cross-role-Cross-Role-Work-41028-Complete-Academic-Lifecycle-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/cross-role-Cross-Role-Work-41028-Complete-Academic-Lifecycle-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[55/120] [webkit] › tests/e2e/hod.spec.js:16:3 › HOD Journey › TC-E2E-HOD-001: Should view dashboard
+[56/120] [webkit] › tests/e2e/hod.spec.js:21:3 › HOD Journey › TC-E2E-HOD-002: Should review submitted results
+  50) [webkit] › tests/e2e/hod.spec.js:16:3 › HOD Journey › TC-E2E-HOD-001: Should view dashboard ──
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/hod-HOD-Journey-TC-E2E-HOD-001-Should-view-dashboard-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/hod-HOD-Journey-TC-E2E-HOD-001-Should-view-dashboard-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/hod-HOD-Journey-TC-E2E-HOD-001-Should-view-dashboard-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  51) [webkit] › tests/e2e/hod.spec.js:21:3 › HOD Journey › TC-E2E-HOD-002: Should review submitted results 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/hod-HOD-Journey-TC-E2E-HOD-16c41-ld-review-submitted-results-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/hod-HOD-Journey-TC-E2E-HOD-16c41-ld-review-submitted-results-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/hod-HOD-Journey-TC-E2E-HOD-16c41-ld-review-submitted-results-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[57/120] [webkit] › tests/e2e/hod.spec.js:26:3 › HOD Journey › TC-E2E-HOD-003: Should view department analytics
+  52) [webkit] › tests/e2e/hod.spec.js:26:3 › HOD Journey › TC-E2E-HOD-003: Should view department analytics 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/hod-HOD-Journey-TC-E2E-HOD-971a9-d-view-department-analytics-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/hod-HOD-Journey-TC-E2E-HOD-971a9-d-view-department-analytics-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/hod-HOD-Journey-TC-E2E-HOD-971a9-d-view-department-analytics-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[58/120] [webkit] › tests/e2e/lecturer.spec.js:16:3 › Lecturer Journey › TC-E2E-LECTURER-001: Should view assigned courses
+[59/120] [webkit] › tests/e2e/lecturer.spec.js:21:3 › Lecturer Journey › TC-E2E-LECTURER-002: Should navigate to attendance recording
+  53) [webkit] › tests/e2e/lecturer.spec.js:16:3 › Lecturer Journey › TC-E2E-LECTURER-001: Should view assigned courses 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/lecturer-Lecturer-Journey--114ce-hould-view-assigned-courses-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--114ce-hould-view-assigned-courses-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/lecturer-Lecturer-Journey--114ce-hould-view-assigned-courses-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  54) [webkit] › tests/e2e/lecturer.spec.js:21:3 › Lecturer Journey › TC-E2E-LECTURER-002: Should navigate to attendance recording 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/lecturer-Lecturer-Journey--877eb-ate-to-attendance-recording-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--877eb-ate-to-attendance-recording-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/lecturer-Lecturer-Journey--877eb-ate-to-attendance-recording-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[60/120] [webkit] › tests/e2e/lecturer.spec.js:26:3 › Lecturer Journey › TC-E2E-LECTURER-003: Should navigate to assessment creation
+  55) [webkit] › tests/e2e/lecturer.spec.js:26:3 › Lecturer Journey › TC-E2E-LECTURER-003: Should navigate to assessment creation 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/lecturer-Lecturer-Journey--17bf9-gate-to-assessment-creation-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--17bf9-gate-to-assessment-creation-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/lecturer-Lecturer-Journey--17bf9-gate-to-assessment-creation-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[61/120] [webkit] › tests/e2e/lecturer.spec.js:31:3 › Lecturer Journey › TC-E2E-LECTURER-004: Should navigate to results submission
+  56) [webkit] › tests/e2e/lecturer.spec.js:31:3 › Lecturer Journey › TC-E2E-LECTURER-004: Should navigate to results submission 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/lecturer-Lecturer-Journey--be2fb-igate-to-results-submission-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/lecturer-Lecturer-Journey--be2fb-igate-to-results-submission-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/lecturer-Lecturer-Journey--be2fb-igate-to-results-submission-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[62/120] [webkit] › tests/e2e/negative.spec.js:5:3 › Negative Scenarios › TC-E2E-NEG-001: Anonymous user cannot access protected pages
+  57) [webkit] › tests/e2e/negative.spec.js:5:3 › Negative Scenarios › TC-E2E-NEG-001: Anonymous user cannot access protected pages 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/negative-Negative-Scenario-5168c-nnot-access-protected-pages-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/negative-Negative-Scenario-5168c-nnot-access-protected-pages-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/negative-Negative-Scenario-5168c-nnot-access-protected-pages-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[63/120] [webkit] › tests/e2e/negative.spec.js:11:3 › Negative Scenarios › TC-E2E-NEG-002: Invalid login credentials
+  58) [webkit] › tests/e2e/negative.spec.js:11:3 › Negative Scenarios › TC-E2E-NEG-002: Invalid login credentials 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/negative-Negative-Scenario-66293-2-Invalid-login-credentials-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/negative-Negative-Scenario-66293-2-Invalid-login-credentials-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/negative-Negative-Scenario-66293-2-Invalid-login-credentials-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[64/120] [webkit] › tests/e2e/negative.spec.js:23:3 › Negative Scenarios › TC-E2E-NEG-003: Student cannot access admin routes
+  59) [webkit] › tests/e2e/negative.spec.js:23:3 › Negative Scenarios › TC-E2E-NEG-003: Student cannot access admin routes 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/negative-Negative-Scenario-55489--cannot-access-admin-routes-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/negative-Negative-Scenario-55489--cannot-access-admin-routes-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/negative-Negative-Scenario-55489--cannot-access-admin-routes-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[65/120] [webkit] › tests/e2e/responsive.spec.js:17:3 › Responsive Design › TC-E2E-RESP-002: Mobile Student Dashboard navigation
+[66/120] [webkit] › tests/e2e/responsive.spec.js:7:3 › Responsive Design › TC-E2E-RESP-001: Mobile Login Page is responsive
+  60) [webkit] › tests/e2e/responsive.spec.js:17:3 › Responsive Design › TC-E2E-RESP-002: Mobile Student Dashboard navigation 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/responsive-Responsive-Desi-61545-tudent-Dashboard-navigation-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-Responsive-Desi-61545-tudent-Dashboard-navigation-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/responsive-Responsive-Desi-61545-tudent-Dashboard-navigation-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  61) [webkit] › tests/e2e/responsive.spec.js:7:3 › Responsive Design › TC-E2E-RESP-001: Mobile Login Page is responsive 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/responsive-Responsive-Desi-39cc7-le-Login-Page-is-responsive-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-Responsive-Desi-39cc7-le-Login-Page-is-responsive-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/responsive-Responsive-Desi-39cc7-le-Login-Page-is-responsive-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[67/120] [webkit] › tests/e2e/student.spec.js:26:3 › Student Journey › TC-E2E-STUDENT-002: Should navigate to registered courses
+[68/120] [webkit] › tests/e2e/student.spec.js:18:3 › Student Journey › TC-E2E-STUDENT-001: Should view dashboard statistics
+  62) [webkit] › tests/e2e/student.spec.js:26:3 › Student Journey › TC-E2E-STUDENT-002: Should navigate to registered courses 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/student-Student-Journey-TC-46768-igate-to-registered-courses-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-46768-igate-to-registered-courses-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-Student-Journey-TC-46768-igate-to-registered-courses-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  63) [webkit] › tests/e2e/student.spec.js:18:3 › Student Journey › TC-E2E-STUDENT-001: Should view dashboard statistics 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/student-Student-Journey-TC-a3211-d-view-dashboard-statistics-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-a3211-d-view-dashboard-statistics-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-Student-Journey-TC-a3211-d-view-dashboard-statistics-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[69/120] [webkit] › tests/e2e/student.spec.js:34:3 › Student Journey › TC-E2E-STUDENT-003: Should view attendance records
+[70/120] [webkit] › tests/e2e/student.spec.js:39:3 › Student Journey › TC-E2E-STUDENT-004: Should view results
+  64) [webkit] › tests/e2e/student.spec.js:34:3 › Student Journey › TC-E2E-STUDENT-003: Should view attendance records 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/student-Student-Journey-TC-c95b7-uld-view-attendance-records-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-c95b7-uld-view-attendance-records-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-Student-Journey-TC-c95b7-uld-view-attendance-records-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  65) [webkit] › tests/e2e/student.spec.js:39:3 › Student Journey › TC-E2E-STUDENT-004: Should view results 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/student-Student-Journey-TC-ce553-ENT-004-Should-view-results-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-ce553-ENT-004-Should-view-results-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-Student-Journey-TC-ce553-ENT-004-Should-view-results-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[71/120] [webkit] › tests/e2e/student.spec.js:49:3 › Student Journey › TC-E2E-STUDENT-006: Should handle logout
+[72/120] [webkit] › tests/e2e/student.spec.js:44:3 › Student Journey › TC-E2E-STUDENT-005: Should view transcript
+  66) [webkit] › tests/e2e/student.spec.js:49:3 › Student Journey › TC-E2E-STUDENT-006: Should handle logout 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/student-Student-Journey-TC-2e4a7-NT-006-Should-handle-logout-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-2e4a7-NT-006-Should-handle-logout-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-Student-Journey-TC-2e4a7-NT-006-Should-handle-logout-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  67) [webkit] › tests/e2e/student.spec.js:44:3 › Student Journey › TC-E2E-STUDENT-005: Should view transcript 
+
+    Error: browserType.launch: 
+    ╔══════════════════════════════════════════════════════╗
+    ║ Host system is missing dependencies to run browsers. ║
+    ║ Please install them with the following command:      ║
+    ║                                                      ║
+    ║     sudo npx playwright install-deps                 ║
+    ║                                                      ║
+    ║ Alternatively, use apt:                              ║
+    ║     sudo apt-get install libavif16                   ║
+    ║                                                      ║
+    ║ <3 Playwright Team                                   ║
+    ╚══════════════════════════════════════════════════════╝
+
+    Error Context: test-results/student-Student-Journey-TC-820fa--005-Should-view-transcript-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/student-Student-Journey-TC-820fa--005-Should-view-transcript-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/student-Student-Journey-TC-820fa--005-Should-view-transcript-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[73/120] [Mobile Chrome] › tests/e2e/admin.spec.js:16:3 › Admin Journey › TC-E2E-ADMIN-001: Should manage users
+[74/120] [Mobile Chrome] › tests/e2e/admin.spec.js:27:3 › Admin Journey › TC-E2E-ADMIN-002: Should manage departments

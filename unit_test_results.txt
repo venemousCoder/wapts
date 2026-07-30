@@ -1,0 +1,695 @@
+PASS tests/unit/services/GradeService.test.js (9.088 s)
+  GradeService
+    getActiveGradeScales
+      ✓ TC-GRADE-001: should return active grade scales sorted by minimumScore descending (5509 ms)
+      ✓ TC-GRADE-002: should not return inactive grade scales (125 ms)
+    convertScoreToGrade
+      ✓ TC-GRADE-003: should return grade A for score 75 (92 ms)
+      ✓ TC-GRADE-004: should return grade B for score 65 (82 ms)
+      ✓ TC-GRADE-005: should return grade C for score 55 (92 ms)
+      ✓ TC-GRADE-006: should return grade D for score 47 (82 ms)
+      ✓ TC-GRADE-007: should return grade E for score 42 (85 ms)
+      ✓ TC-GRADE-008: should return grade F for score 30 (78 ms)
+      ✓ TC-GRADE-009: boundary score 70 should return grade A (84 ms)
+      ✓ TC-GRADE-010: boundary score 69 should return grade B (77 ms)
+      ✓ TC-GRADE-011: score 100 should return grade A (111 ms)
+      ✓ TC-GRADE-012: score 0 should return grade F (109 ms)
+    calculateSemesterGPA
+      ✓ TC-GRADE-013: should calculate weighted GPA correctly (104 ms)
+      ✓ TC-GRADE-014: should return 0 for empty results array (104 ms)
+      ✓ TC-GRADE-015: should handle results with missing credit units gracefully (105 ms)
+
+FAIL tests/unit/services/ResultService.test.js
+  ResultService
+    calculateFinalScore
+      ✕ TC-RESULT-001: should calculate weighted final score (641 ms)
+      ✓ TC-RESULT-002: should return 0 with no assessments (374 ms)
+    saveDraft
+      ✕ TC-RESULT-003: should create draft result with grade (382 ms)
+      ✕ TC-RESULT-004: should reject modifying published result (363 ms)
+    submitResult
+      ✕ TC-RESULT-005: should transition Draft → Submitted (369 ms)
+      ✕ TC-RESULT-006: should reject non-Draft results (362 ms)
+    approveResult
+      ✕ TC-RESULT-007: should transition Submitted → Approved (373 ms)
+    publishResult
+      ✕ TC-RESULT-008: should transition Approved → Published (369 ms)
+      ✕ TC-RESULT-009: should emit result.published event (358 ms)
+
+  ● ResultService › calculateFinalScore › TC-RESULT-001: should calculate weighted final score
+
+    ValidationError: AssessmentType validation failed: defaultWeight: Path `defaultWeight` is required.
+
+      246 |     description: 'End of semester examination'
+      247 |   });
+    > 248 |   await assessmentType.save();
+          |   ^
+      249 |
+      250 |   const assessment = new Assessment({
+      251 |     courseOfferingId: offering._id,
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at createResultWithScores (tests/helpers/testHelpers.js:248:3)
+      at Object.<anonymous> (tests/unit/services/ResultService.test.js:27:7)
+
+  ● ResultService › saveDraft › TC-RESULT-003: should create draft result with grade
+
+    ValidationError: AssessmentType validation failed: defaultWeight: Path `defaultWeight` is required.
+
+      246 |     description: 'End of semester examination'
+      247 |   });
+    > 248 |   await assessmentType.save();
+          |   ^
+      249 |
+      250 |   const assessment = new Assessment({
+      251 |     courseOfferingId: offering._id,
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at createResultWithScores (tests/helpers/testHelpers.js:248:3)
+      at Object.<anonymous> (tests/unit/services/ResultService.test.js:40:7)
+
+  ● ResultService › saveDraft › TC-RESULT-004: should reject modifying published result
+
+    ValidationError: AssessmentType validation failed: defaultWeight: Path `defaultWeight` is required.
+
+      246 |     description: 'End of semester examination'
+      247 |   });
+    > 248 |   await assessmentType.save();
+          |   ^
+      249 |
+      250 |   const assessment = new Assessment({
+      251 |     courseOfferingId: offering._id,
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at createResultWithScores (tests/helpers/testHelpers.js:248:3)
+      at Object.<anonymous> (tests/unit/services/ResultService.test.js:49:7)
+
+  ● ResultService › submitResult › TC-RESULT-005: should transition Draft → Submitted
+
+    ValidationError: AssessmentType validation failed: defaultWeight: Path `defaultWeight` is required.
+
+      246 |     description: 'End of semester examination'
+      247 |   });
+    > 248 |   await assessmentType.save();
+          |   ^
+      249 |
+      250 |   const assessment = new Assessment({
+      251 |     courseOfferingId: offering._id,
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at createResultWithScores (tests/helpers/testHelpers.js:248:3)
+      at Object.<anonymous> (tests/unit/services/ResultService.test.js:59:7)
+
+  ● ResultService › submitResult › TC-RESULT-006: should reject non-Draft results
+
+    ValidationError: AssessmentType validation failed: defaultWeight: Path `defaultWeight` is required.
+
+      246 |     description: 'End of semester examination'
+      247 |   });
+    > 248 |   await assessmentType.save();
+          |   ^
+      249 |
+      250 |   const assessment = new Assessment({
+      251 |     courseOfferingId: offering._id,
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at createResultWithScores (tests/helpers/testHelpers.js:248:3)
+      at Object.<anonymous> (tests/unit/services/ResultService.test.js:66:7)
+
+  ● ResultService › approveResult › TC-RESULT-007: should transition Submitted → Approved
+
+    ValidationError: AssessmentType validation failed: defaultWeight: Path `defaultWeight` is required.
+
+      246 |     description: 'End of semester examination'
+      247 |   });
+    > 248 |   await assessmentType.save();
+          |   ^
+      249 |
+      250 |   const assessment = new Assessment({
+      251 |     courseOfferingId: offering._id,
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at createResultWithScores (tests/helpers/testHelpers.js:248:3)
+      at Object.<anonymous> (tests/unit/services/ResultService.test.js:76:7)
+
+  ● ResultService › publishResult › TC-RESULT-008: should transition Approved → Published
+
+    ValidationError: AssessmentType validation failed: defaultWeight: Path `defaultWeight` is required.
+
+      246 |     description: 'End of semester examination'
+      247 |   });
+    > 248 |   await assessmentType.save();
+          |   ^
+      249 |
+      250 |   const assessment = new Assessment({
+      251 |     courseOfferingId: offering._id,
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at createResultWithScores (tests/helpers/testHelpers.js:248:3)
+      at Object.<anonymous> (tests/unit/services/ResultService.test.js:86:7)
+
+  ● ResultService › publishResult › TC-RESULT-009: should emit result.published event
+
+    ValidationError: AssessmentType validation failed: defaultWeight: Path `defaultWeight` is required.
+
+      246 |     description: 'End of semester examination'
+      247 |   });
+    > 248 |   await assessmentType.save();
+          |   ^
+      249 |
+      250 |   const assessment = new Assessment({
+      251 |     courseOfferingId: offering._id,
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at createResultWithScores (tests/helpers/testHelpers.js:248:3)
+      at Object.<anonymous> (tests/unit/services/ResultService.test.js:97:7)
+
+PASS tests/unit/services/AuthService.test.js
+  AuthService
+    authenticate
+      ✓ TC-AUTH-001: should return user for valid credentials (491 ms)
+      ✓ TC-AUTH-002: should return null for invalid password (288 ms)
+      ✓ TC-AUTH-003: should return null for non-existent user (75 ms)
+      ✓ TC-AUTH-004: should throw error for suspended account (205 ms)
+      ✓ TC-AUTH-005: should update lastLogin on successful authentication (294 ms)
+      ✓ TC-AUTH-006: should return null for wrong login type (181 ms)
+      ✓ TC-AUTH-007: should return null for soft-deleted user (176 ms)
+    changePassword
+      ✓ TC-AUTH-008: should hash and save new password (490 ms)
+      ✓ TC-AUTH-009: should reject incorrect old password (290 ms)
+      ✓ TC-AUTH-010: should throw error for non-existent user (67 ms)
+
+PASS tests/unit/services/RiskService.test.js
+  RiskService
+    evaluateAcademicRisk
+      ✓ TC-RISK-001: should return High risk for CGPA below 1.5 (690 ms)
+      ✓ TC-RISK-002: should return Medium risk for CGPA between 1.5 and 1.99 (192 ms)
+      ✓ TC-RISK-003: should return Low risk for good academic standing (207 ms)
+      ✓ TC-RISK-004: should flag Medium risk for low attendance (187 ms)
+      ✓ TC-RISK-005: should return High risk for 3 or more failed courses (202 ms)
+      ✓ TC-RISK-006: should escalate risk with combined factors (192 ms)
+      ✓ TC-RISK-007: should not flag risk for null attendance percentage (174 ms)
+      ✓ TC-RISK-008: CGPA exactly 1.5 should be Medium not High (193 ms)
+      ✓ TC-RISK-009: CGPA exactly 2.0 should be Low (187 ms)
+    generateRiskWarning
+      ✓ TC-RISK-010: should create notification for academic risk warning (198 ms)
+      ✓ TC-RISK-011: should skip duplicate unread warning (202 ms)
+      ✓ TC-RISK-012: Medium risk warning should have High priority (192 ms)
+
+FAIL tests/unit/services/UserService.test.js
+  UserService
+    createUser
+      ✕ TC-USER-001: should create student user with hashed password and profile (487 ms)
+      ✓ TC-USER-002: should create lecturer with profile (199 ms)
+      ✕ TC-USER-003: should create HOD with profile (183 ms)
+      ✕ TC-USER-004: should use default password if none provided (209 ms)
+    softDeleteUser
+      ✕ TC-USER-005: should soft delete user and student profile (206 ms)
+      ✓ TC-USER-006: should throw for non-existent user (73 ms)
+    getUserProfile
+      ✕ TC-USER-007: should return correct profile by role (185 ms)
+
+  ● UserService › createUser › TC-USER-001: should create student user with hashed password and profile
+
+    ValidationError: StudentProfile validation failed: admissionYear: Path `admissionYear` is required.
+
+      21 |     if (role === 'Student') {
+      22 |       const profile = new StudentProfile({ ...profileData, userId: newUser._id });
+    > 23 |       await profile.save();
+         |       ^
+      24 |     } else if (role === 'Lecturer') {
+      25 |       const profile = new LecturerProfile({ ...profileData, userId: newUser._id });
+      26 |       await profile.save();
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at UserService.createUser (services/UserService.js:23:7)
+      at Object.<anonymous> (tests/unit/services/UserService.test.js:24:20)
+
+  ● UserService › createUser › TC-USER-003: should create HOD with profile
+
+    ValidationError: HodProfile validation failed: appointmentDate: Path `appointmentDate` is required.
+
+      27 |     } else if (role === 'HOD') {
+      28 |       const profile = new HodProfile({ ...profileData, userId: newUser._id });
+    > 29 |       await profile.save();
+         |       ^
+      30 |     }
+      31 |
+      32 |     return newUser;
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at UserService.createUser (services/UserService.js:29:7)
+      at Object.<anonymous> (tests/unit/services/UserService.test.js:47:20)
+
+  ● UserService › createUser › TC-USER-004: should use default password if none provided
+
+    ValidationError: HodProfile validation failed: appointmentDate: Path `appointmentDate` is required.
+
+      27 |     } else if (role === 'HOD') {
+      28 |       const profile = new HodProfile({ ...profileData, userId: newUser._id });
+    > 29 |       await profile.save();
+         |       ^
+      30 |     }
+      31 |
+      32 |     return newUser;
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at UserService.createUser (services/UserService.js:29:7)
+      at Object.<anonymous> (tests/unit/services/UserService.test.js:57:20)
+
+  ● UserService › softDeleteUser › TC-USER-005: should soft delete user and student profile
+
+    ValidationError: StudentProfile validation failed: admissionYear: Path `admissionYear` is required.
+
+      21 |     if (role === 'Student') {
+      22 |       const profile = new StudentProfile({ ...profileData, userId: newUser._id });
+    > 23 |       await profile.save();
+         |       ^
+      24 |     } else if (role === 'Lecturer') {
+      25 |       const profile = new LecturerProfile({ ...profileData, userId: newUser._id });
+      26 |       await profile.save();
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at UserService.createUser (services/UserService.js:23:7)
+      at Object.<anonymous> (tests/unit/services/UserService.test.js:69:20)
+
+  ● UserService › getUserProfile › TC-USER-007: should return correct profile by role
+
+    ValidationError: StudentProfile validation failed: admissionYear: Path `admissionYear` is required.
+
+      21 |     if (role === 'Student') {
+      22 |       const profile = new StudentProfile({ ...profileData, userId: newUser._id });
+    > 23 |       await profile.save();
+         |       ^
+      24 |     } else if (role === 'Lecturer') {
+      25 |       const profile = new LecturerProfile({ ...profileData, userId: newUser._id });
+      26 |       await profile.save();
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at UserService.createUser (services/UserService.js:23:7)
+      at Object.<anonymous> (tests/unit/services/UserService.test.js:88:20)
+
+  console.log
+    Updated Progress and Snapshot for student 6a5966ac3b568166cf8263d4
+
+      at ProgressService.log [as updateStudentProgress] (services/ProgressService.js:107:13)
+
+  console.log
+    Updated Progress and Snapshot for student 6a5966ac3b568166cf8263e5
+
+      at ProgressService.log [as updateStudentProgress] (services/ProgressService.js:107:13)
+
+  console.log
+    Updated Progress and Snapshot for student 6a5966ac3b568166cf8263fd
+
+      at ProgressService.log [as updateStudentProgress] (services/ProgressService.js:107:13)
+
+PASS tests/unit/services/ProgressService.test.js
+  ProgressService
+    updateStudentProgress
+      ✓ TC-PROG-001: should return early if student not found (370 ms)
+      ✓ TC-PROG-002: should create snapshot if none exists (406 ms)
+      ✓ TC-PROG-003: should calculate CGPA and credits from published results (538 ms)
+      ✓ TC-PROG-004: should flag risk for low CGPA (494 ms)
+    event listeners
+      ✓ TC-PROG-005: should have registered event listeners (139 ms)
+
+FAIL tests/unit/services/EnrollmentService.test.js
+  EnrollmentService
+    enrollStudent
+      ✕ TC-ENROLL-001: should create enrollment successfully (555 ms)
+      ✕ TC-ENROLL-002: should throw for non-existent student (349 ms)
+      ✓ TC-ENROLL-003: should throw for non-existent offering (307 ms)
+      ✕ TC-ENROLL-004: should reject course outside curriculum (345 ms)
+    dropEnrollment
+      ✕ TC-ENROLL-005: should set status to Dropped (326 ms)
+      ✓ TC-ENROLL-006: should throw for non-existent enrollment (321 ms)
+
+  ● EnrollmentService › enrollStudent › TC-ENROLL-001: should create enrollment successfully
+
+    MongoServerError: Transaction numbers are only allowed on a replica set member or mongos
+
+      10 |     session.startTransaction();
+      11 |     try {
+    > 12 |       const student = await StudentProfile.findOne({ userId: studentUserId, isDeleted: false }).session(session);
+         |                       ^
+      13 |       if (!student) throw new Error('Student not found');
+      14 |
+      15 |       const offering = await CourseOffering.findById(courseOfferingId).session(session);
+
+      at Connection.sendCommand (node_modules/mongoose/node_modules/mongodb/src/cmap/connection.ts:561:17)
+      at Connection.command (node_modules/mongoose/node_modules/mongodb/src/cmap/connection.ts:634:22)
+      at Server.command (node_modules/mongoose/node_modules/mongodb/src/sdam/server.ts:351:21)
+      at executeOperationWithRetries (node_modules/mongoose/node_modules/mongodb/src/operations/execute_operation.ts:266:24)
+      at executeOperation (node_modules/mongoose/node_modules/mongodb/src/operations/execute_operation.ts:127:12)
+      at FindCursor._initialize (node_modules/mongoose/node_modules/mongodb/src/cursor/find_cursor.ts:92:22)
+      at FindCursor.cursorInit (node_modules/mongoose/node_modules/mongodb/src/cursor/abstract_cursor.ts:917:21)
+      at FindCursor.fetchBatch (node_modules/mongoose/node_modules/mongodb/src/cursor/abstract_cursor.ts:955:7)
+      at FindCursor.next (node_modules/mongoose/node_modules/mongodb/src/cursor/abstract_cursor.ts:573:9)
+      at Collection.findOne (node_modules/mongoose/node_modules/mongodb/src/collection.ts:552:20)
+      at model.Query._findOne (node_modules/mongoose/lib/query.js:2773:15)
+      at maybeTracedQueryExec (node_modules/mongoose/lib/query.js:4801:65)
+      at EnrollmentService.enrollStudent (services/EnrollmentService.js:12:23)
+      at Object.<anonymous> (tests/unit/services/EnrollmentService.test.js:41:26)
+
+  ● EnrollmentService › enrollStudent › TC-ENROLL-002: should throw for non-existent student
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected substring: "Student not found"
+    Received message:   "Transaction numbers are only allowed on a replica set member or mongos"
+
+          10 |     session.startTransaction();
+          11 |     try {
+        > 12 |       const student = await StudentProfile.findOne({ userId: studentUserId, isDeleted: false }).session(session);
+             |                       ^
+          13 |       if (!student) throw new Error('Student not found');
+          14 |
+          15 |       const offering = await CourseOffering.findById(courseOfferingId).session(session);
+
+      at Connection.sendCommand (node_modules/mongoose/node_modules/mongodb/src/cmap/connection.ts:561:17)
+      at Connection.command (node_modules/mongoose/node_modules/mongodb/src/cmap/connection.ts:634:22)
+      at Server.command (node_modules/mongoose/node_modules/mongodb/src/sdam/server.ts:351:21)
+      at executeOperationWithRetries (node_modules/mongoose/node_modules/mongodb/src/operations/execute_operation.ts:266:24)
+      at executeOperation (node_modules/mongoose/node_modules/mongodb/src/operations/execute_operation.ts:127:12)
+      at FindCursor._initialize (node_modules/mongoose/node_modules/mongodb/src/cursor/find_cursor.ts:92:22)
+      at FindCursor.cursorInit (node_modules/mongoose/node_modules/mongodb/src/cursor/abstract_cursor.ts:917:21)
+      at FindCursor.fetchBatch (node_modules/mongoose/node_modules/mongodb/src/cursor/abstract_cursor.ts:955:7)
+      at FindCursor.next (node_modules/mongoose/node_modules/mongodb/src/cursor/abstract_cursor.ts:573:9)
+      at Collection.findOne (node_modules/mongoose/node_modules/mongodb/src/collection.ts:552:20)
+      at model.Query._findOne (node_modules/mongoose/lib/query.js:2773:15)
+      at maybeTracedQueryExec (node_modules/mongoose/lib/query.js:4801:65)
+      at EnrollmentService.enrollStudent (services/EnrollmentService.js:12:23)
+      at Object.<anonymous> (tests/unit/services/EnrollmentService.test.js:49:7)
+      at Object.toThrow (node_modules/expect/build/index.js:2155:20)
+      at Object.toThrow (tests/unit/services/EnrollmentService.test.js:49:83)
+
+  ● EnrollmentService › enrollStudent › TC-ENROLL-004: should reject course outside curriculum
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected substring: "not part of the student curriculum"
+    Received message:   "Transaction numbers are only allowed on a replica set member or mongos"
+
+          10 |     session.startTransaction();
+          11 |     try {
+        > 12 |       const student = await StudentProfile.findOne({ userId: studentUserId, isDeleted: false }).session(session);
+             |                       ^
+          13 |       if (!student) throw new Error('Student not found');
+          14 |
+          15 |       const offering = await CourseOffering.findById(courseOfferingId).session(session);
+
+      at Connection.sendCommand (node_modules/mongoose/node_modules/mongodb/src/cmap/connection.ts:561:17)
+      at Connection.command (node_modules/mongoose/node_modules/mongodb/src/cmap/connection.ts:634:22)
+      at Server.command (node_modules/mongoose/node_modules/mongodb/src/sdam/server.ts:351:21)
+      at executeOperationWithRetries (node_modules/mongoose/node_modules/mongodb/src/operations/execute_operation.ts:266:24)
+      at executeOperation (node_modules/mongoose/node_modules/mongodb/src/operations/execute_operation.ts:127:12)
+      at FindCursor._initialize (node_modules/mongoose/node_modules/mongodb/src/cursor/find_cursor.ts:92:22)
+      at FindCursor.cursorInit (node_modules/mongoose/node_modules/mongodb/src/cursor/abstract_cursor.ts:917:21)
+      at FindCursor.fetchBatch (node_modules/mongoose/node_modules/mongodb/src/cursor/abstract_cursor.ts:955:7)
+      at FindCursor.next (node_modules/mongoose/node_modules/mongodb/src/cursor/abstract_cursor.ts:573:9)
+      at Collection.findOne (node_modules/mongoose/node_modules/mongodb/src/collection.ts:552:20)
+      at model.Query._findOne (node_modules/mongoose/lib/query.js:2773:15)
+      at maybeTracedQueryExec (node_modules/mongoose/lib/query.js:4801:65)
+      at EnrollmentService.enrollStudent (services/EnrollmentService.js:12:23)
+      at Object.<anonymous> (tests/unit/services/EnrollmentService.test.js:62:7)
+      at Object.toThrow (node_modules/expect/build/index.js:2155:20)
+      at Object.toThrow (tests/unit/services/EnrollmentService.test.js:62:98)
+
+  ● EnrollmentService › dropEnrollment › TC-ENROLL-005: should set status to Dropped
+
+    MongoServerError: Transaction numbers are only allowed on a replica set member or mongos
+
+      10 |     session.startTransaction();
+      11 |     try {
+    > 12 |       const student = await StudentProfile.findOne({ userId: studentUserId, isDeleted: false }).session(session);
+         |                       ^
+      13 |       if (!student) throw new Error('Student not found');
+      14 |
+      15 |       const offering = await CourseOffering.findById(courseOfferingId).session(session);
+
+      at Connection.sendCommand (node_modules/mongoose/node_modules/mongodb/src/cmap/connection.ts:561:17)
+      at Connection.command (node_modules/mongoose/node_modules/mongodb/src/cmap/connection.ts:634:22)
+      at Server.command (node_modules/mongoose/node_modules/mongodb/src/sdam/server.ts:351:21)
+      at executeOperationWithRetries (node_modules/mongoose/node_modules/mongodb/src/operations/execute_operation.ts:266:24)
+      at executeOperation (node_modules/mongoose/node_modules/mongodb/src/operations/execute_operation.ts:127:12)
+      at FindCursor._initialize (node_modules/mongoose/node_modules/mongodb/src/cursor/find_cursor.ts:92:22)
+      at FindCursor.cursorInit (node_modules/mongoose/node_modules/mongodb/src/cursor/abstract_cursor.ts:917:21)
+      at FindCursor.fetchBatch (node_modules/mongoose/node_modules/mongodb/src/cursor/abstract_cursor.ts:955:7)
+      at FindCursor.next (node_modules/mongoose/node_modules/mongodb/src/cursor/abstract_cursor.ts:573:9)
+      at Collection.findOne (node_modules/mongoose/node_modules/mongodb/src/collection.ts:552:20)
+      at model.Query._findOne (node_modules/mongoose/lib/query.js:2773:15)
+      at maybeTracedQueryExec (node_modules/mongoose/lib/query.js:4801:65)
+      at EnrollmentService.enrollStudent (services/EnrollmentService.js:12:23)
+      at Object.<anonymous> (tests/unit/services/EnrollmentService.test.js:69:26)
+
+FAIL tests/unit/services/ImportService.test.js
+  ImportService
+    parseCSV
+      ✓ TC-IMPORT-001: should parse valid CSV data (254 ms)
+      ✓ TC-IMPORT-002: should handle empty CSV (85 ms)
+    validateAssessmentScores
+      ✓ TC-IMPORT-003: should identify invalid rows (82 ms)
+      ✓ TC-IMPORT-004: should validate correctly with existing students (218 ms)
+    importAssessmentScores
+      ✕ TC-IMPORT-005: should upsert scores within transaction (194 ms)
+
+  ● ImportService › importAssessmentScores › TC-IMPORT-005: should upsert scores within transaction
+
+    ValidationError: AssessmentType validation failed: defaultWeight: Path `defaultWeight` is required.
+
+      74 |       const student = await createStudentWithProfile(dept._id);
+      75 |       const assType = new AssessmentType({ name: 'Quiz' });
+    > 76 |       await assType.save();
+         |       ^
+      77 |       const assessment = new Assessment({ courseOfferingId: new mongoose.Types.ObjectId(), assessmentTypeId: assType._id, weight: 20, maximumScore: 100, dueDate: new Date() });
+      78 |       await assessment.save();
+      79 |
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at Object.<anonymous> (tests/unit/services/ImportService.test.js:76:7)
+
+PASS tests/unit/services/CreditService.test.js
+  CreditService
+    calculateCreditsEarned
+      ✓ TC-CREDIT-001: should sum credits only for passed results (3 ms)
+      ✓ TC-CREDIT-002: should return 0 for empty results (2 ms)
+      ✓ TC-CREDIT-003: should return 0 when all results fail (3 ms)
+      ✓ TC-CREDIT-004: should handle missing credit units with 0 fallback (2 ms)
+    calculateCreditsAttempted
+      ✓ TC-CREDIT-005: should sum all credits regardless of pass/fail (1 ms)
+      ✓ TC-CREDIT-006: should return 0 for empty results (1 ms)
+    calculateGraduationProgress
+      ✓ TC-CREDIT-007: should calculate correct graduation progress percentage (1 ms)
+      ✓ TC-CREDIT-008: should return 0 when total required credits is 0
+      ✓ TC-CREDIT-009: should return 100 when all credits earned (1 ms)
+      ✓ TC-CREDIT-010: should return 0 when no credits earned (1 ms)
+
+FAIL tests/unit/services/AssessmentService.test.js
+  AssessmentService
+    defineAssessment
+      ✕ TC-ASSESS-001: should create assessment when weight ≤ 100 (537 ms)
+      ✕ TC-ASSESS-002: should reject when total weight exceeds 100 (359 ms)
+      ✕ TC-ASSESS-003: should emit assessment.created event (335 ms)
+    recordScores
+      ✕ TC-ASSESS-004: should upsert student assessment records (348 ms)
+
+  ● AssessmentService › defineAssessment › TC-ASSESS-001: should create assessment when weight ≤ 100
+
+    ValidationError: AssessmentType validation failed: defaultWeight: Path `defaultWeight` is required.
+
+      23 |     chain = await createFullEnrollmentChain(dept._id, student.profile, lecturer.profile, course);
+      24 |     assType = new AssessmentType({ name: 'Exam', description: 'Final exam' });
+    > 25 |     await assType.save();
+         |     ^
+      26 |   });
+      27 |
+      28 |   describe('defineAssessment', () => {
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at Object.<anonymous> (tests/unit/services/AssessmentService.test.js:25:5)
+
+  ● AssessmentService › defineAssessment › TC-ASSESS-002: should reject when total weight exceeds 100
+
+    ValidationError: AssessmentType validation failed: defaultWeight: Path `defaultWeight` is required.
+
+      23 |     chain = await createFullEnrollmentChain(dept._id, student.profile, lecturer.profile, course);
+      24 |     assType = new AssessmentType({ name: 'Exam', description: 'Final exam' });
+    > 25 |     await assType.save();
+         |     ^
+      26 |   });
+      27 |
+      28 |   describe('defineAssessment', () => {
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at Object.<anonymous> (tests/unit/services/AssessmentService.test.js:25:5)
+
+  ● AssessmentService › defineAssessment › TC-ASSESS-003: should emit assessment.created event
+
+    ValidationError: AssessmentType validation failed: defaultWeight: Path `defaultWeight` is required.
+
+      23 |     chain = await createFullEnrollmentChain(dept._id, student.profile, lecturer.profile, course);
+      24 |     assType = new AssessmentType({ name: 'Exam', description: 'Final exam' });
+    > 25 |     await assType.save();
+         |     ^
+      26 |   });
+      27 |
+      28 |   describe('defineAssessment', () => {
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at Object.<anonymous> (tests/unit/services/AssessmentService.test.js:25:5)
+
+  ● AssessmentService › recordScores › TC-ASSESS-004: should upsert student assessment records
+
+    ValidationError: AssessmentType validation failed: defaultWeight: Path `defaultWeight` is required.
+
+      23 |     chain = await createFullEnrollmentChain(dept._id, student.profile, lecturer.profile, course);
+      24 |     assType = new AssessmentType({ name: 'Exam', description: 'Final exam' });
+    > 25 |     await assType.save();
+         |     ^
+      26 |   });
+      27 |
+      28 |   describe('defineAssessment', () => {
+
+      at model.validate (node_modules/mongoose/lib/document.js:2864:36)
+      at model.$__save (node_modules/mongoose/lib/model.js:399:7)
+      at maybeTracedSave (node_modules/mongoose/lib/model.js:675:7)
+      at Object.<anonymous> (tests/unit/services/AssessmentService.test.js:25:5)
+
+PASS tests/unit/middlewares/authMiddleware.test.js
+  authMiddleware
+    ensureAuthenticated
+      ✓ TC-AUTHMW-001: should call next for authenticated users (6 ms)
+      ✓ TC-AUTHMW-002: should return 401 JSON for unauthenticated API request (3 ms)
+      ✓ TC-AUTHMW-003: should redirect for unauthenticated browser request (4 ms)
+    ensureRole
+      ✓ TC-AUTHMW-004: should allow matching roles (4 ms)
+      ✓ TC-AUTHMW-005: should return 403 for mismatched role on API (2 ms)
+      ✓ TC-AUTHMW-006: should redirect to login if not authenticated (1 ms)
+
+PASS tests/unit/services/AttendanceService.test.js
+  AttendanceService
+    createSession
+      ✓ TC-ATTEND-001: should create attendance session (646 ms)
+    recordAttendance
+      ✓ TC-ATTEND-003: should create records (351 ms)
+      ✓ TC-ATTEND-004: should emit event (360 ms)
+
+PASS tests/unit/services/AuditService.test.js
+  AuditService
+    log
+      ✓ TC-AUDIT-001: should create audit log entry (957 ms)
+      ✓ TC-AUDIT-002: should not throw on logging failure (80 ms)
+      ✓ TC-AUDIT-003: should log with null user (79 ms)
+    getLogs
+      ✓ TC-AUDIT-004: should return paginated results (233 ms)
+      ✓ TC-AUDIT-005: should filter by action (205 ms)
+
+PASS tests/unit/services/ReportService.test.js
+  ReportService
+    generateTranscriptData
+      ✓ TC-REPORT-001: should throw for non-existent student (338 ms)
+      ✓ TC-REPORT-002: should return empty record for student with no results (243 ms)
+      ✓ TC-REPORT-003: should group results by session/semester (433 ms)
+
+PASS tests/unit/services/ClassificationService.test.js
+  ClassificationService
+    getActiveClassifications
+      ✓ TC-CLASS-001: should return active classifications sorted descending (281 ms)
+    determineClassification
+      ✓ TC-CLASS-002: CGPA 4.7 → First Class (110 ms)
+      ✓ TC-CLASS-003: CGPA 3.8 → Second Class Upper (102 ms)
+      ✓ TC-CLASS-004: CGPA 2.5 → Second Class Lower (104 ms)
+      ✓ TC-CLASS-005: CGPA 0.5 → Unclassified (104 ms)
+    getRemainingCGPAForNextClassification
+      ✓ TC-CLASS-006: should calculate remaining CGPA for next tier (109 ms)
+      ✓ TC-CLASS-007: should return 0 at highest classification (102 ms)
+
+  console.log
+    Registered cron job: TestJob with schedule 0 0 * * *
+
+      at SchedulerService.log [as registerJob] (services/SchedulerService.js:23:13)
+
+  console.log
+    Registered cron job: Job1 with schedule 0 0 * * *
+
+      at SchedulerService.log [as registerJob] (services/SchedulerService.js:23:13)
+
+  console.log
+    Registered cron job: Job2 with schedule 0 6 * * *
+
+      at SchedulerService.log [as registerJob] (services/SchedulerService.js:23:13)
+
+  console.log
+    Registered cron job: ArchiveExpiredNotifications with schedule 0 0 * * *
+
+      at SchedulerService.log [as registerJob] (services/SchedulerService.js:23:13)
+
+PASS tests/unit/services/SchedulerService.test.js
+  SchedulerService
+    registerJob
+      ✓ TC-SCHED-001: should add job to internal list (146 ms)
+      ✓ TC-SCHED-002: should register multiple jobs (6 ms)
+    init
+      ✓ TC-SCHED-003: should register archive notifications job (5 ms)
+
+PASS tests/unit/utils/ResponseHandler.test.js
+  ResponseHandler
+    success
+      ✓ TC-RESP-001: should return success JSON with status 200 (4 ms)
+      ✓ TC-RESP-002: should accept custom message and status (3 ms)
+    error
+      ✓ TC-RESP-003: should return error JSON with specified status (3 ms)
+      ✓ TC-RESP-004: should include error details (1 ms)
+
+PASS tests/unit/middlewares/validationMiddleware.test.js
+  validationMiddleware
+    ✓ TC-VALMW-001: should call next when no validation errors (3 ms)
+    ✓ TC-VALMW-002: should return 422 JSON for API requests with errors (4 ms)
+    ✓ TC-VALMW-003: should redirect back for browser requests with errors (2 ms)
+
+PASS tests/unit/utils/eventBus.test.js
+  EventBus
+    ✓ TC-EVENT-001: should be an EventEmitter2 instance (4 ms)
+    ✓ TC-EVENT-002: emit and on should work correctly (1 ms)
+    ✓ TC-EVENT-003: should support wildcard events (1 ms)
+
+Test Suites: 5 failed, 14 passed, 19 total
+Tests:       22 failed, 98 passed, 120 total
+Snapshots:   0 total
+Time:        38.341 s
+Ran all test suites matching tests/unit.

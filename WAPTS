@@ -1,0 +1,19 @@
+                                    Actors
+
+1. Admin: Responsible for creating departments, assigning heads (HODs), and monitoring the system.
+
+2. HOD: Responsible for accepting lecturers' request for sign-up, creating courses, assigning lecturers to courses, and monitoring analytics for overall class performance for each set.
+
+3. Lecturer: Responsible for uploading students' continuous assessment scores, examination scores, recording students' attendance.
+
+4. Student: View grades, GPA calculator, CGPA calculator, Attendance record, Assignment status, Academic progress dashboard, Download transcript, Receive notifications
+
+                                Workflow
+
+1. Admin - username&password (Can only be created manually by the dev) -> creates departments -> creates and assigns HODs for each department.
+
+2. HOD - email&password -> creates courses -> accepts lecturers' requests for creating an account -> assigns lecturers to courses.
+
+3. Lecturer - school issued email & platform generated password -> uploads student records (Assessment & Exams) -> Records students' attendance for each course.
+
+4. Student - reg. no. & password -> logs in -> automatically views the courses that have records of attendance, assessments and exams -> Accesses GPA & CGPA calculator -> Track CGPA Goals -> Downloads transcript

@@ -1,0 +1,96 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h2 class="fw-bold mb-1">Admin Dashboard</h2>
+    <p class="text-muted mb-0">System Overview</p>
+  </div>
+  <div>
+    <button class="btn btn-primary"><i class="fas fa-plus me-2"></i> Quick Action</button>
+  </div>
+</div>
+
+<div class="row g-4 mb-4">
+  <div class="col-md-3">
+    <div class="card card-hover h-100 border-0 shadow-sm">
+      <div class="card-body">
+        <h6 class="text-muted text-uppercase fw-bold mb-3">Total Students</h6>
+        <div class="d-flex align-items-center">
+          <div class="fs-2 fw-bold text-dark me-3"><%= totalStudents %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card card-hover h-100 border-0 shadow-sm">
+      <div class="card-body">
+        <h6 class="text-muted text-uppercase fw-bold mb-3">Active Lecturers</h6>
+        <div class="d-flex align-items-center">
+          <div class="fs-2 fw-bold text-dark me-3"><%= activeLecturers %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card card-hover h-100 border-0 shadow-sm">
+      <div class="card-body">
+        <h6 class="text-muted text-uppercase fw-bold mb-3">Departments</h6>
+        <div class="d-flex align-items-center">
+          <div class="fs-2 fw-bold text-dark me-3"><%= totalDepartments %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card card-hover h-100 border-0 shadow-sm">
+      <div class="card-body">
+        <h6 class="text-muted text-uppercase fw-bold mb-3">System Status</h6>
+        <div class="d-flex align-items-center">
+          <div class="fs-2 fw-bold text-success me-3">Active</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card border-0 shadow-sm">
+  <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+    <h5 class="fw-bold">Recent Audit Logs</h5>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive" style="max-height: 260px; overflow-y: auto;">
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th class="text-muted fw-bold">Date</th>
+            <th class="text-muted fw-bold">Action</th>
+            <th class="text-muted fw-bold">Resource</th>
+            <th class="text-muted fw-bold">User</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (recentLogs && recentLogs.length > 0) { %>
+            <% recentLogs.forEach(log => { %>
+              <tr>
+                <td><%= new Date(log.createdAt).toLocaleString() %></td>
+                <td><span class="badge bg-primary bg-opacity-10 text-primary text-uppercase"><%= log.action %></span></td>
+                <td><%= log.resource %></td>
+                <td>
+                  <strong>
+                    <% if (log.userId) { %>
+                      <%= log.userId.firstName %> <%= log.userId.lastName %> (<%= log.userId.loginIdentifier %>)
+                    <% } else { %>
+                      System / Anonymous
+                    <% } %>
+                  </strong>
+                </td>
+              </tr>
+            <% }) %>
+          <% } else { %>
+            <tr>
+              <td colspan="4" class="text-center text-muted py-4">No recent audit logs available.</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

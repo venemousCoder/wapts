@@ -1,0 +1,137 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h2 class="fw-bold mb-1">Record Attendance</h2>
+      <p class="text-muted">Track student attendance for your assigned courses.</p>
+    </div>
+  </div>
+
+  <% if (typeof success !== 'undefined' && success) { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <i class="fas fa-check-circle me-2"></i> Attendance recorded successfully.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <i class="fas fa-exclamation-circle me-2"></i> <%= error %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <form action="/lecturer/attendance" method="GET" class="card border-0 shadow-sm p-4">
+        <label for="courseOfferingId" class="form-label fw-bold">Select Course</label>
+        <div class="d-flex">
+          <select name="courseOfferingId" id="courseOfferingId" class="form-select me-2" required>
+            <option value="" disabled <%= !selectedOffering ? 'selected' : '' %>>Choose a course...</option>
+            <% assignedOfferings.forEach(offering => { %>
+              <option value="<%= offering._id %>" <%= selectedOffering && selectedOffering._id.toString() === offering._id.toString() ? 'selected' : '' %>>
+                <%= offering.courseId.code %> - <%= offering.courseId.title %> (<%= offering.semesterId.name %>)
+              </option>
+            <% }) %>
+          </select>
+          <button type="submit" class="btn btn-primary px-4">Load</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <% if (selectedOffering) { %>
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-header bg-white border-0 pt-4 pb-0">
+            <h5 class="fw-bold text-primary"><i class="fas fa-users me-2"></i> Enrolled Students</h5>
+            <p class="text-muted small mb-0"><%= enrolledStudents.length %> students enrolled in <%= selectedOffering.courseId.code %></p>
+          </div>
+          <div class="card-body">
+            <% if (enrolledStudents.length > 0) { %>
+              <form action="/lecturer/attendance" method="POST" id="attendanceForm">
+                <input type="hidden" name="courseOfferingId" value="<%= selectedOffering._id %>">
+                
+                <div class="row mb-4">
+                  <div class="col-md-4">
+                    <label for="week" class="form-label small fw-bold">Week Number</label>
+                    <input type="number" name="week" id="week" class="form-control" required min="1" max="15" value="<%= attendanceSessions.length + 1 %>">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="lectureDate" class="form-label small fw-bold">Lecture Date</label>
+                    <input type="date" name="lectureDate" id="lectureDate" class="form-control" required value="<%= new Date().toISOString().split('T')[0] %>">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="topic" class="form-label small fw-bold">Topic</label>
+                    <input type="text" name="topic" id="topic" class="form-control" placeholder="Optional">
+                  </div>
+                </div>
+
+                <div class="table-responsive">
+                  <table class="table table-hover align-middle border">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Student Name</th>
+                        <th>Identifier</th>
+                        <th class="text-center">Present</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% enrolledStudents.forEach((student, index) => { %>
+                        <tr>
+                          <td><%= student.userId.firstName %> <%= student.userId.lastName %></td>
+                          <td><span class="text-muted"><%= student.userId.loginIdentifier %></span></td>
+                          <td class="text-center">
+                            <input type="hidden" name="recordsData[<%= index %>][studentId]" value="<%= student._id %>">
+                            <input type="hidden" name="recordsData[<%= index %>][isPresent]" value="false">
+                            <input class="form-check-input fs-5" type="checkbox" name="recordsData[<%= index %>][isPresent]" value="true" checked>
+                          </td>
+                        </tr>
+                      <% }) %>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="d-flex justify-content-end mt-4">
+                  <button type="submit" class="btn btn-success px-4" onclick="this.disabled=true; this.innerHTML='<span class=\'spinner-border spinner-border-sm\' role=\'status\' aria-hidden=\'true\'></span> Submitting...'; document.getElementById('attendanceForm').submit();">
+                    <i class="fas fa-save me-2"></i> Save Attendance
+                  </button>
+                </div>
+              </form>
+            <% } else { %>
+              <div class="text-center py-5 text-muted">
+                <i class="fas fa-user-slash fa-3x mb-3 text-light"></i>
+                <p>No students enrolled in this course.</p>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-header bg-white border-0 pt-4 pb-0">
+            <h5 class="fw-bold"><i class="fas fa-history me-2"></i> Past Sessions</h5>
+          </div>
+          <div class="card-body">
+            <% if (attendanceSessions.length > 0) { %>
+              <ul class="list-group list-group-flush">
+                <% attendanceSessions.forEach(session => { %>
+                  <li class="list-group-item px-0 d-flex justify-content-between align-items-center border-bottom">
+                    <div>
+                      <span class="fw-bold">Week <%= session.week %></span>
+                      <br>
+                      <small class="text-muted"><%= new Date(session.lectureDate).toLocaleDateString() %></small>
+                    </div>
+                    <span class="badge bg-light text-dark"><%= session.topic || 'No topic' %></span>
+                  </li>
+                <% }) %>
+              </ul>
+            <% } else { %>
+              <p class="text-muted text-center py-4">No past sessions recorded.</p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% } %>
+</div>

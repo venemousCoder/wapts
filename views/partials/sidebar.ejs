@@ -1,0 +1,133 @@
+<div class="sidebar d-flex flex-column flex-shrink-0" id="sidebar">
+  <div class="sidebar-brand">
+    <h3><i class="fas fa-graduation-cap me-2"></i> WAPTS</h3>
+  </div>
+  <ul class="nav nav-pills flex-column mb-auto">
+    <% if (user.role === 'Admin') { %>
+      <li class="nav-item">
+        <a href="/admin/dashboard" class="nav-link <%= typeof path !== 'undefined' && path === '/admin/dashboard' ? 'active' : '' %>">
+          <i class="fas fa-home fw-bold"></i> <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/admin/users" class="nav-link <%= typeof path !== 'undefined' && path === '/admin/users' ? 'active' : '' %>">
+          <i class="fas fa-users fw-bold"></i> <span>Users</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/admin/departments" class="nav-link <%= typeof path !== 'undefined' && path === '/admin/departments' ? 'active' : '' %>">
+          <i class="fas fa-building fw-bold"></i> <span>Departments</span>
+        </a>
+
+        <a href="/admin/calendar" class="nav-link <%= typeof path !== 'undefined' && path === '/admin/calendar' ? 'active' : '' %>">
+          <i class="fas fa-calendar-alt fw-bold"></i> <span>Calendar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/admin/grades" class="nav-link <%= typeof path !== 'undefined' && path === '/admin/grades' ? 'active' : '' %>">
+          <i class="fas fa-sort-numeric-down fw-bold"></i> <span>Grades</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/admin/settings" class="nav-link <%= typeof path !== 'undefined' && path === '/admin/settings' ? 'active' : '' %>">
+          <i class="fas fa-cog fw-bold"></i> <span>Settings</span>
+        </a>
+      </li>
+    <% } else if (user.role === 'HOD') { %>
+      <li class="nav-item">
+        <a href="/hod/dashboard" class="nav-link <%= typeof path !== 'undefined' && path === '/hod/dashboard' ? 'active' : '' %>">
+          <i class="fas fa-home fw-bold"></i> <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/hod/coordinators" class="nav-link <%= typeof path !== 'undefined' && path === '/hod/coordinators' ? 'active' : '' %>">
+          <i class="fas fa-user-tie fw-bold"></i> <span>Level Coordinators</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/hod/lecturer-requests" class="nav-link <%= typeof path !== 'undefined' && path === '/hod/lecturer-requests' ? 'active' : '' %>">
+          <i class="fas fa-chalkboard-teacher fw-bold"></i> <span>Lecturer Requests</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/hod/courses" class="nav-link <%= typeof path !== 'undefined' && path === '/hod/courses' ? 'active' : '' %>">
+          <i class="fas fa-book fw-bold"></i> <span>Courses</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/hod/offerings" class="nav-link <%= typeof path !== 'undefined' && path === '/hod/offerings' ? 'active' : '' %>">
+          <i class="fas fa-chalkboard fw-bold"></i> <span>Course Offerings</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/hod/results/review" class="nav-link <%= typeof path !== 'undefined' && path === '/hod/results/review' ? 'active' : '' %>">
+          <i class="fas fa-check-double fw-bold"></i> <span>Review Results</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/hod/analytics" class="nav-link <%= typeof path !== 'undefined' && path === '/hod/analytics' ? 'active' : '' %>">
+          <i class="fas fa-chart-line fw-bold"></i> <span>Analytics</span>
+        </a>
+      </li>
+    <% } else if (user.role === 'Lecturer') { %>
+      <li class="nav-item">
+        <a href="/lecturer/dashboard" class="nav-link <%= typeof path !== 'undefined' && path === '/lecturer/dashboard' ? 'active' : '' %>">
+          <i class="fas fa-home fw-bold"></i> <span>Dashboard</span>
+        </a>
+      </li>
+      <% if (typeof lecturerProfile !== 'undefined' && lecturerProfile && lecturerProfile.responsibilities && lecturerProfile.responsibilities.includes('LEVEL_COORDINATOR')) { %>
+      <li class="nav-item">
+        <a href="/lecturer/students" class="nav-link <%= typeof path !== 'undefined' && path === '/lecturer/students' ? 'active' : '' %>">
+          <i class="fas fa-user-graduate fw-bold"></i> <span>Student Management</span>
+        </a>
+      </li>
+      <% } %>
+      <li class="nav-item">
+        <a href="/lecturer/courses" class="nav-link <%= typeof path !== 'undefined' && path === '/lecturer/courses' ? 'active' : '' %>">
+          <i class="fas fa-book-open fw-bold"></i> <span>My Courses</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/lecturer/attendance" class="nav-link <%= typeof path !== 'undefined' && path === '/lecturer/attendance' ? 'active' : '' %>">
+          <i class="fas fa-clipboard-list fw-bold"></i> <span>Attendance</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/lecturer/assessments" class="nav-link <%= typeof path !== 'undefined' && path === '/lecturer/assessments' ? 'active' : '' %>">
+          <i class="fas fa-tasks fw-bold"></i> <span>Assessments</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/lecturer/results" class="nav-link <%= typeof path !== 'undefined' && path === '/lecturer/results' ? 'active' : '' %>">
+          <i class="fas fa-poll fw-bold"></i> <span>Results</span>
+        </a>
+      </li>
+    <% } else if (user.role === 'Student') { %>
+      <li class="nav-item">
+        <a href="/student/dashboard" class="nav-link <%= typeof path !== 'undefined' && path === '/student/dashboard' ? 'active' : '' %>">
+          <i class="fas fa-home fw-bold"></i> <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/student/courses" class="nav-link <%= typeof path !== 'undefined' && path === '/student/courses' ? 'active' : '' %>">
+          <i class="fas fa-book-reader fw-bold"></i> <span>Courses</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/student/attendance" class="nav-link <%= typeof path !== 'undefined' && path === '/student/attendance' ? 'active' : '' %>">
+          <i class="fas fa-clipboard-user fw-bold"></i> <span>Attendance</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/student/results" class="nav-link <%= typeof path !== 'undefined' && path === '/student/results' ? 'active' : '' %>">
+          <i class="fas fa-award fw-bold"></i> <span>Results</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/student/transcript" class="nav-link <%= typeof path !== 'undefined' && path === '/student/transcript' ? 'active' : '' %>">
+          <i class="fas fa-file-alt fw-bold"></i> <span>Transcript</span>
+        </a>
+      </li>
+    <% } %>
+  </ul>
+</div>

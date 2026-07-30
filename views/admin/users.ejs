@@ -1,0 +1,355 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+      <div>
+        <h2 class="fw-bold mb-1">Users Management</h2>
+        <p class="text-muted">Manage system users across all roles.</p>
+      </div>
+      <button class="btn btn-primary px-4 rounded-pill shadow-sm" data-bs-toggle="modal" data-bs-target="#createUserModal">
+        <i class="fas fa-user-plus me-2"></i> Add User
+      </button>
+    </div>
+  </div>
+
+  <% if (typeof success !== 'undefined' && success) { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <i class="fas fa-check-circle me-2"></i> Action completed successfully.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <i class="fas fa-exclamation-circle me-2"></i> <%= error %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+
+  <div class="card border-0 shadow-sm">
+    <div class="card-body">
+      <form action="/admin/users/bulk-action" method="POST" id="bulkActionForm">
+        <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="selectAllUsers">
+            <label class="form-check-label fw-bold" for="selectAllUsers">Select All</label>
+          </div>
+          <div>
+            <button type="submit" name="action" value="restore" class="btn btn-sm btn-outline-success px-3 rounded-pill me-2">
+              <i class="fas fa-undo me-1"></i> Restore Selected
+            </button>
+            <button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger px-3 rounded-pill">
+              <i class="fas fa-trash me-1"></i> Delete Selected
+            </button>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th width="40"></th>
+                <th>Identifier</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Login Type</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (users && users.length > 0) { %>
+                <% users.forEach(user => { %>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input user-checkbox" type="checkbox" name="userIds[]" value="<%= user._id %>">
+                      </div>
+                    </td>
+                    <td class="fw-medium"><%= user.loginIdentifier %></td>
+                    <td><%= user.firstName %> <%= user.lastName %></td>
+                    <td>
+                      <% let roleClass = 'secondary';
+                         if(user.role === 'Admin') roleClass = 'danger';
+                         if(user.role === 'HOD') roleClass = 'primary';
+                         if(user.role === 'Lecturer') roleClass = 'info';
+                         if(user.role === 'Student') roleClass = 'success';
+                      %>
+                      <span class="badge bg-<%= roleClass %> bg-opacity-10 text-<%= roleClass %> px-2 py-1"><%= user.role %></span>
+                    </td>
+                    <td><span class="text-muted small"><%= user.loginType %></span></td>
+                    <td>
+                      <span class="badge bg-<%= user.isDeleted ? 'danger' : 'success' %> bg-opacity-10 text-<%= user.isDeleted ? 'danger' : 'success' %> px-2 py-1">
+                        <%= user.isDeleted ? 'Inactive' : 'Active' %>
+                      </span>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-light text-primary me-1" data-bs-toggle="modal" data-bs-target="#editUserModal<%= user._id %>" title="Edit User">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button type="button" class="btn btn-sm btn-light <%= user.isDeleted ? 'text-success' : 'text-danger' %>" onclick="submitSingleUserAction('<%= user._id %>', '<%= user.isDeleted ? 'restore' : 'delete' %>')" title="<%= user.isDeleted ? 'Restore' : 'Delete' %>">
+                        <i class="fas <%= user.isDeleted ? 'fa-undo' : 'fa-trash' %>"></i>
+                      </button>
+                    </td>
+                  </tr>
+
+                <!-- Edit User Modal -->
+                <div class="modal fade" id="editUserModal<%= user._id %>" tabindex="-1" aria-labelledby="editUserModalLabel<%= user._id %>" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <form action="/admin/users/<%= user._id %>/edit" method="POST">
+                      <div class="modal-content border-0 shadow">
+                        <div class="modal-header border-0 pb-0">
+                          <h5 class="modal-title fw-bold" id="editUserModalLabel<%= user._id %>">Edit User: <%= user.firstName %> <%= user.lastName %></h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="mb-3">
+                            <label class="form-label small fw-bold">Login Identifier</label>
+                            <input type="text" name="loginIdentifier" class="form-control" required value="<%= user.loginIdentifier %>">
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label small fw-bold">First Name</label>
+                            <input type="text" name="firstName" class="form-control" required value="<%= user.firstName %>">
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label small fw-bold">Last Name</label>
+                            <input type="text" name="lastName" class="form-control" required value="<%= user.lastName %>">
+                          </div>
+                          <div class="accordion mt-4" id="advancedSettingsAccordion<%= user._id %>">
+                            <div class="accordion-item border-0 shadow-sm">
+                              <h2 class="accordion-header" id="heading<%= user._id %>">
+                                <button class="accordion-button collapsed fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= user._id %>" aria-expanded="false" aria-controls="collapse<%= user._id %>">
+                                  <i class="fas fa-cog me-2 text-muted"></i> Advanced Settings (Profile)
+                                </button>
+                              </h2>
+                              <div id="collapse<%= user._id %>" class="accordion-collapse collapse" aria-labelledby="heading<%= user._id %>" data-bs-parent="#advancedSettingsAccordion<%= user._id %>">
+                                <div class="accordion-body bg-light rounded-bottom">
+                                  
+                                  <% if (user.role === 'Student' || user.role === 'Lecturer' || user.role === 'HOD') { %>
+                                    <div class="mb-3">
+                                      <label class="form-label small fw-bold">Department</label>
+                                      <select name="profile_departmentId" class="form-select">
+                                        <option value="">Keep current department</option>
+                                        <% if (typeof departments !== 'undefined' && departments) { %>
+                                          <% departments.forEach(dept => { %>
+                                            <option value="<%= dept._id %>" <%= user.profile && user.profile.departmentId && user.profile.departmentId.toString() === dept._id.toString() ? 'selected' : '' %>><%= dept.name %></option>
+                                          <% }) %>
+                                        <% } %>
+                                      </select>
+                                    </div>
+                                  <% } %>
+
+                                  <% if (user.role === 'Student') { %>
+                                    <div class="mb-3">
+                                      <label class="form-label small fw-bold">Level</label>
+                                      <select name="profile_level" class="form-select">
+                                        <option value="100" <%= user.profile && user.profile.level === 100 ? 'selected' : '' %>>100 Level</option>
+                                        <option value="200" <%= user.profile && user.profile.level === 200 ? 'selected' : '' %>>200 Level</option>
+                                        <option value="300" <%= user.profile && user.profile.level === 300 ? 'selected' : '' %>>300 Level</option>
+                                        <option value="400" <%= user.profile && user.profile.level === 400 ? 'selected' : '' %>>400 Level</option>
+                                        <option value="500" <%= user.profile && user.profile.level === 500 ? 'selected' : '' %>>500 Level</option>
+                                      </select>
+                                    </div>
+                                    <div class="mb-3">
+                                      <label class="form-label small fw-bold">Admission Year</label>
+                                      <input type="text" name="profile_admissionYear" class="form-control" value="<%= user.profile ? user.profile.admissionYear : '' %>">
+                                    </div>
+                                  <% } %>
+
+                                  <% if (user.role === 'HOD') { %>
+                                    <div class="mb-3">
+                                      <label class="form-label small fw-bold">Appointment Date</label>
+                                      <input type="date" name="profile_appointmentDate" class="form-control" value="<%= user.profile && user.profile.appointmentDate ? user.profile.appointmentDate.toISOString().split('T')[0] : '' %>">
+                                    </div>
+                                  <% } %>
+
+                                  <% if (user.role === 'Admin') { %>
+                                    <p class="text-muted small mb-0">No advanced profile settings required for Admin role.</p>
+                                  <% } %>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer border-0 pt-0">
+                          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                          <button type="submit" class="btn btn-primary px-4" onclick="this.disabled=true; this.innerHTML='Saving...'; this.form.submit();">Save Changes</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              <% }) %>
+            <% } else { %>
+              <tr>
+                <td colspan="7" class="text-center py-4 text-muted">No users found in the system.</td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<form id="singleActionForm" action="/admin/users/bulk-action" method="POST" class="d-none">
+  <input type="hidden" name="action" id="singleActionType">
+  <input type="hidden" name="userIds[]" id="singleActionUserId">
+</form>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const selectAll = document.getElementById('selectAllUsers');
+    const checkboxes = document.querySelectorAll('.user-checkbox');
+    
+    if (selectAll) {
+      selectAll.addEventListener('change', function() {
+        checkboxes.forEach(cb => cb.checked = selectAll.checked);
+      });
+    }
+    
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', function() {
+        if (!this.checked) selectAll.checked = false;
+        else if (document.querySelectorAll('.user-checkbox:checked').length === checkboxes.length) {
+          selectAll.checked = true;
+        }
+      });
+    });
+  });
+
+  function submitSingleUserAction(userId, action) {
+    document.getElementById('singleActionType').value = action;
+    document.getElementById('singleActionUserId').value = userId;
+    document.getElementById('singleActionForm').submit();
+  }
+</script>
+
+<!-- Create User Modal -->
+<div class="modal fade" id="createUserModal" tabindex="-1" aria-labelledby="createUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <form action="/admin/users" method="POST" id="createUserForm">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold" id="createUserModalLabel">Register New User</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label small fw-bold">Login Identifier</label>
+              <input type="text" name="loginIdentifier" class="form-control" required placeholder="Email, Reg No, or Username">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small fw-bold">Login Type</label>
+              <select name="loginType" class="form-select" required>
+                <option value="INSTITUTIONAL_EMAIL">Institutional Email</option>
+                <option value="REG_NUMBER">Registration Number</option>
+                <option value="ADMIN_USERNAME">Admin Username</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small fw-bold">First Name</label>
+              <input type="text" name="firstName" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small fw-bold">Last Name</label>
+              <input type="text" name="lastName" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small fw-bold">Password</label>
+              <input type="password" name="password" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small fw-bold">Role</label>
+              <select name="role" class="form-select" required onchange="toggleRoleFields(this.value)">
+                <option value="HOD">HOD</option>
+                <option value="Admin">Admin</option>
+              </select>
+            </div>
+            <!-- Additional profile fields dynamically based on role -->
+            <div id="dynamicFieldsContainer" class="col-12 mt-3 pt-3 border-top">
+              <div class="row g-3">
+                <!-- Department Field (For Student, Lecturer, HOD) -->
+                <div class="col-md-6 d-none" id="departmentFieldGroup">
+                  <label class="form-label small fw-bold">Department</label>
+                  <select name="departmentId" id="departmentSelect" class="form-select">
+                    <option value="" disabled selected>Select Department...</option>
+                    <% if (typeof departments !== 'undefined' && departments) { %>
+                      <% departments.forEach(dept => { %>
+                        <option value="<%= dept._id %>"><%= dept.name %></option>
+                      <% }) %>
+                    <% } %>
+                  </select>
+                </div>
+                
+
+                <!-- HOD Specific Fields -->
+                <div class="col-md-6 d-none hod-field">
+                  <label class="form-label small fw-bold">Appointment Date</label>
+                  <input type="date" name="appointmentDate" class="form-control">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary px-4" onclick="this.disabled=true; this.innerHTML='Creating...'; this.form.submit();">Create User</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function toggleRoleFields(role) {
+    const deptField = document.getElementById('departmentFieldGroup');
+    const deptSelect = document.getElementById('departmentSelect');
+    const studentFields = document.querySelectorAll('.student-field');
+    const hodFields = document.querySelectorAll('.hod-field');
+    
+    if (!deptField) return;
+    
+    // Hide everything and remove required attribute
+    deptField.classList.add('d-none');
+    if (deptSelect) deptSelect.required = false;
+    
+    studentFields.forEach(el => {
+      el.classList.add('d-none');
+      const inputs = el.querySelectorAll('input, select');
+      inputs.forEach(i => i.required = false);
+    });
+    
+    hodFields.forEach(el => {
+      el.classList.add('d-none');
+      const inputs = el.querySelectorAll('input, select');
+      inputs.forEach(i => i.required = false);
+    });
+    
+    if (role === 'Student' || role === 'Lecturer' || role === 'HOD') {
+      deptField.classList.remove('d-none');
+      if (deptSelect) deptSelect.required = true;
+    }
+    
+    if (role === 'Student') {
+      studentFields.forEach(el => {
+        el.classList.remove('d-none');
+        const inputs = el.querySelectorAll('input, select');
+        inputs.forEach(i => i.required = true);
+      });
+    } else if (role === 'HOD') {
+      hodFields.forEach(el => {
+        el.classList.remove('d-none');
+        const inputs = el.querySelectorAll('input, select');
+        inputs.forEach(i => i.required = true);
+      });
+    }
+  }
+  
+  // Initialize fields on load
+  document.addEventListener('DOMContentLoaded', () => {
+    const roleSelect = document.querySelector('select[name="role"]');
+    if (roleSelect) {
+      toggleRoleFields(roleSelect.value);
+    }
+  });
+</script>

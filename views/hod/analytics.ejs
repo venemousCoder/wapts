@@ -1,0 +1,102 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h2 class="fw-bold mb-1">Department Analytics</h2>
+      <p class="text-muted">Overview of departmental performance, course statistics, and student success rates.</p>
+    </div>
+  </div>
+
+  <div class="row g-4 mb-4">
+    <!-- Performance Summary Card -->
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm h-100 bg-primary text-white">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="fw-bold mb-0 text-white-50">Overall Pass Rate</h6>
+            <i class="fas fa-chart-pie fa-2x opacity-50"></i>
+          </div>
+          <h2 class="fw-bold display-4 mb-1"><%= passRate %>%</h2>
+          <p class="mb-0 text-white-50 small"><i class="fas fa-arrow-up me-1"></i> Based on graded results</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Active Courses Card -->
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="fw-bold mb-0 text-muted">Active Courses</h6>
+            <i class="fas fa-book-open fa-2x text-info opacity-50"></i>
+          </div>
+          <h2 class="fw-bold display-4 mb-1 text-dark"><%= activeCourses %></h2>
+          <p class="mb-0 text-muted small">Active courses in department</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Top Performing Course Card -->
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="fw-bold mb-0 text-muted">Top Course</h6>
+            <i class="fas fa-trophy fa-2x text-warning opacity-50"></i>
+          </div>
+          <h3 class="fw-bold mb-1 text-dark"><%= topCourse.code %></h3>
+          <p class="mb-0 text-muted small"><%= topCourse.rate %>% Pass Rate (<%= topCourse.title %>)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <!-- Grade Distribution Chart Placeholder -->
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-white border-0 pt-4 pb-2 d-flex justify-content-between align-items-center">
+          <h5 class="fw-bold text-primary mb-0"><i class="fas fa-chart-bar me-2"></i> Grade Distribution</h5>
+          <select class="form-select form-select-sm w-auto">
+            <option>Current Semester</option>
+            <option>Previous Semester</option>
+            <option>All Time</option>
+          </select>
+        </div>
+        <div class="card-body d-flex justify-content-center align-items-center" style="min-height: 300px;">
+          <div class="text-center text-muted">
+            <i class="fas fa-chart-area fa-4x mb-3 opacity-25"></i>
+            <p>Chart rendering requires Chart.js integration.<br>Grade data will be visualized here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Department Notifications/Alerts -->
+    <div class="col-lg-4">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-white border-0 pt-4 pb-2">
+          <h5 class="fw-bold text-danger mb-0"><i class="fas fa-exclamation-triangle me-2"></i> Action Required</h5>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush border-0">
+            <% if (alerts && alerts.length > 0) { %>
+              <% alerts.forEach(alert => { %>
+                <li class="list-group-item px-0 border-0 mb-3">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1 fw-bold"><%= alert.title %></h6>
+                    <small class="<%= alert.severity %>"><i class="fas fa-circle ms-2" style="font-size: 8px;"></i></small>
+                  </div>
+                  <p class="mb-1 small text-muted"><%= alert.message %></p>
+                </li>
+              <% }) %>
+            <% } else { %>
+              <li class="list-group-item px-0 border-0 mb-3">
+                <p class="mb-1 small text-muted">No alerts at this time.</p>
+              </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

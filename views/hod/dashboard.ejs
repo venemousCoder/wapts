@@ -1,0 +1,97 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h2 class="fw-bold mb-1">HOD Dashboard</h2>
+    <p class="text-muted mb-0">Department Overview & Approvals</p>
+  </div>
+  <div>
+    <button class="btn btn-primary"><i class="fas fa-file-export me-2"></i> Export Report</button>
+  </div>
+</div>
+
+<div class="row g-4 mb-4">
+  <div class="col-md-3">
+    <div class="card card-hover h-100 border-0 shadow-sm border-start border-warning border-4">
+      <div class="card-body">
+        <h6 class="text-muted text-uppercase fw-bold mb-3">Pending Approvals</h6>
+        <div class="d-flex align-items-center">
+          <div class="fs-2 fw-bold text-warning me-3"><%= pendingApprovals %></div>
+        </div>
+        <p class="text-muted small mb-0 mt-2">Results awaiting review</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card card-hover h-100 border-0 shadow-sm border-start border-primary border-4">
+      <div class="card-body">
+        <h6 class="text-muted text-uppercase fw-bold mb-3">Active Courses</h6>
+        <div class="d-flex align-items-center">
+          <div class="fs-2 fw-bold text-dark me-3"><%= activeCourses %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card card-hover h-100 border-0 shadow-sm border-start border-success border-4">
+      <div class="card-body">
+        <h6 class="text-muted text-uppercase fw-bold mb-3">Total Students</h6>
+        <div class="d-flex align-items-center">
+          <div class="fs-2 fw-bold text-dark me-3"><%= totalStudents %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card card-hover h-100 border-0 shadow-sm border-start border-secondary border-4">
+      <div class="card-body">
+        <h6 class="text-muted text-uppercase fw-bold mb-3">Staff Count</h6>
+        <div class="d-flex align-items-center">
+          <div class="fs-2 fw-bold text-dark me-3"><%= staffCount %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card border-0 shadow-sm">
+  <div class="card-header bg-white border-bottom-0 pt-4 pb-0 d-flex justify-content-between align-items-center">
+    <h5 class="fw-bold mb-0">Recent Result Submissions</h5>
+    <button class="btn btn-outline-primary btn-sm">View All</button>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive" style="max-height: 260px; overflow-y: auto;">
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th class="text-muted fw-bold">Course</th>
+            <th class="text-muted fw-bold">Lecturer</th>
+            <th class="text-muted fw-bold">Submitted Date</th>
+            <th class="text-muted fw-bold">Status</th>
+            <th class="text-muted fw-bold">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (recentSubmissions && recentSubmissions.length > 0) { %>
+            <% recentSubmissions.forEach(sub => { 
+                const course = sub.enrollmentId.courseOfferingId.courseId;
+                const lecturerUser = sub.enrollmentId.courseOfferingId.lecturerId.userId;
+            %>
+              <tr>
+                <td><strong><%= course.code %> - <%= course.title %></strong></td>
+                <td><%= lecturerUser.firstName %> <%= lecturerUser.lastName %></td>
+                <td><%= new Date(sub.updatedAt).toLocaleString() %></td>
+                <td><span class="badge bg-warning-subtle text-warning"><%= sub.status %></span></td>
+                <td>
+                  <a href="/hod/results/review" class="btn btn-success btn-sm fw-bold">Review</a>
+                </td>
+              </tr>
+            <% }) %>
+          <% } else { %>
+            <tr>
+              <td colspan="5" class="text-center py-4 text-muted">No pending submissions.</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

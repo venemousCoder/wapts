@@ -1,0 +1,80 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h2 class="fw-bold mb-1">Attendance Records</h2>
+      <p class="text-muted">Review your attendance history for all registered courses.</p>
+    </div>
+  </div>
+
+  <% if (Object.keys(attendanceByCourse).length > 0) { %>
+    <div class="row g-4">
+      <% Object.values(attendanceByCourse).forEach(data => { %>
+        <% const percentage = data.totalSessions > 0 ? Math.round((data.presentCount / data.totalSessions) * 100) : 0; %>
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-header bg-white border-0 pt-4 pb-2">
+              <h5 class="fw-bold mb-0"><%= data.course.code %></h5>
+              <small class="text-muted"><%= data.course.title %></small>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex align-items-center mb-4">
+                <div class="me-3">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; background-color: <%= percentage >= 75 ? '#d1e7dd' : '#f8d7da' %>;">
+                    <span class="fs-4 fw-bold text-<%= percentage >= 75 ? 'success' : 'danger' %>"><%= percentage %>%</span>
+                  </div>
+                </div>
+                <div>
+                  <h6 class="mb-0">Total Sessions: <%= data.totalSessions %></h6>
+                  <p class="text-muted small mb-0">Present: <%= data.presentCount %> | Absent: <%= data.totalSessions - data.presentCount %></p>
+                </div>
+              </div>
+              
+              <!-- Accordion for detailed sessions -->
+              <div class="accordion accordion-flush flex-grow-1" id="accordion-<%= data.course.code %>">
+                <div class="accordion-item border rounded">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-<%= data.course.code %>">
+                      View Detailed Sessions
+                    </button>
+                  </h2>
+                  <div id="flush-collapse-<%= data.course.code %>" class="accordion-collapse collapse" data-bs-parent="#accordion-<%= data.course.code %>">
+                    <div class="accordion-body p-0">
+                      <ul class="list-group list-group-flush small">
+                        <% data.sessions.sort((a,b) => a.week - b.week).forEach(session => { %>
+                          <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-3 py-2 border-bottom">
+                            <div>
+                              <span class="fw-medium">Wk <%= session.week %></span>
+                              <span class="text-muted ms-2"><%= new Date(session.date).toLocaleDateString() %></span>
+                              <br>
+                              <span class="text-muted" style="font-size: 0.8em;"><%= session.topic || 'No topic specified' %></span>
+                            </div>
+                            <span class="badge bg-<%= session.isPresent ? 'success' : 'danger' %> bg-opacity-10 text-<%= session.isPresent ? 'success' : 'danger' %> rounded-pill">
+                              <%= session.isPresent ? 'Present' : 'Absent' %>
+                            </span>
+                          </li>
+                        <% }) %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <div class="row">
+      <div class="col-12">
+        <div class="card border-0 shadow-sm text-center py-5">
+          <div class="card-body">
+            <i class="fas fa-calendar-times fa-4x text-light mb-3"></i>
+            <h4 class="text-muted">No Records Found</h4>
+            <p class="text-muted mb-0">Your lecturers have not recorded any attendance for you yet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% } %>
+</div>

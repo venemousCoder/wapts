@@ -1,0 +1,63 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h2 class="fw-bold mb-1">My Courses</h2>
+      <p class="text-muted">View all your assigned course offerings for the active semester.</p>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <% if (assignedOfferings && assignedOfferings.length > 0) { %>
+      <% assignedOfferings.forEach(offering => { %>
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <h5 class="fw-bold text-primary mb-0"><%= offering.courseId.code %></h5>
+                <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-1"><%= offering.status %></span>
+              </div>
+              <h6 class="fw-bold mb-1"><%= offering.courseId.title %></h6>
+              <% if (offering.courseId.departmentId) { %>
+                <div class="small text-muted mb-3">
+                  Dept: <%= offering.courseId.departmentId.name %>
+                  <% if (typeof profile !== 'undefined' && profile.departmentId && profile.departmentId.toString() !== offering.courseId.departmentId._id.toString()) { %>
+                    <span class="badge bg-info ms-1">External</span>
+                  <% } %>
+                </div>
+              <% } else { %>
+                <div class="mb-3"></div>
+              <% } %>
+              
+              <ul class="list-unstyled mb-4 small text-muted">
+                <li class="mb-2"><i class="fas fa-calendar-alt me-2"></i> Semester: <%= offering.semesterId ? offering.semesterId.name : 'N/A' %></li>
+                <li class="mb-2"><i class="fas fa-layer-group me-2"></i> Capacity: <%= offering.capacity %> Students</li>
+              </ul>
+              
+              <div class="d-grid gap-2">
+                <a href="/lecturer/attendance?courseOfferingId=<%= offering._id %>" class="btn btn-outline-primary btn-sm rounded-pill">
+                  <i class="fas fa-clipboard-list me-1"></i> Manage Attendance
+                </a>
+                <a href="/lecturer/assessments?courseOfferingId=<%= offering._id %>" class="btn btn-outline-info btn-sm rounded-pill">
+                  <i class="fas fa-tasks me-1"></i> Assessments
+                </a>
+                <a href="/lecturer/results?courseOfferingId=<%= offering._id %>" class="btn btn-outline-success btn-sm rounded-pill">
+                  <i class="fas fa-poll me-1"></i> Process Results
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <div class="col-12">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body text-center py-5">
+            <i class="fas fa-book-open fa-4x text-muted opacity-50 mb-3"></i>
+            <h4 class="fw-bold">No Assigned Courses</h4>
+            <p class="text-muted mb-0">You have not been assigned to any course offerings yet.</p>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</div>

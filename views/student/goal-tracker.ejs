@@ -1,0 +1,179 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="col-12">
+    <h2 class="fw-bold mb-1">Academic Goal Tracker</h2>
+    <p class="text-muted mb-0">Set goals, track your progress, and get AI-driven projections.</p>
+  </div>
+</div>
+
+<% if (typeof success !== 'undefined' && success) { %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="fas fa-check-circle me-2"></i> <%= success %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } %>
+<% if (typeof error !== 'undefined' && error) { %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <i class="fas fa-exclamation-circle me-2"></i> <%= error %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } %>
+
+<div class="row g-4">
+  <div class="col-md-8">
+    <!-- Goal Overview Card -->
+    <div class="card border-0 shadow-sm mb-4">
+      <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+        <h5 class="fw-bold text-primary"><i class="fas fa-bullseye me-2"></i> Goal Overview</h5>
+      </div>
+      <div class="card-body">
+        <div class="row text-center mb-4">
+          <div class="col-6 border-end">
+            <p class="text-muted text-uppercase small fw-bold mb-1">Current CGPA</p>
+            <h3 class="fw-bold mb-0"><%= data.goal ? data.goal.currentCGPA.toFixed(2) : (profile.currentCGPA ? profile.currentCGPA.toFixed(2) : '0.00') %></h3>
+          </div>
+          <div class="col-6">
+            <p class="text-muted text-uppercase small fw-bold mb-1">Target CGPA</p>
+            <h3 class="fw-bold mb-0 text-primary"><%= data.goal ? data.goal.targetCGPA.toFixed(2) : 'Not Set' %></h3>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-6 mb-3">
+            <div class="p-3 bg-light rounded">
+              <span class="text-muted d-block small fw-bold mb-1">Credits Completed</span>
+              <span class="fw-bold fs-5"><%= data.goal ? data.goal.creditsCompleted : (profile.totalCreditsAttempted || 0) %></span>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="p-3 bg-light rounded">
+              <span class="text-muted d-block small fw-bold mb-1">Credits Remaining</span>
+              <span class="fw-bold fs-5"><%= data.goal ? data.goal.creditsRemaining : (120 - (profile.totalCreditsAttempted || 0)) %></span>
+            </div>
+          </div>
+        </div>
+        
+        <% if (data.goal) { %>
+        <div class="mt-4 p-4 rounded <%= data.feasibility.status === 'Achieved' || data.feasibility.status === 'On Track' ? 'bg-success bg-opacity-10 border border-success border-opacity-25' : (data.feasibility.status === 'At Risk' ? 'bg-warning bg-opacity-10 border border-warning border-opacity-25' : 'bg-danger bg-opacity-10 border border-danger border-opacity-25') %>">
+          <h5 class="fw-bold mb-2">Status: <%= data.feasibility.status %></h5>
+          <p class="mb-0 text-dark"><i class="fas fa-info-circle me-2"></i><%= data.insights %></p>
+          
+          <% if (data.feasibility.status === 'On Track' || data.feasibility.status === 'At Risk') { %>
+            <div class="mt-3">
+              <span class="badge bg-dark rounded-pill px-3 py-2">
+                <i class="fas fa-chart-line me-1"></i> Required GPA: <strong><%= data.feasibility.requiredGPA %></strong>
+              </span>
+            </div>
+          <% } %>
+        </div>
+        <% } else { %>
+          <div class="mt-4 p-4 rounded bg-light border text-center text-muted">
+            <i class="fas fa-flag-checkered fa-2x mb-3 text-secondary"></i>
+            <p class="mb-0">You haven't set a goal yet. Use the form to configure your academic target.</p>
+          </div>
+        <% } %>
+      </div>
+    </div>
+
+    <!-- What-If Calculator -->
+    <div class="card border-0 shadow-sm">
+      <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+        <h5 class="fw-bold text-dark"><i class="fas fa-calculator me-2"></i> What-If Calculator</h5>
+        <p class="small text-muted mb-0">Simulate how future performance impacts your graduation CGPA.</p>
+      </div>
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-md-6 mb-3 mb-md-0">
+            <label class="form-label fw-bold">If I average a GPA of:</label>
+            <div class="input-group">
+              <input type="number" id="whatIfInput" class="form-control form-control-lg" min="0" max="5" step="0.1" value="4.0">
+              <button class="btn btn-primary px-4 fw-bold" type="button" onclick="calculateWhatIf()">Calculate</button>
+            </div>
+          </div>
+          <div class="col-md-1 text-center text-muted d-none d-md-block">
+            <i class="fas fa-arrow-right fa-2x"></i>
+          </div>
+          <div class="col-md-5 text-center">
+            <div class="p-3 bg-light rounded border border-primary border-opacity-25">
+              <p class="text-muted text-uppercase small fw-bold mb-1">Projected Graduation CGPA</p>
+              <h2 class="fw-bold text-primary mb-0" id="whatIfResult">--.--</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <!-- Classification Card -->
+    <div class="card border-0 shadow-sm mb-4">
+      <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+        <h5 class="fw-bold"><i class="fas fa-graduation-cap me-2 text-primary"></i> Degree Classification</h5>
+      </div>
+      <div class="card-body">
+        <div class="mb-4 pb-3 border-bottom">
+          <span class="text-muted small fw-bold text-uppercase d-block mb-1">Current Classification</span>
+          <span class="fs-5 fw-bold"><%= data.currentClassification %></span>
+        </div>
+        <div>
+          <span class="text-muted small fw-bold text-uppercase d-block mb-1">Projected Classification</span>
+          <span class="fs-5 fw-bold text-primary"><%= data.projectedClassification %></span>
+          <% if (data.goal) { %>
+            <p class="small text-muted mt-2 mb-0">Based on your target CGPA <%= data.feasibility.status === 'Not Achievable' ? '(capped at maximum achievable)' : '' %>.</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manage Goal Card -->
+    <div class="card border-0 shadow-sm">
+      <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+        <h5 class="fw-bold"><i class="fas fa-cog me-2 text-primary"></i> Manage Goal</h5>
+      </div>
+      <div class="card-body">
+        <form action="/student/goal-tracker" method="POST">
+          <div class="mb-3">
+            <label class="form-label fw-bold small">Target CGPA</label>
+            <input type="number" name="targetCGPA" class="form-control" min="0" max="5" step="0.01" value="<%= data.goal ? data.goal.targetCGPA : '' %>" placeholder="e.g. 4.50" required>
+          </div>
+          <div class="mb-4">
+            <label class="form-label fw-bold small">Expected Graduation Session (Optional)</label>
+            <input type="text" name="expectedGraduationSession" class="form-control" value="<%= data.goal ? data.goal.expectedGraduationSession : '' %>" placeholder="e.g. 2028/2029">
+          </div>
+          <button type="submit" class="btn btn-primary w-100 fw-bold rounded-pill">Save Target Goal</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function calculateWhatIf() {
+    const inputGPA = parseFloat(document.getElementById('whatIfInput').value);
+    const resultElement = document.getElementById('whatIfResult');
+    
+    if (isNaN(inputGPA) || inputGPA < 0 || inputGPA > 5) {
+      resultElement.innerText = "Invalid GPA";
+      return;
+    }
+    
+    const currentCGPA = <%= data.goal ? data.goal.currentCGPA : (profile.currentCGPA || 0) %>;
+    const creditsCompleted = <%= data.goal ? data.goal.creditsCompleted : (profile.totalCreditsAttempted || 0) %>;
+    const creditsRemaining = <%= data.goal ? data.goal.creditsRemaining : (120 - (profile.totalCreditsAttempted || 0)) %>;
+    
+    if (creditsRemaining <= 0) {
+      resultElement.innerText = currentCGPA.toFixed(2);
+      return;
+    }
+    
+    const totalCredits = creditsCompleted + creditsRemaining;
+    const currentTotalPoints = currentCGPA * creditsCompleted;
+    
+    const projectedTotalPoints = currentTotalPoints + (inputGPA * creditsRemaining);
+    const projectedCGPA = projectedTotalPoints / totalCredits;
+    
+    resultElement.innerText = projectedCGPA.toFixed(2);
+  }
+  
+  // Calculate on load
+  document.addEventListener('DOMContentLoaded', calculateWhatIf);
+</script>

@@ -1,0 +1,194 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h2 class="fw-bold mb-1">Course Registration</h2>
+      <p class="text-muted">Manage your enrolled courses and register for new ones.</p>
+    </div>
+  </div>
+
+  <% if (typeof success !== 'undefined' && success) { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <i class="fas fa-check-circle me-2"></i> Action completed successfully.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <i class="fas fa-exclamation-circle me-2"></i> <%= error %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+
+  <div class="row g-4">
+    <!-- Registered Courses Section -->
+    <div class="col-lg-6">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-white border-0 pt-4 pb-0">
+          <h5 class="fw-bold"><i class="fas fa-check-square text-success me-2"></i> Registered Courses</h5>
+        </div>
+        <div class="card-body">
+          <% if (enrollments && enrollments.length > 0) { %>
+            <form action="/student/courses/bulk-enroll" method="POST" id="bulkDropForm">
+              <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="selectAllRegistered">
+                  <label class="form-check-label fw-bold" for="selectAllRegistered">Select All</label>
+                </div>
+                <button type="submit" name="action" value="drop" class="btn btn-sm btn-outline-danger px-3 rounded-pill" onclick="return confirm('Are you sure you want to drop the selected courses?');">
+                  <i class="fas fa-times me-1"></i> Drop Selected
+                </button>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                  <thead class="table-light">
+                    <tr>
+                      <th width="40"></th>
+                      <th>Code</th>
+                      <th>Title</th>
+                      <th>Credits</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% enrollments.forEach(enrollment => { %>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input registered-checkbox" type="checkbox" name="courseOfferingIds[]" value="<%= enrollment.courseOfferingId._id %>">
+                          </div>
+                        </td>
+                        <td class="fw-medium"><%= enrollment.courseOfferingId.courseId.code %></td>
+                        <td><%= enrollment.courseOfferingId.courseId.title %></td>
+                        <td><%= enrollment.courseOfferingId.courseId.creditUnits %></td>
+                        <td><span class="badge bg-success bg-opacity-10 text-success px-2 py-1"><%= enrollment.status %></span></td>
+                      </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+              </div>
+            </form>
+          <% } else { %>
+            <div class="text-center py-5 text-muted">
+              <i class="fas fa-book-open fa-3x mb-3 text-light"></i>
+              <p>You have not registered for any courses yet.</p>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Available Courses Section -->
+    <div class="col-lg-6">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-white border-0 pt-4 pb-0">
+          <h5 class="fw-bold"><i class="fas fa-list text-primary me-2"></i> Available Courses</h5>
+        </div>
+        <div class="card-body">
+          <% if (availableOfferings && availableOfferings.length > 0) { %>
+            <form action="/student/courses/bulk-enroll" method="POST" id="bulkEnrollForm">
+              <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="selectAllAvailable">
+                  <label class="form-check-label fw-bold" for="selectAllAvailable">Select All</label>
+                </div>
+                <button type="submit" name="action" value="enroll" class="btn btn-sm btn-outline-primary px-3 rounded-pill" onclick="this.disabled=true; this.innerHTML='<span class=\'spinner-border spinner-border-sm\' role=\'status\' aria-hidden=\'true\'></span> Enrolling...'; this.form.submit();">
+                  <i class="fas fa-check me-1"></i> Enroll Selected
+                </button>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                  <thead class="table-light">
+                    <tr>
+                      <th width="40"></th>
+                      <th>Code</th>
+                      <th>Title</th>
+                      <th>Credits</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% availableOfferings.forEach(offering => { %>
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input available-checkbox" type="checkbox" name="courseOfferingIds[]" value="<%= offering._id %>">
+                          </div>
+                        </td>
+                        <td class="fw-medium"><%= offering.courseId.code %></td>
+                        <td><%= offering.courseId.title %></td>
+                        <td><%= offering.courseId.creditUnits %></td>
+                        <td>
+                          <button type="button" class="btn btn-sm btn-primary px-3 rounded-pill" onclick="submitSingleEnrollAction('<%= offering._id %>')">
+                            Enroll
+                          </button>
+                        </td>
+                      </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+              </div>
+            </form>
+          <% } else { %>
+            <div class="text-center py-5 text-muted">
+              <i class="fas fa-check-double fa-3x mb-3 text-light"></i>
+              <p>No available courses left to register for.</p>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form id="singleActionForm" action="/student/courses/bulk-enroll" method="POST" class="d-none">
+  <input type="hidden" name="action" id="singleActionType">
+  <input type="hidden" name="courseOfferingIds[]" id="singleActionCourseOfferingId">
+</form>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Registered Courses check all
+    const selectAllRegistered = document.getElementById('selectAllRegistered');
+    const registeredCheckboxes = document.querySelectorAll('.registered-checkbox');
+    
+    if (selectAllRegistered) {
+      selectAllRegistered.addEventListener('change', function() {
+        registeredCheckboxes.forEach(cb => cb.checked = selectAllRegistered.checked);
+      });
+    }
+    
+    registeredCheckboxes.forEach(cb => {
+      cb.addEventListener('change', function() {
+        if (!this.checked) selectAllRegistered.checked = false;
+        else if (document.querySelectorAll('.registered-checkbox:checked').length === registeredCheckboxes.length) {
+          selectAllRegistered.checked = true;
+        }
+      });
+    });
+
+    // Available Courses check all
+    const selectAllAvailable = document.getElementById('selectAllAvailable');
+    const availableCheckboxes = document.querySelectorAll('.available-checkbox');
+    
+    if (selectAllAvailable) {
+      selectAllAvailable.addEventListener('change', function() {
+        availableCheckboxes.forEach(cb => cb.checked = selectAllAvailable.checked);
+      });
+    }
+    
+    availableCheckboxes.forEach(cb => {
+      cb.addEventListener('change', function() {
+        if (!this.checked) selectAllAvailable.checked = false;
+        else if (document.querySelectorAll('.available-checkbox:checked').length === availableCheckboxes.length) {
+          selectAllAvailable.checked = true;
+        }
+      });
+    });
+  });
+
+  function submitSingleEnrollAction(offeringId) {
+    document.getElementById('singleActionType').value = 'enroll';
+    document.getElementById('singleActionCourseOfferingId').value = offeringId;
+    document.getElementById('singleActionForm').submit();
+  }
+</script>

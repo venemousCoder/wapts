@@ -1,0 +1,372 @@
+
+  <div class="container-fluid py-4">
+    <div class="row mb-4">
+      <div class="col-12 d-flex justify-content-between align-items-center">
+        <div>
+          <h2 class="fw-bold mb-1">Course Offerings</h2>
+          <p class="text-muted">Manage semester-specific course offerings and assignments.</p>
+        </div>
+        <button class="btn btn-primary px-4 rounded-pill shadow-sm" data-bs-toggle="modal" data-bs-target="#createOfferingModal">
+          <i class="fas fa-plus me-2"></i> New Offering
+        </button>
+      </div>
+    </div>
+
+    <% if (typeof success !== 'undefined' && success) { %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fas fa-check-circle me-2"></i> Action completed successfully.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% } %>
+    <% if (typeof error !== 'undefined' && error) { %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="fas fa-exclamation-circle me-2"></i> <%= error %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% } %>
+
+    <div class="card border-0 shadow-sm">
+      <div class="card-body">
+        <form action="/hod/offerings/bulk-action" method="POST" id="bulkOfferingForm">
+          <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="selectAllOfferings">
+              <label class="form-check-label fw-bold" for="selectAllOfferings">Select All</label>
+            </div>
+            <div>
+              <button type="submit" name="action" value="publish" class="btn btn-sm btn-outline-primary px-3 rounded-pill">
+                <i class="fas fa-bullhorn me-1"></i> Publish Selected
+              </button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th width="40"></th>
+                  <th>Course</th>
+                  <th>Session & Semester</th>
+                  <th>Assigned Lecturer</th>
+                  <th>Enrollment / Capacity</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (offerings && offerings.length > 0) { %>
+                  <% offerings.forEach(offering => { %>
+                    <tr>
+                      <td>
+                        <% if (offering.status === 'Draft' && offering.lecturerId) { %>
+                          <div class="form-check">
+                            <input class="form-check-input offering-checkbox" type="checkbox" name="offeringIds[]" value="<%= offering._id %>">
+                          </div>
+                        <% } %>
+                      </td>
+                      <td>
+                        <div class="fw-bold text-primary"><%= offering.courseId.code %></div>
+                        <div class="small text-muted"><%= offering.courseId.title %></div>
+                      </td>
+                      <td>
+                        <div><%= offering.sessionId.name %></div>
+                        <div class="small text-muted"><%= offering.semesterId.name %></div>
+                      </td>
+                      <td>
+                        <% if (offering.lecturerId) { %>
+                          <div class="fw-bold">
+                            <%= offering.lecturerId.userId.firstName %> <%= offering.lecturerId.userId.lastName %>
+                            <% if (offering.lecturerId.departmentId && offering.lecturerId.departmentId._id.toString() !== offering.courseId.departmentId.toString()) { %>
+                              <span class="badge bg-info ms-1">External</span>
+                            <% } %>
+                          </div>
+                          <div class="small text-muted"><%= offering.lecturerId.userId.loginIdentifier %></div>
+                        <% } else { %>
+                          <span class="text-warning small"><i class="fas fa-exclamation-triangle me-1"></i> Not Assigned</span>
+                        <% } %>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <span class="me-2 fw-bold"><%= offering.enrollmentCount %> / <%= offering.capacity %></span>
+                          <div class="progress" style="width: 60px; height: 6px;">
+                            <% const pct = offering.capacity > 0 ? Math.min(100, Math.round((offering.enrollmentCount / offering.capacity) * 100)) : 0; %>
+                            <div class="progress-bar <%= pct >= 100 ? 'bg-danger' : (pct >= 80 ? 'bg-warning' : 'bg-success') %>" role="progressbar" style="width: <%= pct %>%"></div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <% if (offering.status === 'Draft') { %>
+                          <span class="badge bg-secondary bg-opacity-10 text-secondary px-2 py-1">Draft</span>
+                        <% } else if (offering.status === 'Published') { %>
+                          <span class="badge bg-primary bg-opacity-10 text-primary px-2 py-1">Published</span>
+                        <% } else { %>
+                          <span class="badge bg-dark bg-opacity-10 text-dark px-2 py-1"><%= offering.status %></span>
+                        <% } %>
+                      </td>
+                      <td>
+                        <div class="dropdown">
+                          <button class="btn btn-sm btn-light" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-ellipsis-v"></i>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm">
+                            <% if (offering.status === 'Draft' || offering.status === 'Published') { %>
+                              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#assignLecturerModal<%= offering._id %>"><i class="fas fa-user-edit fa-fw text-muted me-2"></i> <%= offering.lecturerId ? 'Change Lecturer' : 'Assign Lecturer' %></a></li>
+                            <% } %>
+                            
+                            <% if (offering.status === 'Draft') { %>
+                              <% if (offering.lecturerId) { %>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                  <button type="button" class="dropdown-item text-primary" onclick="submitSingleOfferingAction('<%= offering._id %>', 'publish')"><i class="fas fa-bullhorn fa-fw me-2"></i> Publish Offering</button>
+                                </li>
+                              <% } %>
+                            <% } else if (offering.status === 'Published') { %>
+                              <li><hr class="dropdown-divider"></li>
+                              <li>
+                                <form action="/hod/offerings/<%= offering._id %>/close" method="POST">
+                                  <button type="submit" class="dropdown-item text-danger"><i class="fas fa-lock fa-fw me-2"></i> Close Offering</button>
+                                </form>
+                              </li>
+                            <% } %>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+
+                  <% }) %>
+                <% } else { %>
+                  <tr>
+                    <td colspan="7" class="text-center py-4 text-muted">No course offerings found for this semester.</td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <form id="singleActionForm" action="/hod/offerings/bulk-action" method="POST" class="d-none">
+    <input type="hidden" name="action" id="singleActionType">
+    <input type="hidden" name="offeringIds[]" id="singleActionOfferingId">
+  </form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const selectAll = document.getElementById('selectAllOfferings');
+      const checkboxes = document.querySelectorAll('.offering-checkbox');
+      
+      if (selectAll) {
+        selectAll.addEventListener('change', function() {
+          checkboxes.forEach(cb => cb.checked = selectAll.checked);
+        });
+      }
+      
+      checkboxes.forEach(cb => {
+        cb.addEventListener('change', function() {
+          if (!this.checked) selectAll.checked = false;
+          else if (document.querySelectorAll('.offering-checkbox:checked').length === checkboxes.length) {
+            selectAll.checked = true;
+          }
+        });
+      });
+    });
+
+    function submitSingleOfferingAction(offeringId, action) {
+      document.getElementById('singleActionType').value = action;
+      document.getElementById('singleActionOfferingId').value = offeringId;
+      document.getElementById('singleActionForm').submit();
+    }
+  </script>
+
+                  <!-- Assign Lecturer Modal -->
+                  <% if (offerings && offerings.length > 0) { %>
+                    <% offerings.forEach(offering => { %>
+                      <% if (offering.status === 'Draft' || offering.status === 'Published') { %>
+                      <div class="modal fade" id="assignLecturerModal<%= offering._id %>" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <form action="/hod/offerings/<%= offering._id %>/assign-lecturer" method="POST">
+                            <div class="modal-content border-0 shadow">
+                              <div class="modal-header border-0 pb-0">
+                                <h5 class="modal-title fw-bold"><%= offering.lecturerId ? 'Change Lecturer' : 'Assign Lecturer' %></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <p class="small text-muted mb-3"><%= offering.lecturerId ? 'Changing' : 'Assigning' %> lecturer for <strong><%= offering.courseId.code %></strong> - <%= offering.courseId.title %></p>
+                                <div class="mb-3">
+                                  <label class="form-label small fw-bold">Search by Staff Number</label>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control staff-number-input" id="staffNumber_<%= offering._id %>" placeholder="e.g. STF-00421">
+                                    <button class="btn btn-outline-primary lookup-btn" type="button" data-offering-id="<%= offering._id %>">Lookup</button>
+                                  </div>
+                                  <div class="form-text">Lookup a lecturer from any department.</div>
+                                </div>
+                                
+                                <div id="lecturerResult_<%= offering._id %>" class="d-none mt-3">
+                                  <div class="p-3 bg-light rounded border border-primary border-opacity-25">
+                                    <p class="text-muted text-uppercase small fw-bold mb-1">Lecturer Details</p>
+                                    <h6 class="fw-bold mb-1" id="lecturerName_<%= offering._id %>"></h6>
+                                    <div class="small text-muted mb-2">
+                                      Home Department: <span id="lecturerDept_<%= offering._id %>"></span><br>
+                                      Rank: <span id="lecturerRank_<%= offering._id %>"></span><br>
+                                      Status: <span id="lecturerStatus_<%= offering._id %>"></span>
+                                    </div>
+                                    <div class="form-check mt-3">
+                                      <input class="form-check-input" type="checkbox" name="overrideWorkload" id="override_<%= offering._id %>">
+                                      <label class="form-check-label small" for="override_<%= offering._id %>">
+                                        Override Workload Warning (if applicable)
+                                      </label>
+                                    </div>
+                                    <p class="small text-danger mt-2 fw-bold d-none" id="statusWarning_<%= offering._id %>"></p>
+                                  </div>
+                                </div>
+                                
+                                <!-- Hidden input to store the selected lecturer ID -->
+                                <input type="hidden" name="lecturerId" id="lecturerId_<%= offering._id %>" required>
+                              </div>
+                              <div class="modal-footer border-0 pt-0">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary px-4 assign-btn" id="assignBtn_<%= offering._id %>" disabled><%= offering.lecturerId ? 'Update' : 'Assign' %></button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      <% } %>
+                    <% }) %>
+                  <% } %>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const lookupBtns = document.querySelectorAll('.lookup-btn');
+  
+  lookupBtns.forEach(btn => {
+    btn.addEventListener('click', async function() {
+      const offeringId = this.getAttribute('data-offering-id');
+      const staffNumber = document.getElementById(`staffNumber_${offeringId}`).value.trim();
+      const resultDiv = document.getElementById(`lecturerResult_${offeringId}`);
+      const assignBtn = document.getElementById(`assignBtn_${offeringId}`);
+      const hiddenInput = document.getElementById(`lecturerId_${offeringId}`);
+      const warningP = document.getElementById(`statusWarning_${offeringId}`);
+      
+      if (!staffNumber) {
+        alert('Please enter a Staff Number');
+        return;
+      }
+      
+      this.disabled = true;
+      this.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+      
+      try {
+        const response = await fetch(`/hod/offerings/lookup-lecturer?staffNumber=${encodeURIComponent(staffNumber)}`);
+        const data = await response.json();
+        
+        if (data.success && data.lecturer) {
+          const lec = data.lecturer;
+          document.getElementById(`lecturerName_${offeringId}`).innerText = lec.fullName;
+          document.getElementById(`lecturerDept_${offeringId}`).innerText = lec.departmentName;
+          document.getElementById(`lecturerRank_${offeringId}`).innerText = lec.rank;
+          document.getElementById(`lecturerStatus_${offeringId}`).innerText = lec.status;
+          
+          hiddenInput.value = lec._id;
+          resultDiv.classList.remove('d-none');
+          
+          if (lec.status !== 'Active' && lec.status !== 'Approved' && lec.status !== 'Pending') {
+            warningP.innerText = `Cannot assign: Lecturer status is ${lec.status}.`;
+            warningP.classList.remove('d-none');
+            assignBtn.disabled = true;
+          } else {
+            warningP.classList.add('d-none');
+            assignBtn.disabled = false;
+          }
+        } else {
+          resultDiv.classList.add('d-none');
+          assignBtn.disabled = true;
+          hiddenInput.value = '';
+          alert(data.message || 'Lecturer not found');
+        }
+      } catch (err) {
+        alert('Error looking up lecturer');
+        resultDiv.classList.add('d-none');
+        assignBtn.disabled = true;
+      } finally {
+        this.disabled = false;
+        this.innerHTML = 'Lookup';
+      }
+    });
+  });
+
+  // Handle URL parameters for workload warnings
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('workloadWarning') === 'true') {
+    const offeringId = urlParams.get('offeringId');
+    if (offeringId) {
+      const modal = new bootstrap.Modal(document.getElementById(`assignLecturerModal${offeringId}`));
+      modal.show();
+      // We could pre-fill the lecturer here if we had the staff number, but the user will just have to search again or we could inject it.
+      // For simplicity, they can search again and check the override box.
+    }
+  }
+});
+</script>
+
+  <!-- Create Offering Modal -->
+  <div class="modal fade" id="createOfferingModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <form action="/hod/offerings" method="POST">
+        <div class="modal-content border-0 shadow">
+          <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-bold">New Course Offering</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Course</label>
+              <select name="courseId" class="form-select" required>
+                <option value="" disabled selected>Select Course...</option>
+                <% if (typeof courses !== 'undefined' && courses) { %>
+                  <% courses.forEach(course => { %>
+                    <option value="<%= course._id %>"><%= course.code %> - <%= course.title %></option>
+                  <% }) %>
+                <% } %>
+              </select>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label small fw-bold">Academic Session</label>
+                <select name="sessionId" class="form-select" required>
+                  <option value="" disabled selected>Select Session...</option>
+                  <% if (typeof sessions !== 'undefined' && sessions) { %>
+                    <% sessions.forEach(session => { %>
+                      <option value="<%= session._id %>"><%= session.name %></option>
+                    <% }) %>
+                  <% } %>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label small fw-bold">Semester</label>
+                <select name="semesterId" class="form-select" required>
+                  <option value="" disabled selected>Select Semester...</option>
+                  <% if (typeof semesters !== 'undefined' && semesters) { %>
+                    <% semesters.forEach(semester => { %>
+                      <option value="<%= semester._id %>"><%= semester.name %></option>
+                    <% }) %>
+                  <% } %>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Student Capacity</label>
+              <input type="number" name="capacity" class="form-control" required min="1" value="50">
+              <div class="form-text">Maximum number of students that can register for this offering.</div>
+            </div>
+          </div>
+          <div class="modal-footer border-0 pt-0">
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary px-4" onclick="this.disabled=true; this.innerHTML='Creating...'; this.form.submit();">Create</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+

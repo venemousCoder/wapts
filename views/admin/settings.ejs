@@ -1,0 +1,182 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h2 class="fw-bold mb-1">System Settings</h2>
+      <p class="text-muted">Configure global application parameters and active configurations.</p>
+    </div>
+  </div>
+
+  <% if (typeof success !== 'undefined' && success) { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <i class="fas fa-check-circle me-2"></i> Settings updated successfully.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <i class="fas fa-exclamation-circle me-2"></i> <%= error %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white border-0 pt-4 pb-2">
+          <h5 class="fw-bold text-primary mb-0"><i class="fas fa-cogs me-2"></i> Configuration Parameters</h5>
+        </div>
+        <div class="card-body">
+          <form action="/admin/settings" method="POST">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label small fw-bold">Attendance Threshold (%)</label>
+                <div class="input-group">
+                  <input type="number" name="attendanceThreshold" class="form-control" min="0" max="100" value="<%= settings && settings.attendanceThreshold ? settings.attendanceThreshold : 75 %>" required>
+                  <span class="input-group-text">%</span>
+                </div>
+                <div class="form-text">Minimum attendance required to take exams.</div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label small fw-bold">Minimum Credit Load</label>
+                <input type="number" name="minCreditLoad" class="form-control" min="0" value="<%= settings && settings.minCreditLoad ? settings.minCreditLoad : 12 %>" required>
+                <div class="form-text">Minimum credits a student must register per semester.</div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label small fw-bold">Maximum Credit Load</label>
+                <input type="number" name="maxCreditLoad" class="form-control" min="0" value="<%= settings && settings.maxCreditLoad ? settings.maxCreditLoad : 24 %>" required>
+                <div class="form-text">Maximum credits a student can register per semester.</div>
+              </div>
+
+              <div class="col-md-12">
+                <label class="form-label small fw-bold">Allowed Email Domains</label>
+                <input type="text" name="allowedEmailDomains" class="form-control" value="<%= settings && settings.allowedEmailDomains ? settings.allowedEmailDomains.join(', ') : 'university.edu.ng' %>" placeholder="e.g. university.edu.ng, student.university.edu.ng">
+                <div class="form-text">Comma-separated list of domains allowed for Lecturer registration.</div>
+              </div>
+            </div>
+
+            <div class="mt-4 border-top pt-4">
+              <h6 class="fw-bold mb-3 text-secondary">Active Identifiers</h6>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Current Academic Session</label>
+                  <% if (academicSessions && academicSessions.length > 0) { %>
+                    <select name="currentAcademicSession" id="sessionSelect" class="form-select">
+                      <option value="">Not Set</option>
+                      <% academicSessions.forEach(session => { %>
+                        <option value="<%= session._id %>" <%= settings && settings.currentAcademicSession && settings.currentAcademicSession._id.toString() === session._id.toString() ? 'selected' : '' %>><%= session.name %></option>
+                      <% }) %>
+                    </select>
+                  <% } else { %>
+                    <div class="alert alert-warning py-2 mb-0">
+                      <span class="small d-block mb-1">No Academic Sessions available.</span>
+                      <a href="/admin/calendar" class="btn btn-sm btn-outline-warning">Create Academic Session</a>
+                    </div>
+                  <% } %>
+                </div>
+                
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Current Semester</label>
+                  <% if (semesters && semesters.length > 0) { %>
+                    <select name="currentSemester" id="semesterSelect" class="form-select">
+                      <option value="">Not Set</option>
+                      <% semesters.forEach(semester => { %>
+                        <option value="<%= semester._id %>" data-session="<%= semester.sessionId && semester.sessionId._id ? semester.sessionId._id : semester.sessionId %>" <%= settings && settings.currentSemester && settings.currentSemester._id.toString() === semester._id.toString() ? 'selected' : '' %>><%= semester.name %></option>
+                      <% }) %>
+                    </select>
+                  <% } else { %>
+                    <div class="alert alert-warning py-2 mb-0">
+                      <span class="small d-block mb-1">No Semesters available.</span>
+                      <a href="/admin/calendar" class="btn btn-sm btn-outline-warning">Create Semester</a>
+                    </div>
+                  <% } %>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Active Grade Scale</label>
+                  <% if (gradeScales && gradeScales.length > 0) { %>
+                    <select name="activeGradeScale" class="form-select">
+                      <option value="">Not Set</option>
+                      <% gradeScales.forEach(scale => { %>
+                        <option value="<%= scale._id %>" <%= settings && settings.activeGradeScale && settings.activeGradeScale._id.toString() === scale._id.toString() ? 'selected' : '' %>><%= scale.name %></option>
+                      <% }) %>
+                    </select>
+                  <% } else { %>
+                    <div class="alert alert-warning py-2 mb-0">
+                      <span class="small d-block mb-1">No Grade Scales available.</span>
+                      <a href="/admin/grades" class="btn btn-sm btn-outline-warning">Create Grade Scale</a>
+                    </div>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-end mt-4">
+              <button type="submit" class="btn btn-primary px-5" onclick="this.disabled=true; this.innerHTML='<span class=\'spinner-border spinner-border-sm\' role=\'status\' aria-hidden=\'true\'></span> Saving...'; this.form.submit();">
+                <i class="fas fa-save me-2"></i> Save Settings
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-4">
+      <div class="card border-0 shadow-sm h-100 bg-primary bg-opacity-10">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary mb-3"><i class="fas fa-info-circle me-2"></i> Current Status</h5>
+          
+          <ul class="list-group list-group-flush bg-transparent">
+            <li class="list-group-item bg-transparent px-0 border-primary border-opacity-25">
+              <span class="text-muted small d-block">Academic Session</span>
+              <span class="fw-bold"><%= settings && settings.currentAcademicSession ? settings.currentAcademicSession.name : 'Not Set' %></span>
+            </li>
+            <li class="list-group-item bg-transparent px-0 border-primary border-opacity-25">
+              <span class="text-muted small d-block">Semester</span>
+              <span class="fw-bold"><%= settings && settings.currentSemester ? settings.currentSemester.name : 'Not Set' %></span>
+            </li>
+            <li class="list-group-item bg-transparent px-0 border-primary border-opacity-25">
+              <span class="text-muted small d-block">Grade Scale</span>
+              <span class="fw-bold"><%= settings && settings.activeGradeScale ? settings.activeGradeScale.name : 'Not Set' %></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const sessionSelect = document.getElementById('sessionSelect');
+  const semesterSelect = document.getElementById('semesterSelect');
+  
+  if (sessionSelect && semesterSelect) {
+    const filterSemesters = () => {
+      const sessionId = sessionSelect.value;
+      let selectedOptionValid = false;
+
+      Array.from(semesterSelect.options).forEach(opt => {
+        if (opt.value === "") {
+          opt.style.display = 'block';
+          return;
+        }
+        if (opt.dataset.session === sessionId || !sessionId) {
+          opt.style.display = 'block';
+          if (opt.selected) selectedOptionValid = true;
+        } else {
+          opt.style.display = 'none';
+        }
+      });
+
+      if (!selectedOptionValid && semesterSelect.value !== "") {
+        semesterSelect.value = "";
+      }
+    };
+    
+    sessionSelect.addEventListener('change', filterSemesters);
+    filterSemesters();
+  }
+});
+</script>
