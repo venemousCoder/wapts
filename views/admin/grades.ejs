@@ -54,7 +54,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <% scale.grades.forEach(grade => { %>
+                            <% (scale.grades || []).forEach(grade => { %>
                               <tr>
                                 <td class="fw-bold text-<%= grade.letterGrade === 'F' ? 'danger' : 'success' %>"><%= grade.letterGrade %></td>
                                 <td><%= grade.minScore %></td>
@@ -108,7 +108,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <% scheme.classes.forEach(cls => { %>
+                            <% (scheme.classes || []).forEach(cls => { %>
                               <tr>
                                 <td class="fw-bold text-primary"><%= cls.className %></td>
                                 <td><%= cls.minCGPA %></td>

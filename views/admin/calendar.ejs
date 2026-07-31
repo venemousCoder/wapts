@@ -55,9 +55,41 @@
                         <span class="badge bg-<%= statusClass %> bg-opacity-10 text-<%= statusClass %> px-2 py-1"><%= session.status %></span>
                       </td>
                       <td>
-                        <button class="btn btn-sm btn-light text-primary me-1"><i class="fas fa-edit"></i></button>
+                        <button class="btn btn-sm btn-light text-primary me-1" data-bs-toggle="modal" data-bs-target="#editSessionModal<%= session._id %>"><i class="fas fa-edit"></i></button>
                       </td>
                     </tr>
+<!-- Edit Session Modal -->
+<div class="modal fade" id="editSessionModal<%= session._id %>" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <form action="/admin/sessions/<%= session._id %>/edit" method="POST">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold">Edit Academic Session</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-start">
+          <div class="mb-3">
+            <label class="form-label small fw-bold">Session Name</label>
+            <input type="text" name="name" class="form-control" required value="<%= session.name %>">
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-bold">Status</label>
+            <select name="status" class="form-select" required>
+              <option value="Upcoming" <%= session.status === 'Upcoming' ? 'selected' : '' %>>Upcoming</option>
+              <option value="Active" <%= session.status === 'Active' ? 'selected' : '' %>>Active</option>
+              <option value="Closed" <%= session.status === 'Closed' ? 'selected' : '' %>>Closed</option>
+              <option value="Archived" <%= session.status === 'Archived' ? 'selected' : '' %>>Archived</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary px-4" onclick="this.disabled=true; this.innerHTML='Saving...'; this.form.submit();">Save Changes</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
                   <% }) %>
                 <% } else { %>
                   <tr><td colspan="3" class="text-center py-4 text-muted">No sessions found.</td></tr>
@@ -100,9 +132,47 @@
                         </span>
                       </td>
                       <td>
-                        <button class="btn btn-sm btn-light text-primary me-1"><i class="fas fa-edit"></i></button>
+                        <button class="btn btn-sm btn-light text-primary me-1" data-bs-toggle="modal" data-bs-target="#editSemesterModal<%= semester._id %>"><i class="fas fa-edit"></i></button>
                       </td>
                     </tr>
+<!-- Edit Semester Modal -->
+<div class="modal fade" id="editSemesterModal<%= semester._id %>" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <form action="/admin/semesters/<%= semester._id %>/edit" method="POST">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold">Edit Semester</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-start">
+          <div class="mb-3">
+            <label class="form-label small fw-bold">Academic Session</label>
+            <select name="sessionId" class="form-select" required>
+              <option value="" disabled>Select Session...</option>
+              <% if (sessions) { sessions.forEach(s => { %>
+                <option value="<%= s._id %>" <%= semester.sessionId && semester.sessionId._id.toString() === s._id.toString() ? 'selected' : '' %>><%= s.name %></option>
+              <% }) } %>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-bold">Semester Name</label>
+            <input type="text" name="name" class="form-control" required value="<%= semester.name %>">
+          </div>
+          <div class="mb-3">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" name="isActive" id="isActive<%= semester._id %>" value="true" <%= semester.isActive ? 'checked' : '' %>>
+              <label class="form-check-label" for="isActive<%= semester._id %>">Set as Active</label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary px-4" onclick="this.disabled=true; this.innerHTML='Saving...'; this.form.submit();">Save Changes</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
                   <% }) %>
                 <% } else { %>
                   <tr><td colspan="4" class="text-center py-4 text-muted">No semesters found.</td></tr>

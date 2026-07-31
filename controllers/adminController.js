@@ -414,3 +414,39 @@ exports.createSemester = async (req, res, next) => {
     res.redirect(`/admin/calendar?error=${encodeURIComponent(err.message)}`);
   }
 };
+
+exports.updateSession = async (req, res, next) => {
+  try {
+    const AcademicSession = require('../models/AcademicSession');
+    const { name, status } = req.body;
+    const session = await AcademicSession.findById(req.params.id);
+    if (!session) throw new Error('Session not found');
+    
+    session.name = name;
+    session.status = status;
+    await session.save();
+    
+    res.redirect('/admin/calendar?success=true');
+  } catch (err) {
+    res.redirect(`/admin/calendar?error=${encodeURIComponent(err.message)}`);
+  }
+};
+
+exports.updateSemester = async (req, res, next) => {
+  try {
+    const Semester = require('../models/Semester');
+    const { sessionId, name, isActive } = req.body;
+    const semester = await Semester.findById(req.params.id);
+    if (!semester) throw new Error('Semester not found');
+    
+    semester.sessionId = sessionId;
+    semester.name = name;
+    semester.isActive = isActive === 'true' || isActive === 'on';
+    
+    await semester.save();
+    
+    res.redirect('/admin/calendar?success=true');
+  } catch (err) {
+    res.redirect(`/admin/calendar?error=${encodeURIComponent(err.message)}`);
+  }
+};

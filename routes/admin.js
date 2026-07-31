@@ -45,6 +45,16 @@ router.post('/semesters', [
   body('name').notEmpty().withMessage('Name is required')
 ], validate, adminController.createSemester);
 
+router.post('/sessions/:id/edit', [
+  body('name').notEmpty().withMessage('Name is required'),
+  body('status').isIn(['Upcoming', 'Active', 'Closed', 'Archived']).withMessage('Invalid status')
+], validate, adminController.updateSession);
+
+router.post('/semesters/:id/edit', [
+  body('sessionId').isMongoId().withMessage('Invalid sessionId'),
+  body('name').notEmpty().withMessage('Name is required')
+], validate, adminController.updateSemester);
+
 router.get('/grades', adminController.getGrades);
 
 // Other admin routes
