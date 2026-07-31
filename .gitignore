@@ -11,3 +11,6 @@ playwright/.cache/
 coverage/
 logs/
 *.log
+wapts_backup/
+*.bson
+*.metadata.json
