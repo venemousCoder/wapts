@@ -100,17 +100,17 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                          <div class="mb-3">
-                            <label class="form-label small fw-bold">Login Identifier</label>
-                            <input type="text" name="loginIdentifier" class="form-control" required value="<%= user.loginIdentifier %>">
+                          <div class="form-floating mb-3">
+                            <input type="text" name="loginIdentifier" class="form-control" id="floatingId<%= user._id %>" required value="<%= user.loginIdentifier %>" placeholder="Identifier">
+                            <label for="floatingId<%= user._id %>">Login Identifier</label>
                           </div>
-                          <div class="mb-3">
-                            <label class="form-label small fw-bold">First Name</label>
-                            <input type="text" name="firstName" class="form-control" required value="<%= user.firstName %>">
+                          <div class="form-floating mb-3">
+                            <input type="text" name="firstName" class="form-control" id="floatingFN<%= user._id %>" required value="<%= user.firstName %>" placeholder="First Name">
+                            <label for="floatingFN<%= user._id %>">First Name</label>
                           </div>
-                          <div class="mb-3">
-                            <label class="form-label small fw-bold">Last Name</label>
-                            <input type="text" name="lastName" class="form-control" required value="<%= user.lastName %>">
+                          <div class="form-floating mb-3">
+                            <input type="text" name="lastName" class="form-control" id="floatingLN<%= user._id %>" required value="<%= user.lastName %>" placeholder="Last Name">
+                            <label for="floatingLN<%= user._id %>">Last Name</label>
                           </div>
                           <div class="accordion mt-4" id="advancedSettingsAccordion<%= user._id %>">
                             <div class="accordion-item border-0 shadow-sm">
@@ -179,7 +179,13 @@
               <% }) %>
             <% } else { %>
               <tr>
-                <td colspan="7" class="text-center py-4 text-muted">No users found in the system.</td>
+                <td colspan="7" class="text-center py-5">
+                  <div class="empty-state p-0">
+                    <i class="fas fa-users text-muted opacity-50 mb-3" style="font-size: 2.5rem;"></i>
+                    <h6 class="fw-bold">No Users Found</h6>
+                    <p class="small text-muted mb-0">No users exist in the system yet.</p>
+                  </div>
+                </td>
               </tr>
             <% } %>
           </tbody>
@@ -235,35 +241,47 @@
         <div class="modal-body">
           <div class="row g-3">
             <div class="col-md-6">
-              <label class="form-label small fw-bold">Login Identifier</label>
-              <input type="text" name="loginIdentifier" class="form-control" required placeholder="Email, Reg No, or Username">
+              <div class="form-floating">
+                <input type="text" name="loginIdentifier" class="form-control" id="floatingAddId" required placeholder="Email, Reg No, or Username">
+                <label for="floatingAddId" class="required-indicator">Login Identifier</label>
+              </div>
             </div>
             <div class="col-md-6">
-              <label class="form-label small fw-bold">Login Type</label>
-              <select name="loginType" class="form-select" required>
-                <option value="INSTITUTIONAL_EMAIL">Institutional Email</option>
-                <option value="REG_NUMBER">Registration Number</option>
-                <option value="ADMIN_USERNAME">Admin Username</option>
-              </select>
+              <div class="form-floating">
+                <select name="loginType" class="form-select" id="floatingAddType" required>
+                  <option value="INSTITUTIONAL_EMAIL">Institutional Email</option>
+                  <option value="REG_NUMBER">Registration Number</option>
+                  <option value="ADMIN_USERNAME">Admin Username</option>
+                </select>
+                <label for="floatingAddType" class="required-indicator">Login Type</label>
+              </div>
             </div>
             <div class="col-md-6">
-              <label class="form-label small fw-bold">First Name</label>
-              <input type="text" name="firstName" class="form-control" required>
+              <div class="form-floating">
+                <input type="text" name="firstName" class="form-control" id="floatingAddFN" placeholder="First Name" required>
+                <label for="floatingAddFN" class="required-indicator">First Name</label>
+              </div>
             </div>
             <div class="col-md-6">
-              <label class="form-label small fw-bold">Last Name</label>
-              <input type="text" name="lastName" class="form-control" required>
+              <div class="form-floating">
+                <input type="text" name="lastName" class="form-control" id="floatingAddLN" placeholder="Last Name" required>
+                <label for="floatingAddLN" class="required-indicator">Last Name</label>
+              </div>
             </div>
             <div class="col-md-6">
-              <label class="form-label small fw-bold">Password</label>
-              <input type="password" name="password" class="form-control" required>
+              <div class="form-floating">
+                <input type="password" name="password" class="form-control" id="floatingAddPass" placeholder="Password" required>
+                <label for="floatingAddPass" class="required-indicator">Password</label>
+              </div>
             </div>
             <div class="col-md-6">
-              <label class="form-label small fw-bold">Role</label>
-              <select name="role" class="form-select" required onchange="toggleRoleFields(this.value)">
-                <option value="HOD">HOD</option>
-                <option value="Admin">Admin</option>
-              </select>
+              <div class="form-floating">
+                <select name="role" class="form-select" id="floatingAddRole" required onchange="toggleRoleFields(this.value)">
+                  <option value="HOD">HOD</option>
+                  <option value="Admin">Admin</option>
+                </select>
+                <label for="floatingAddRole" class="required-indicator">Role</label>
+              </div>
             </div>
             <!-- Additional profile fields dynamically based on role -->
             <div id="dynamicFieldsContainer" class="col-12 mt-3 pt-3 border-top">

@@ -12,5 +12,6 @@ router.use('/lecturer', require('./lecturer'));
 router.use('/student', require('./student'));
 router.use('/import', require('./import'));
 router.use('/onboarding', require('./public'));
+router.use('/profile', require('./profile'));
 
 module.exports = router;

@@ -1,96 +1,194 @@
-<div class="d-flex justify-content-between align-items-center mb-4">
-  <div>
-    <h2 class="fw-bold mb-1">Admin Dashboard</h2>
-    <p class="text-muted mb-0">System Overview</p>
+<div class="row align-items-center mb-4">
+  <div class="col-md-8">
+    <h2 class="fw-bold mb-1 text-dark">Welcome, <%= user.firstName %>!</h2>
+    <p class="text-muted mb-0">Here's an overview of the system today.</p>
   </div>
-  <div>
-    <button class="btn btn-primary"><i class="fas fa-plus me-2"></i> Quick Action</button>
+  <div class="col-md-4 text-md-end mt-3 mt-md-0">
+    <button class="btn btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#quickActionModal">
+      <i class="fas fa-bolt me-2"></i> Quick Action
+    </button>
   </div>
 </div>
 
 <div class="row g-4 mb-4">
   <div class="col-md-3">
-    <div class="card card-hover h-100 border-0 shadow-sm">
+    <div class="card stat-card h-100 border-0 shadow-sm border-start border-primary border-4">
       <div class="card-body">
-        <h6 class="text-muted text-uppercase fw-bold mb-3">Total Students</h6>
-        <div class="d-flex align-items-center">
-          <div class="fs-2 fw-bold text-dark me-3"><%= totalStudents %></div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="text-muted text-uppercase fw-bold mb-2" style="font-size: 0.75rem;">Total Students</h6>
+            <h3 class="fw-bold text-dark mb-0"><%= totalStudents %></h3>
+          </div>
+          <div class="icon-circle bg-primary bg-opacity-10 text-primary">
+            <i class="fas fa-user-graduate"></i>
+          </div>
+        </div>
+        <div class="mt-3 text-success small fw-medium">
+          <i class="fas fa-arrow-up me-1"></i> Active in DB
         </div>
       </div>
     </div>
   </div>
   <div class="col-md-3">
-    <div class="card card-hover h-100 border-0 shadow-sm">
+    <div class="card stat-card h-100 border-0 shadow-sm border-start border-info border-4">
       <div class="card-body">
-        <h6 class="text-muted text-uppercase fw-bold mb-3">Active Lecturers</h6>
-        <div class="d-flex align-items-center">
-          <div class="fs-2 fw-bold text-dark me-3"><%= activeLecturers %></div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="text-muted text-uppercase fw-bold mb-2" style="font-size: 0.75rem;">Active Lecturers</h6>
+            <h3 class="fw-bold text-dark mb-0"><%= activeLecturers %></h3>
+          </div>
+          <div class="icon-circle bg-info bg-opacity-10 text-info">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+        </div>
+        <div class="mt-3 text-info small fw-medium">
+          <i class="fas fa-check-circle me-1"></i> Approved
         </div>
       </div>
     </div>
   </div>
   <div class="col-md-3">
-    <div class="card card-hover h-100 border-0 shadow-sm">
+    <div class="card stat-card h-100 border-0 shadow-sm border-start border-warning border-4">
       <div class="card-body">
-        <h6 class="text-muted text-uppercase fw-bold mb-3">Departments</h6>
-        <div class="d-flex align-items-center">
-          <div class="fs-2 fw-bold text-dark me-3"><%= totalDepartments %></div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="text-muted text-uppercase fw-bold mb-2" style="font-size: 0.75rem;">Departments</h6>
+            <h3 class="fw-bold text-dark mb-0"><%= totalDepartments %></h3>
+          </div>
+          <div class="icon-circle bg-warning bg-opacity-10 text-warning">
+            <i class="fas fa-building"></i>
+          </div>
+        </div>
+        <div class="mt-3 text-warning small fw-medium">
+          <i class="fas fa-sitemap me-1"></i> Faculties
         </div>
       </div>
     </div>
   </div>
   <div class="col-md-3">
-    <div class="card card-hover h-100 border-0 shadow-sm">
+    <div class="card stat-card h-100 border-0 shadow-sm border-start border-success border-4">
       <div class="card-body">
-        <h6 class="text-muted text-uppercase fw-bold mb-3">System Status</h6>
-        <div class="d-flex align-items-center">
-          <div class="fs-2 fw-bold text-success me-3">Active</div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="text-muted text-uppercase fw-bold mb-2" style="font-size: 0.75rem;">System Health</h6>
+            <h3 class="fw-bold text-success mb-0">100%</h3>
+          </div>
+          <div class="icon-circle bg-success bg-opacity-10 text-success">
+            <i class="fas fa-heartbeat"></i>
+          </div>
+        </div>
+        <div class="mt-3 text-success small fw-medium">
+          <i class="fas fa-shield-alt me-1"></i> All systems operational
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="card border-0 shadow-sm">
-  <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
-    <h5 class="fw-bold">Recent Audit Logs</h5>
+<div class="row g-4 mb-4">
+  <!-- Analytics Chart -->
+  <div class="col-lg-7">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-header bg-white border-0 pt-4 pb-2 d-flex justify-content-between align-items-center">
+        <h5 class="card-title fw-bold text-primary"><i class="fas fa-chart-bar me-2"></i> User Distribution</h5>
+      </div>
+      <div class="card-body d-flex justify-content-center align-items-center" style="min-height: 300px;">
+        <canvas id="userDistributionChart"></canvas>
+      </div>
+    </div>
   </div>
-  <div class="card-body">
-    <div class="table-responsive" style="max-height: 260px; overflow-y: auto;">
-      <table class="table table-hover align-middle">
-        <thead class="table-light">
-          <tr>
-            <th class="text-muted fw-bold">Date</th>
-            <th class="text-muted fw-bold">Action</th>
-            <th class="text-muted fw-bold">Resource</th>
-            <th class="text-muted fw-bold">User</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% if (recentLogs && recentLogs.length > 0) { %>
-            <% recentLogs.forEach(log => { %>
-              <tr>
-                <td><%= new Date(log.createdAt).toLocaleString() %></td>
-                <td><span class="badge bg-primary bg-opacity-10 text-primary text-uppercase"><%= log.action %></span></td>
-                <td><%= log.resource %></td>
-                <td>
-                  <strong>
-                    <% if (log.userId) { %>
-                      <%= log.userId.firstName %> <%= log.userId.lastName %> (<%= log.userId.loginIdentifier %>)
-                    <% } else { %>
-                      System / Anonymous
-                    <% } %>
-                  </strong>
-                </td>
-              </tr>
-            <% }) %>
-          <% } else { %>
-            <tr>
-              <td colspan="4" class="text-center text-muted py-4">No recent audit logs available.</td>
-            </tr>
-          <% } %>
-        </tbody>
-      </table>
+
+  <!-- Recent Audit Logs -->
+  <div class="col-lg-5">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-header bg-white border-0 pt-4 pb-2 d-flex justify-content-between align-items-center">
+        <h5 class="card-title fw-bold text-dark"><i class="fas fa-history me-2"></i> Recent Audit Logs</h5>
+        <a href="#" class="btn btn-sm btn-light text-primary">View All</a>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+          <table class="table table-hover align-middle mb-0">
+            <tbody class="border-top-0">
+              <% if (recentLogs && recentLogs.length > 0) { %>
+                <% recentLogs.slice(0, 6).forEach(log => { %>
+                  <tr>
+                    <td class="ps-4 py-3 border-bottom border-light">
+                      <div class="d-flex align-items-center">
+                        <div class="icon-circle bg-light text-secondary me-3" style="width: 40px; height: 40px; font-size: 1rem;">
+                          <i class="fas fa-bolt"></i>
+                        </div>
+                        <div>
+                          <h6 class="mb-0 fw-bold text-dark" style="font-size: 0.9rem;">
+                            <%= log.action.replace(/_/g, ' ') %>
+                          </h6>
+                          <div class="text-muted small">
+                            <% if (log.userId) { %>
+                              <%= log.userId.firstName %> (<%= log.resource %>)
+                            <% } else { %>
+                              System Request
+                            <% } %>
+                            &bull; <%= new Date(log.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) %>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                <% }) %>
+              <% } else { %>
+                <tr>
+                  <td class="text-center py-5">
+                    <div class="empty-state p-0">
+                      <i class="fas fa-clipboard-list text-muted opacity-50 mb-3" style="font-size: 2.5rem;"></i>
+                      <h6 class="fw-bold">No Audit Logs</h6>
+                      <p class="small">System activity will appear here.</p>
+                    </div>
+                  </td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const ctx = document.getElementById('userDistributionChart');
+  if (ctx && typeof Chart !== 'undefined') {
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Students', 'Lecturers', 'HODs', 'Admins'],
+        datasets: [{
+          data: [<%= totalStudents %>, <%= activeLecturers %>, <%= totalDepartments %>, 1],
+          backgroundColor: [
+            '#16a34a', // Success green for students
+            '#0284c7', // Info blue for lecturers
+            '#d97706', // Warning amber for HODs
+            '#dc2626'  // Danger red for admins
+          ],
+          borderWidth: 0,
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '70%',
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              padding: 20,
+              usePointStyle: true,
+              pointStyle: 'circle'
+            }
+          }
+        }
+      }
+    });
+  }
+});
+</script>

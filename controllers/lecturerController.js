@@ -110,19 +110,19 @@ exports.postAttendance = async (req, res, next) => {
     
     // Sanitize recordsData to handle hidden input + checkbox array issue (e.g. ['false', 'true'])
     let sanitizedRecordsData = [];
-    if (Array.isArray(recordsData)) {
-      sanitizedRecordsData = recordsData.map(record => {
-        let isPresentVal = record.isPresent;
-        if (Array.isArray(isPresentVal)) {
-          // If it's an array, it means the checkbox was checked, so it sent both the hidden 'false' and checkbox 'true'.
-          isPresentVal = isPresentVal.includes('true') ? 'true' : 'false';
-        }
-        return {
-          studentId: record.studentId,
-          isPresent: isPresentVal === 'true' || isPresentVal === true
-        };
-      });
-    }
+    const rawRecords = Array.isArray(recordsData) ? recordsData : (recordsData ? Object.values(recordsData) : []);
+    
+    sanitizedRecordsData = rawRecords.map(record => {
+      let isPresentVal = record.isPresent;
+      if (Array.isArray(isPresentVal)) {
+        // If it's an array, it means the checkbox was checked, so it sent both the hidden 'false' and checkbox 'true'.
+        isPresentVal = isPresentVal.includes('true') ? 'true' : 'false';
+      }
+      return {
+        studentId: record.studentId,
+        isPresent: isPresentVal === 'true' || isPresentVal === true
+      };
+    });
     
     const lecturerProfile = await LecturerProfile.findOne({ userId: req.user._id, isDeleted: false });
     if (!lecturerProfile) return ResponseHandler.error(res, 'Lecturer profile not found', 404);

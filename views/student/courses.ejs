@@ -68,9 +68,12 @@
               </div>
             </form>
           <% } else { %>
-            <div class="text-center py-5 text-muted">
-              <i class="fas fa-book-open fa-3x mb-3 text-light"></i>
-              <p>You have not registered for any courses yet.</p>
+            <div class="text-center py-5">
+              <div class="empty-state p-0">
+                <i class="fas fa-book-reader text-muted opacity-50 mb-3" style="font-size: 2.5rem;"></i>
+                <h6 class="fw-bold">No Registered Courses</h6>
+                <p class="small text-muted mb-0">You have not registered for any courses yet.</p>
+              </div>
             </div>
           <% } %>
         </div>
@@ -129,9 +132,12 @@
               </div>
             </form>
           <% } else { %>
-            <div class="text-center py-5 text-muted">
-              <i class="fas fa-check-double fa-3x mb-3 text-light"></i>
-              <p>No available courses left to register for.</p>
+            <div class="text-center py-5">
+              <div class="empty-state p-0">
+                <i class="fas fa-check-circle text-success opacity-50 mb-3" style="font-size: 2.5rem;"></i>
+                <h6 class="fw-bold">All Caught Up!</h6>
+                <p class="small text-muted mb-0">No available courses left to register for.</p>
+              </div>
             </div>
           <% } %>
         </div>

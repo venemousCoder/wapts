@@ -15,11 +15,36 @@
   <% if (typeof user !== 'undefined') { %>
     <div class="d-flex" style="min-height: 100vh;">
       <%- include('partials/sidebar') %>
-      <div class="flex-grow-1 d-flex flex-column bg-light" style="min-width: 0;">
+      <div class="main-content flex-grow-1 d-flex flex-column" style="min-width: 0; background-color: var(--light-bg);">
         <%- include('partials/navbar') %>
-        <div class="container-fluid p-4 overflow-auto flex-grow-1">
+        <main class="container-fluid p-4 overflow-auto flex-grow-1" id="main-content-area">
+          
+          <!-- Unified Toast Notification Container -->
+          <div class="toast-container position-fixed top-0 end-0 p-3 mt-5">
+            <% if (typeof success !== 'undefined' && success) { %>
+              <div class="toast align-items-center text-white bg-success border-0 show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+                <div class="d-flex">
+                  <div class="toast-body">
+                    <i class="fas fa-check-circle me-2"></i> <%= success %>
+                  </div>
+                  <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+              </div>
+            <% } %>
+            <% if (typeof error !== 'undefined' && error) { %>
+              <div class="toast align-items-center text-white bg-danger border-0 show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="8000">
+                <div class="d-flex">
+                  <div class="toast-body">
+                    <i class="fas fa-exclamation-circle me-2"></i> <%= error %>
+                  </div>
+                  <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+              </div>
+            <% } %>
+          </div>
+
           <%- body %>
-        </div>
+        </main>
       </div>
     </div>
   <% } else { %>

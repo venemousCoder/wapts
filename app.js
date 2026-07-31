@@ -77,13 +77,40 @@ app.use(async (req, res, next) => {
 // Routes will be mounted here
 app.use('/', require('./routes/index'));
 
+// 404 Error Handler
+app.use((req, res, next) => {
+  res.status(404);
+  
+  if (req.accepts('html')) {
+    res.render('errors/404', { title: '404 - Page Not Found', path: req.path });
+    return;
+  }
+  
+  if (req.accepts('json')) {
+    res.json({ success: false, message: 'Not found' });
+    return;
+  }
+  
+  res.type('txt').send('Not found');
+});
+
 // Global Error Handler
 app.use((err, req, res, next) => {
   const status = err.status || 500;
   if (process.env.NODE_ENV !== 'test' || status >= 500) {
     console.error(err.stack);
   }
-  res.status(status).json({
+  
+  res.status(status);
+  
+  if (req.accepts('html')) {
+    const view = status === 403 ? 'errors/403' : 'errors/500';
+    const title = status === 403 ? '403 - Forbidden' : '500 - Server Error';
+    res.render(view, { title: title, message: err.message || 'Internal Server Error', path: req.path });
+    return;
+  }
+  
+  res.json({
     success: false,
     message: err.message || 'Internal Server Error'
   });
