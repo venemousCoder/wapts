@@ -8,7 +8,7 @@ const startServer = async () => {
 
   // Start Server
   const PORT = env.PORT;
-  app.listen(PORT, () => {
+  app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running in ${env.NODE_ENV} mode on port ${PORT}`);
     
     // Start the keep-alive cron job
